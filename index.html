@@ -1,0 +1,749 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Barisan &amp; Deret Aritmetika — Matematika Kelas XI</title>
+<meta name="description" content="Materi ajar interaktif Barisan dan Deret Aritmetika untuk SMA Kelas XI, dilengkapi kalkulator, contoh soal, latihan, dan LKPD digital. Disusun oleh Wahyu Wijayanti, S.Pd., M.Pd.">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><rect width=%22100%22 height=%22100%22 rx=%2222%22 fill=%22%2316233F%22/><rect x=%2218%22 y=%2062%22 width=%2214%22 height=%2222%22 rx=%223%22 fill=%22%230EA5A0%22/><rect x=%2237%22 y=%2048%22 width=%2214%22 height=%2236%22 rx=%223%22 fill=%22%230EA5A0%22/><rect x=%2256%22 y=%2232%22 width=%2214%22 height=%2252%22 rx=%223%22 fill=%22%23F0A93C%22/></svg>">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,600;9..144,700&family=Manrope:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+<div class="progress-bar" id="progressBar"></div>
+
+<nav class="nav">
+  <div class="nav-inner">
+    <a href="#beranda" class="brand">
+      <span class="brand-mark"><span></span><span></span><span></span><span></span></span>
+      <span class="brand-text">Barisan &amp; Deret<small>Aritmetika · Kelas XI</small></span>
+    </a>
+    <ul class="nav-links">
+      <li><a href="#barisan" data-nav>Barisan</a></li>
+      <li><a href="#deret" data-nav>Deret</a></li>
+      <li><a href="#rangkuman" data-nav>Rangkuman</a></li>
+      <li><a href="#lkpd" data-nav>LKPD</a></li>
+      <li><a href="#guru" data-nav>Guru</a></li>
+    </ul>
+    <button class="nav-toggle" id="navToggle" aria-label="Buka menu" aria-expanded="false"><span></span></button>
+  </div>
+</nav>
+<div class="mobile-panel" id="mobilePanel">
+  <a href="#barisan">Barisan Aritmetika</a>
+  <a href="#deret">Deret Aritmetika</a>
+  <a href="#rangkuman">Rangkuman</a>
+  <a href="#lkpd">LKPD Interaktif</a>
+  <a href="#guru">Panduan Guru</a>
+</div>
+
+<!-- ===================== HERO ===================== -->
+<header class="hero" id="beranda">
+  <div class="container hero-inner">
+    <div>
+      <span class="eyebrow">Matematika Wajib · Kelas XI SMA</span>
+      <h1>Belajar <em>Barisan &amp; Deret Aritmetika</em> lewat pola yang kamu lihat setiap hari.</h1>
+      <p class="hero-lede">Pernah perhatikan susunan kursi bioskop, atau tabungan yang naik dengan jumlah tetap tiap hari? Itulah aritmetika. Di halaman ini kamu bisa menghitung langsung, mencoba soal, dan mengisi LKPD — semua interaktif, langsung di layar HP atau laptopmu.</p>
+      <p class="hero-meta">Disusun oleh Wahyu Wijayanti, S.Pd., M.Pd. — SMA Negeri Karangpandan</p>
+      <div class="hero-actions">
+        <a href="#barisan" class="btn btn-primary">Mulai Belajar Barisan →</a>
+        <a href="#lkpd" class="btn btn-ghost">Buka LKPD Kelompok</a>
+      </div>
+    </div>
+
+    <div class="stair-card">
+      <div class="stair-card-head">
+        <h3>Coba geser bedanya</h3>
+        <span class="stair-formula">Un = 4 + (n−1)·b</span>
+      </div>
+      <div class="stair-chart" id="heroChart" aria-hidden="true"></div>
+      <div class="stair-controls">
+        <label for="heroB">Beda (b)</label>
+        <input type="range" id="heroB" min="1" max="8" value="3" step="1">
+        <span class="stair-b-val" id="heroBVal">3</span>
+      </div>
+    </div>
+  </div>
+</header>
+
+<div class="container">
+  <div class="section-head" style="max-width:100%">
+    <span class="section-kicker">Peta Konsep</span>
+    <h2 style="font-size:1.4rem">Dua ide besar yang akan kamu kuasai</h2>
+  </div>
+  <div class="concept-grid">
+    <div class="concept-card teal">
+      <h4>Barisan Aritmetika</h4>
+      <p>Mencari nilai pada satu urutan tertentu — misalnya kursi di baris ke-12.</p>
+      <div class="formula">Un = a + (n−1)b</div>
+    </div>
+    <div class="concept-card amber">
+      <h4>Deret Aritmetika</h4>
+      <p>Mencari jumlah total dari beberapa suku sekaligus — misalnya total seluruh kursi.</p>
+      <div class="formula">Sn = n/2 (a + Un)</div>
+    </div>
+  </div>
+</div>
+
+<div class="container"><div class="stair-divider" style="margin-top:70px"><i></i><i></i><i></i><i></i><i></i></div></div>
+
+<!-- ===================== BARISAN ===================== -->
+<section class="section" id="barisan">
+  <div class="container">
+    <div class="section-head">
+      <span class="section-kicker">Bagian II</span>
+      <h2>Barisan Aritmetika</h2>
+      <p>Barisan aritmetika adalah susunan bilangan dengan pola penambahan atau pengurangan yang selalu tetap. Selisih tetap ini disebut <strong>Beda (b)</strong>, dicari dengan b = Un − Un₋1.</p>
+    </div>
+
+    <div class="formula-box">
+      <div class="label">Rumus Suku ke-n</div>
+      <div class="formula">Un = a + (n − 1)b</div>
+      <div class="note">a = suku pertama · b = beda · n = urutan suku · Un = nilai suku ke-n</div>
+    </div>
+
+    <!-- Calculator -->
+    <div class="calc">
+      <div class="calc-head"><span class="calc-badge">Un</span><h3>Kalkulator Barisan Aritmetika</h3></div>
+      <p class="calc-sub">Masukkan suku pertama, beda, dan urutan suku yang ingin dicari.</p>
+      <div class="calc-grid">
+        <div class="field"><label for="bar-a">Suku pertama (a)</label><input type="number" id="bar-a" value="2"></div>
+        <div class="field"><label for="bar-b">Beda (b)</label><input type="number" id="bar-b" value="3"></div>
+        <div class="field"><label for="bar-n">Suku ke- (n)</label><input type="number" id="bar-n" value="10" min="1" max="12"></div>
+        <div class="field" style="display:flex;align-items:flex-end"><button class="btn btn-teal" style="width:100%;justify-content:center" id="bar-calc-btn">Hitung Un</button></div>
+      </div>
+      <div class="calc-result" id="bar-result">
+        <div class="headline" id="bar-headline"></div>
+        <ol id="bar-steps"></ol>
+        <div class="calc-viz" id="bar-viz" aria-hidden="true"></div>
+      </div>
+    </div>
+
+    <!-- Examples: tabs -->
+    <div class="tabs">
+      <div class="tab-list" role="tablist">
+        <button class="tab-btn active" data-tab="barisan-angka">Contoh Bentuk Angka</button>
+        <button class="tab-btn" data-tab="barisan-konteks">Contoh Kontekstual</button>
+      </div>
+
+      <div class="tab-panel active" id="barisan-angka">
+        <div class="example-list">
+
+          <div class="example">
+            <button class="example-header"><span class="example-num">1</span><span class="example-title">Menentukan Suku ke-n (Beda Positif)<small>Tentukan suku ke-10 dari barisan: 2, 5, 8, 11, ...</small></span><svg class="example-chevron" viewBox="0 0 20 20" fill="none"><path d="M5 7l5 6 5-6" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg></button>
+            <div class="example-body"><div class="example-body-inner">
+              <div class="steps">
+                <div>a = 2, b = 5 − 2 = 3</div>
+                <div>U10 = 2 + (10 − 1)(3)</div>
+                <div>U10 = 2 + 27 = 29</div>
+              </div>
+              <div class="conclusion">Suku ke-10 dari barisan tersebut adalah 29.</div>
+            </div></div>
+          </div>
+
+          <div class="example">
+            <button class="example-header"><span class="example-num">2</span><span class="example-title">Menentukan Suku ke-n (Beda Negatif)<small>Tentukan suku ke-15 dari barisan: 50, 45, 40, 35, ...</small></span><svg class="example-chevron" viewBox="0 0 20 20" fill="none"><path d="M5 7l5 6 5-6" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg></button>
+            <div class="example-body"><div class="example-body-inner">
+              <div class="steps">
+                <div>a = 50, b = 45 − 50 = −5</div>
+                <div>U15 = 50 + (15 − 1)(−5)</div>
+                <div>U15 = 50 − 70 = −20</div>
+              </div>
+              <div class="conclusion">Suku ke-15 dari barisan tersebut adalah −20.</div>
+            </div></div>
+          </div>
+
+          <div class="example">
+            <button class="example-header"><span class="example-num">3</span><span class="example-title">Rumus Suku ke-n dari Dua Suku Diketahui<small>U3 = 11 dan U7 = 23. Tentukan rumus suku ke-n.</small></span><svg class="example-chevron" viewBox="0 0 20 20" fill="none"><path d="M5 7l5 6 5-6" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg></button>
+            <div class="example-body"><div class="example-body-inner">
+              <div class="steps">
+                <div>U7 − U3 = 4b → 23 − 11 = 4b → b = 3</div>
+                <div>U3 = a + 2b → 11 = a + 6 → a = 5</div>
+                <div>Un = 5 + (n − 1)(3) = 3n + 2</div>
+              </div>
+              <div class="conclusion">Rumus suku ke-n barisan tersebut adalah Un = 3n + 2.</div>
+            </div></div>
+          </div>
+
+          <div class="example">
+            <button class="example-header"><span class="example-num">4</span><span class="example-title">Suku Tertentu dari Dua Suku Diketahui<small>U4 = 18 dan U9 = 38. Tentukan U20.</small></span><svg class="example-chevron" viewBox="0 0 20 20" fill="none"><path d="M5 7l5 6 5-6" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg></button>
+            <div class="example-body"><div class="example-body-inner">
+              <div class="steps">
+                <div>U9 − U4 = 5b → 38 − 18 = 5b → b = 4</div>
+                <div>U4 = a + 3b → 18 = a + 12 → a = 6</div>
+                <div>U20 = 6 + 19(4) = 6 + 76 = 82</div>
+              </div>
+              <div class="conclusion">Suku ke-20 dari barisan tersebut adalah 82.</div>
+            </div></div>
+          </div>
+
+          <div class="example">
+            <button class="example-header"><span class="example-num">5</span><span class="example-title">Menentukan Banyak Suku (n)<small>Barisan: 4, 9, 14, ..., 124. Ada berapa suku?</small></span><svg class="example-chevron" viewBox="0 0 20 20" fill="none"><path d="M5 7l5 6 5-6" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg></button>
+            <div class="example-body"><div class="example-body-inner">
+              <div class="steps">
+                <div>a = 4, b = 5, Un = 124</div>
+                <div>124 = 4 + (n − 1)(5)</div>
+                <div>120 = (n − 1)(5) → n − 1 = 24 → n = 25</div>
+              </div>
+              <div class="conclusion">Banyaknya suku pada barisan tersebut adalah 25 suku.</div>
+            </div></div>
+          </div>
+
+        </div>
+      </div>
+
+      <div class="tab-panel" id="barisan-konteks">
+        <div class="example-list">
+
+          <div class="example">
+            <button class="example-header"><span class="example-num">1</span><span class="example-title">Target Menabung<small>Andi menabung Rp5.000 hari pertama, naik Rp1.000 tiap hari. Berapa tabungannya hari ke-15?</small></span><svg class="example-chevron" viewBox="0 0 20 20" fill="none"><path d="M5 7l5 6 5-6" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg></button>
+            <div class="example-body"><div class="example-body-inner">
+              <div class="steps">
+                <div>a = 5.000, b = 1.000, dicari U15</div>
+                <div>U15 = 5.000 + (14)(1.000)</div>
+                <div>U15 = 5.000 + 14.000 = 19.000</div>
+              </div>
+              <div class="conclusion">Pada hari ke-15, Andi menabung sebesar Rp19.000.</div>
+            </div></div>
+          </div>
+
+          <div class="example">
+            <button class="example-header"><span class="example-num">2</span><span class="example-title">Susunan Kursi Gedung<small>Baris pertama 20 kursi, tiap baris berikutnya +4 kursi. Berapa kursi di baris ke-12?</small></span><svg class="example-chevron" viewBox="0 0 20 20" fill="none"><path d="M5 7l5 6 5-6" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg></button>
+            <div class="example-body"><div class="example-body-inner">
+              <div class="steps">
+                <div>a = 20, b = 4, dicari U12</div>
+                <div>U12 = 20 + (11)(4)</div>
+                <div>U12 = 20 + 44 = 64</div>
+              </div>
+              <div class="conclusion">Terdapat 64 kursi pada baris ke-12.</div>
+            </div></div>
+          </div>
+
+          <div class="example">
+            <button class="example-header"><span class="example-num">3</span><span class="example-title">Kenaikan Gaji Karyawan Magang<small>Gaji pertama Rp1.200.000, naik Rp150.000 tiap bulan. Berapa gaji bulan ke-8?</small></span><svg class="example-chevron" viewBox="0 0 20 20" fill="none"><path d="M5 7l5 6 5-6" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg></button>
+            <div class="example-body"><div class="example-body-inner">
+              <div class="steps">
+                <div>a = 1.200.000, b = 150.000, dicari U8</div>
+                <div>U8 = 1.200.000 + (7)(150.000)</div>
+                <div>U8 = 1.200.000 + 1.050.000 = 2.250.000</div>
+              </div>
+              <div class="conclusion">Gaji karyawan tersebut pada bulan ke-8 adalah Rp2.250.000.</div>
+            </div></div>
+          </div>
+
+          <div class="example">
+            <button class="example-header"><span class="example-num">4</span><span class="example-title">Pertumbuhan Tinggi Bambu<small>Tinggi awal 40 cm, bertambah 25 cm tiap minggu. Berapa tinggi di minggu ke-10?</small></span><svg class="example-chevron" viewBox="0 0 20 20" fill="none"><path d="M5 7l5 6 5-6" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg></button>
+            <div class="example-body"><div class="example-body-inner">
+              <div class="steps">
+                <div>a = 40, b = 25, dicari U10</div>
+                <div>U10 = 40 + (9)(25)</div>
+                <div>U10 = 40 + 225 = 265</div>
+              </div>
+              <div class="conclusion">Tinggi bambu pada minggu ke-10 adalah 265 cm.</div>
+            </div></div>
+          </div>
+
+          <div class="example">
+            <button class="example-header"><span class="example-num">5</span><span class="example-title">Penyusutan Nilai Motor<small>Harga awal Rp18.000.000, turun Rp1.500.000 tiap tahun. Berapa nilainya tahun ke-6?</small></span><svg class="example-chevron" viewBox="0 0 20 20" fill="none"><path d="M5 7l5 6 5-6" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg></button>
+            <div class="example-body"><div class="example-body-inner">
+              <div class="steps">
+                <div>a = 18.000.000, b = −1.500.000, dicari U6</div>
+                <div>U6 = 18.000.000 + (5)(−1.500.000)</div>
+                <div>U6 = 18.000.000 − 7.500.000 = 10.500.000</div>
+              </div>
+              <div class="conclusion">Perkiraan nilai jual motor pada tahun ke-6 adalah Rp10.500.000.</div>
+            </div></div>
+          </div>
+
+        </div>
+      </div>
+    </div>
+
+    <!-- Latihan mandiri -->
+    <div style="margin-top:44px">
+      <div class="section-head" style="margin-bottom:20px">
+        <span class="section-kicker">Latihan Mandiri</span>
+        <h2 style="font-size:1.4rem">Uji Pemahamanmu — Barisan Aritmetika</h2>
+        <p>Isi jawabanmu, lalu klik "Cek Jawaban". Kalau masih bingung, buka penjelasannya.</p>
+      </div>
+      <div class="quiz-grid">
+
+        <div class="quiz-card">
+          <div class="quiz-q"><span class="qnum">1.</span><span>Tentukan suku ke-12 dari barisan aritmetika: 7, 12, 17, 22, ...</span></div>
+          <div class="quiz-row">
+            <input type="text" inputmode="decimal" placeholder="Jawaban" data-answer="62">
+            <button class="btn btn-ghost btn-sm quiz-check">Cek Jawaban</button>
+            <span class="quiz-feedback"></span>
+          </div>
+          <button class="quiz-toggle-explain">Lihat penjelasan</button>
+          <div class="quiz-explain">a = 7, b = 5 → U12 = 7 + (11)(5) = 7 + 55 = 62</div>
+        </div>
+
+        <div class="quiz-card">
+          <div class="quiz-q"><span class="qnum">2.</span><span>Barisan aritmetika dengan suku pertama 10 dan beda −3. Tentukan suku ke-9.</span></div>
+          <div class="quiz-row">
+            <input type="text" inputmode="decimal" placeholder="Jawaban" data-answer="-14">
+            <button class="btn btn-ghost btn-sm quiz-check">Cek Jawaban</button>
+            <span class="quiz-feedback"></span>
+          </div>
+          <button class="quiz-toggle-explain">Lihat penjelasan</button>
+          <div class="quiz-explain">a = 10, b = −3 → U9 = 10 + (8)(−3) = 10 − 24 = −14</div>
+        </div>
+
+        <div class="quiz-card">
+          <div class="quiz-q"><span class="qnum">3.</span><span>Perpustakaan menambah koleksi buku tiap bulan. Bulan pertama 150 buku, bertambah 30 buku tiap bulan. Berapa jumlah buku pada bulan ke-11?</span></div>
+          <div class="quiz-row">
+            <input type="text" inputmode="decimal" placeholder="Jawaban" data-answer="450">
+            <button class="btn btn-ghost btn-sm quiz-check">Cek Jawaban</button>
+            <span class="quiz-feedback"></span>
+          </div>
+          <button class="quiz-toggle-explain">Lihat penjelasan</button>
+          <div class="quiz-explain">a = 150, b = 30 → U11 = 150 + (10)(30) = 150 + 300 = 450 buku</div>
+        </div>
+
+        <div class="quiz-card">
+          <div class="quiz-q"><span class="qnum">4.</span><span>Sewa ruko tahun pertama Rp24.000.000, naik Rp2.000.000 tiap tahun. Berapa harga sewa tahun ke-7? (isi dalam rupiah tanpa titik, contoh: 30000000)</span></div>
+          <div class="quiz-row">
+            <input type="text" inputmode="decimal" placeholder="Jawaban" data-answer="36000000">
+            <button class="btn btn-ghost btn-sm quiz-check">Cek Jawaban</button>
+            <span class="quiz-feedback"></span>
+          </div>
+          <button class="quiz-toggle-explain">Lihat penjelasan</button>
+          <div class="quiz-explain">a = 24.000.000, b = 2.000.000 → U7 = 24.000.000 + (6)(2.000.000) = Rp36.000.000</div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="container"><div class="stair-divider"><i></i><i></i><i></i><i></i><i></i></div></div>
+
+<!-- ===================== DERET ===================== -->
+<section class="section section-alt" id="deret">
+  <div class="container">
+    <div class="section-head">
+      <span class="section-kicker">Bagian III</span>
+      <h2>Deret Aritmetika</h2>
+      <p>Jika barisan mencari nilai satu suku, deret mencari <strong>jumlah total</strong> dari n suku pertama. Jumlah ini disimbolkan Sn.</p>
+    </div>
+
+    <div class="formula-box">
+      <div class="label">Rumus Deret Aritmetika</div>
+      <div class="formula alt">Sn = n/2 (2a + (n − 1)b)&nbsp; atau &nbsp;Sn = n/2 (a + Un)</div>
+      <div class="note">Sn = jumlah n suku pertama</div>
+    </div>
+
+    <!-- Calculator -->
+    <div class="calc">
+      <div class="calc-head"><span class="calc-badge">Sn</span><h3>Kalkulator Deret Aritmetika</h3></div>
+      <p class="calc-sub">Masukkan suku pertama, beda, dan banyak suku yang ingin dijumlahkan.</p>
+      <div class="calc-grid">
+        <div class="field"><label for="der-a">Suku pertama (a)</label><input type="number" id="der-a" value="3"></div>
+        <div class="field"><label for="der-b">Beda (b)</label><input type="number" id="der-b" value="4"></div>
+        <div class="field"><label for="der-n">Banyak suku (n)</label><input type="number" id="der-n" value="10" min="1" max="12"></div>
+        <div class="field" style="display:flex;align-items:flex-end"><button class="btn btn-teal" style="width:100%;justify-content:center" id="der-calc-btn">Hitung Sn</button></div>
+      </div>
+      <div class="calc-result" id="der-result">
+        <div class="headline" id="der-headline"></div>
+        <ol id="der-steps"></ol>
+        <div class="calc-viz" id="der-viz" aria-hidden="true"></div>
+      </div>
+    </div>
+
+    <!-- Examples: tabs -->
+    <div class="tabs">
+      <div class="tab-list" role="tablist">
+        <button class="tab-btn active" data-tab="deret-angka">Contoh Bentuk Angka</button>
+        <button class="tab-btn" data-tab="deret-konteks">Contoh Kontekstual</button>
+      </div>
+
+      <div class="tab-panel active" id="deret-angka">
+        <div class="example-list">
+
+          <div class="example">
+            <button class="example-header"><span class="example-num">1</span><span class="example-title">Jumlah n Suku Pertama<small>Hitung jumlah 10 suku pertama: 3 + 7 + 11 + 15 + ...</small></span><svg class="example-chevron" viewBox="0 0 20 20" fill="none"><path d="M5 7l5 6 5-6" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg></button>
+            <div class="example-body"><div class="example-body-inner">
+              <div class="steps">
+                <div>a = 3, b = 4, n = 10</div>
+                <div>S10 = 10/2 (2(3) + (9)(4))</div>
+                <div>S10 = 5(6 + 36) = 5 × 42 = 210</div>
+              </div>
+              <div class="conclusion">Jumlah 10 suku pertama deret tersebut adalah 210.</div>
+            </div></div>
+          </div>
+
+          <div class="example">
+            <button class="example-header"><span class="example-num">2</span><span class="example-title">Deret dengan Beda Negatif<small>Hitung jumlah 20 suku pertama: 100 + 95 + 90 + ...</small></span><svg class="example-chevron" viewBox="0 0 20 20" fill="none"><path d="M5 7l5 6 5-6" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg></button>
+            <div class="example-body"><div class="example-body-inner">
+              <div class="steps">
+                <div>a = 100, b = −5, n = 20</div>
+                <div>S20 = 20/2 (2(100) + (19)(−5))</div>
+                <div>S20 = 10(200 − 95) = 10 × 105 = 1.050</div>
+              </div>
+              <div class="conclusion">Jumlah 20 suku pertama deret tersebut adalah 1.050.</div>
+            </div></div>
+          </div>
+
+          <div class="example">
+            <button class="example-header"><span class="example-num">3</span><span class="example-title">Menggunakan Sn = n/2(a + Un)<small>a = 5, U13 = 65, n = 13. Tentukan jumlah deret.</small></span><svg class="example-chevron" viewBox="0 0 20 20" fill="none"><path d="M5 7l5 6 5-6" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg></button>
+            <div class="example-body"><div class="example-body-inner">
+              <div class="steps">
+                <div>S13 = 13/2 (5 + 65)</div>
+                <div>S13 = 13/2 × 70 = 13 × 35 = 455</div>
+              </div>
+              <div class="conclusion">Jumlah deret tersebut (S13) adalah 455.</div>
+            </div></div>
+          </div>
+
+          <div class="example">
+            <button class="example-header"><span class="example-num">4</span><span class="example-title">Mencari Beda dari Jumlah Diketahui<small>S8 = 144, a = 4. Tentukan beda, lalu U8.</small></span><svg class="example-chevron" viewBox="0 0 20 20" fill="none"><path d="M5 7l5 6 5-6" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg></button>
+            <div class="example-body"><div class="example-body-inner">
+              <div class="steps">
+                <div>144 = 8/2 (2(4) + 7b) = 4(8 + 7b)</div>
+                <div>36 = 8 + 7b → 7b = 28 → b = 4</div>
+                <div>U8 = 4 + 7(4) = 32</div>
+              </div>
+              <div class="conclusion">Beda deret tersebut adalah 4, dan U8 = 32.</div>
+            </div></div>
+          </div>
+
+          <div class="example">
+            <button class="example-header"><span class="example-num">5</span><span class="example-title">Jumlah Bilangan Kelipatan Tertentu<small>Jumlah semua kelipatan 3 antara 1 dan 100.</small></span><svg class="example-chevron" viewBox="0 0 20 20" fill="none"><path d="M5 7l5 6 5-6" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg></button>
+            <div class="example-body"><div class="example-body-inner">
+              <div class="steps">
+                <div>3, 6, 9, ..., 99 → a = 3, b = 3</div>
+                <div>99 = 3 + (n − 1)(3) → n = 33</div>
+                <div>S33 = 33/2 (3 + 99) = 33 × 51 = 1.683</div>
+              </div>
+              <div class="conclusion">Jumlah semua kelipatan 3 antara 1 dan 100 adalah 1.683.</div>
+            </div></div>
+          </div>
+
+        </div>
+      </div>
+
+      <div class="tab-panel" id="deret-konteks">
+        <div class="example-list">
+
+          <div class="example">
+            <button class="example-header"><span class="example-num">1</span><span class="example-title">Kapasitas Total Gedung<small>15 baris kursi, baris pertama 20 kursi, tiap baris +4. Total kapasitas?</small></span><svg class="example-chevron" viewBox="0 0 20 20" fill="none"><path d="M5 7l5 6 5-6" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg></button>
+            <div class="example-body"><div class="example-body-inner">
+              <div class="steps">
+                <div>a = 20, b = 4, n = 15</div>
+                <div>S15 = 15/2 (40 + 56)</div>
+                <div>S15 = 15/2 × 96 = 15 × 48 = 720</div>
+              </div>
+              <div class="conclusion">Kapasitas total gedung pertunjukan adalah 720 kursi.</div>
+            </div></div>
+          </div>
+
+          <div class="example">
+            <button class="example-header"><span class="example-num">2</span><span class="example-title">Total Tabungan 20 Hari<small>Tabungan Andi: hari pertama Rp5.000, naik Rp1.000/hari. Total 20 hari?</small></span><svg class="example-chevron" viewBox="0 0 20 20" fill="none"><path d="M5 7l5 6 5-6" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg></button>
+            <div class="example-body"><div class="example-body-inner">
+              <div class="steps">
+                <div>a = 5.000, b = 1.000, n = 20</div>
+                <div>S20 = 10(10.000 + 19.000)</div>
+                <div>S20 = 10 × 29.000 = 290.000</div>
+              </div>
+              <div class="conclusion">Total tabungan Andi selama 20 hari pertama adalah Rp290.000.</div>
+            </div></div>
+          </div>
+
+          <div class="example">
+            <button class="example-header"><span class="example-num">3</span><span class="example-title">Total Cicilan Menurun<small>Cicilan pertama Rp2.000.000, turun Rp100.000/bulan, 12 bulan. Total?</small></span><svg class="example-chevron" viewBox="0 0 20 20" fill="none"><path d="M5 7l5 6 5-6" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg></button>
+            <div class="example-body"><div class="example-body-inner">
+              <div class="steps">
+                <div>a = 2.000.000, b = −100.000, n = 12</div>
+                <div>U12 = 2.000.000 − 1.100.000 = 900.000</div>
+                <div>S12 = 6(2.000.000 + 900.000) = 17.400.000</div>
+              </div>
+              <div class="conclusion">Total cicilan yang dibayarkan selama 12 bulan adalah Rp17.400.000.</div>
+            </div></div>
+          </div>
+
+          <div class="example">
+            <button class="example-header"><span class="example-num">4</span><span class="example-title">Total Produksi Pabrik Setahun<small>Bulan pertama 500 unit, naik 50 unit/bulan, 12 bulan. Total?</small></span><svg class="example-chevron" viewBox="0 0 20 20" fill="none"><path d="M5 7l5 6 5-6" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg></button>
+            <div class="example-body"><div class="example-body-inner">
+              <div class="steps">
+                <div>a = 500, b = 50, n = 12</div>
+                <div>U12 = 500 + 550 = 1.050</div>
+                <div>S12 = 6(500 + 1.050) = 6 × 1.550 = 9.300</div>
+              </div>
+              <div class="conclusion">Total produksi pabrik selama 12 bulan pertama adalah 9.300 unit.</div>
+            </div></div>
+          </div>
+
+          <div class="example">
+            <button class="example-header"><span class="example-num">5</span><span class="example-title">Total Jarak Lari Latihan<small>Hari pertama 2 km, naik 0,5 km/hari, 10 hari. Total jarak?</small></span><svg class="example-chevron" viewBox="0 0 20 20" fill="none"><path d="M5 7l5 6 5-6" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg></button>
+            <div class="example-body"><div class="example-body-inner">
+              <div class="steps">
+                <div>a = 2, b = 0,5, n = 10</div>
+                <div>U10 = 2 + 4,5 = 6,5</div>
+                <div>S10 = 5(2 + 6,5) = 5 × 8,5 = 42,5</div>
+              </div>
+              <div class="conclusion">Total jarak yang ditempuh selama 10 hari latihan adalah 42,5 km.</div>
+            </div></div>
+          </div>
+
+        </div>
+      </div>
+    </div>
+
+    <!-- Latihan mandiri deret -->
+    <div style="margin-top:44px">
+      <div class="section-head" style="margin-bottom:20px">
+        <span class="section-kicker">Latihan Mandiri</span>
+        <h2 style="font-size:1.4rem">Uji Pemahamanmu — Deret Aritmetika</h2>
+      </div>
+      <div class="quiz-grid">
+
+        <div class="quiz-card">
+          <div class="quiz-q"><span class="qnum">1.</span><span>Hitung jumlah 15 suku pertama dari deret: 6 + 10 + 14 + 18 + ...</span></div>
+          <div class="quiz-row">
+            <input type="text" inputmode="decimal" placeholder="Jawaban" data-answer="510">
+            <button class="btn btn-ghost btn-sm quiz-check">Cek Jawaban</button>
+            <span class="quiz-feedback"></span>
+          </div>
+          <button class="quiz-toggle-explain">Lihat penjelasan</button>
+          <div class="quiz-explain">a=6, b=4, n=15 → S15 = 15/2(12 + 56) = 15/2 × 68 = 510</div>
+        </div>
+
+        <div class="quiz-card">
+          <div class="quiz-q"><span class="qnum">2.</span><span>Deret aritmetika dengan a = 8, b = 5, n = 10. Tentukan S10.</span></div>
+          <div class="quiz-row">
+            <input type="text" inputmode="decimal" placeholder="Jawaban" data-answer="305">
+            <button class="btn btn-ghost btn-sm quiz-check">Cek Jawaban</button>
+            <span class="quiz-feedback"></span>
+          </div>
+          <button class="quiz-toggle-explain">Lihat penjelasan</button>
+          <div class="quiz-explain">S10 = 10/2(2(8) + 9(5)) = 5(16 + 45) = 5 × 61 = 305</div>
+        </div>
+
+        <div class="quiz-card">
+          <div class="quiz-q"><span class="qnum">3.</span><span>Koperasi menjual buku: hari pertama 12, bertambah 3 buku/hari. Total terjual selama 14 hari?</span></div>
+          <div class="quiz-row">
+            <input type="text" inputmode="decimal" placeholder="Jawaban" data-answer="441">
+            <button class="btn btn-ghost btn-sm quiz-check">Cek Jawaban</button>
+            <span class="quiz-feedback"></span>
+          </div>
+          <button class="quiz-toggle-explain">Lihat penjelasan</button>
+          <div class="quiz-explain">U14 = 12 + 13(3) = 51; S14 = 14/2(12 + 51) = 7 × 63 = 441 buku</div>
+        </div>
+
+        <div class="quiz-card">
+          <div class="quiz-q"><span class="qnum">4.</span><span>Toko kue: hari pertama 40 donat, bertambah 5 donat/hari, selama 20 hari. Total produksi?</span></div>
+          <div class="quiz-row">
+            <input type="text" inputmode="decimal" placeholder="Jawaban" data-answer="1750">
+            <button class="btn btn-ghost btn-sm quiz-check">Cek Jawaban</button>
+            <span class="quiz-feedback"></span>
+          </div>
+          <button class="quiz-toggle-explain">Lihat penjelasan</button>
+          <div class="quiz-explain">U20 = 40 + 19(5) = 135; S20 = 20/2(40 + 135) = 10 × 175 = 1.750 donat</div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===================== RANGKUMAN ===================== -->
+<section class="section" id="rangkuman">
+  <div class="container">
+    <div class="section-head">
+      <span class="section-kicker">Bagian IV</span>
+      <h2>Rangkuman &amp; Peta Rumus</h2>
+    </div>
+    <div class="summary-grid">
+      <div class="formula-box" style="margin:0">
+        <div class="label">Barisan Aritmetika</div>
+        <div class="formula">Un = a + (n − 1)b</div>
+        <div class="note">mencari nilai satu suku tertentu</div>
+      </div>
+      <div class="formula-box" style="margin:0">
+        <div class="label">Deret Aritmetika</div>
+        <div class="formula alt">Sn = n/2 (2a + (n−1)b) = n/2 (a + Un)</div>
+        <div class="note">mencari jumlah total n suku pertama</div>
+      </div>
+    </div>
+    <h3 style="font-size:1.1rem;margin-bottom:14px">Tips Mengingat</h3>
+    <ul class="tips-list">
+      <li><span class="dot"></span><span><strong>b positif</strong> → barisan naik (contoh: tabungan, gaji, produksi).</span></li>
+      <li><span class="dot"></span><span><strong>b negatif</strong> → barisan turun (contoh: penyusutan nilai barang, cicilan menurun).</span></li>
+      <li><span class="dot"></span><span>Kata kunci <em>"pada urutan/hari/bulan/baris ke-..."</em> biasanya mengarah ke rumus <strong>Un</strong>.</span></li>
+      <li><span class="dot"></span><span>Kata kunci <em>"total/jumlah keseluruhan selama..."</em> biasanya mengarah ke rumus <strong>Sn</strong>.</span></li>
+    </ul>
+  </div>
+</section>
+
+<div class="container"><div class="stair-divider"><i></i><i></i><i></i><i></i><i></i></div></div>
+
+<!-- ===================== LKPD ===================== -->
+<section class="section section-alt" id="lkpd">
+  <div class="container">
+    <div class="section-head">
+      <span class="section-kicker">Bagian V</span>
+      <h2>LKPD Interaktif — Proyek Konser Amal Pensi Sekolah</h2>
+      <p>Isi lembar kerja ini bersama kelompokmu. Jawabanmu otomatis tersimpan di browser ini, sehingga bisa dilanjutkan nanti.</p>
+    </div>
+
+    <div class="lkpd-shell">
+      <div class="lkpd-top">
+        <div>
+          <strong>Materi:</strong> Barisan dan Deret Aritmetika<br>
+          <strong>Mapel:</strong> Matematika SMA Kelas XI · <strong>Waktu:</strong> 45 Menit
+        </div>
+        <div class="lkpd-meta">Jawaban tersimpan otomatis di perangkat ini</div>
+      </div>
+
+      <div class="group-grid">
+        <div class="field"><label for="lk-group">Nama Kelompok</label><input type="text" id="lk-group" placeholder="Contoh: Kelompok 3"></div>
+        <div class="field"><label for="lk-members">Anggota (pisahkan dengan koma)</label><input type="text" id="lk-members" placeholder="Contoh: Ani, Budi, Citra, Dedi"></div>
+      </div>
+
+      <p><strong>Studi Kasus:</strong> OSIS SMAN 1 merencanakan Konser Amal di aula sekolah. Baris ke-1 diisi 30 kursi, baris ke-2 diisi 34 kursi, baris ke-3 diisi 38 kursi — pola ini berlanjut sampai maksimal 15 baris. Tiket dijual seragam Rp50.000, dengan target dana minimal Rp40.000.000.</p>
+
+      <div class="lkpd-step">
+        <h4>Langkah 1 — Identifikasi Masalah</h4>
+        <div class="lkpd-fields">
+          <div class="field"><label>Suku pertama (a)</label><input type="text" data-lkpd="a" data-answer="30"></div>
+          <div class="field"><label>Beda (b)</label><input type="text" data-lkpd="b" data-answer="4"></div>
+          <div class="field"><label>Banyak baris (n)</label><input type="text" data-lkpd="n" data-answer="15"></div>
+        </div>
+        <div class="lkpd-check-row"><button class="btn btn-ghost btn-sm lkpd-check">Cek Langkah Ini</button><span class="quiz-feedback"></span></div>
+      </div>
+
+      <div class="lkpd-step">
+        <h4>Langkah 2 — Kapasitas Baris Terakhir (Konsep Barisan)</h4>
+        <p style="margin-bottom:8px">Hitung kursi di baris ke-15 (U15) dengan Un = a + (n−1)b.</p>
+        <div class="lkpd-fields two">
+          <div class="field"><label>Cara / perhitungan</label><input type="text" data-lkpd="u15work" placeholder="30 + (14)(4) = ..."></div>
+          <div class="field"><label>Hasil U15</label><input type="text" data-lkpd="u15" data-answer="86"></div>
+        </div>
+        <div class="lkpd-check-row"><button class="btn btn-ghost btn-sm lkpd-check">Cek Langkah Ini</button><span class="quiz-feedback"></span></div>
+      </div>
+
+      <div class="lkpd-step">
+        <h4>Langkah 3 — Kapasitas Total Gedung (Konsep Deret)</h4>
+        <p style="margin-bottom:8px">Hitung total kursi baris 1–15 (S15) dengan Sn = n/2 (a + Un).</p>
+        <div class="lkpd-fields two">
+          <div class="field"><label>Cara / perhitungan</label><input type="text" data-lkpd="s15work" placeholder="15/2 (30 + 86) = ..."></div>
+          <div class="field"><label>Hasil S15</label><input type="text" data-lkpd="s15" data-answer="870"></div>
+        </div>
+        <div class="lkpd-check-row"><button class="btn btn-ghost btn-sm lkpd-check">Cek Langkah Ini</button><span class="quiz-feedback"></span></div>
+      </div>
+
+      <div class="lkpd-step">
+        <h4>Langkah 4 — Analisis &amp; Pengambilan Keputusan (HOTS)</h4>
+        <p style="margin-bottom:8px">Jika semua tiket sold out, apakah target dana Rp40.000.000 tercapai? Hitung estimasi pendapatan.</p>
+        <div class="lkpd-fields two">
+          <div class="field"><label>Estimasi pendapatan (Rp)</label><input type="text" data-lkpd="pendapatan" data-answer="43500000"></div>
+          <div class="field"><label>Tercapai / tidak?</label><input type="text" data-lkpd="tercapai" placeholder="Tercapai / Tidak tercapai"></div>
+        </div>
+        <div class="lkpd-check-row"><button class="btn btn-ghost btn-sm lkpd-check">Cek Langkah Ini</button><span class="quiz-feedback"></span></div>
+      </div>
+
+      <div class="lkpd-step" style="border-color:var(--amber)">
+        <h4>Kesimpulan Akhir Kelompok</h4>
+        <textarea class="lkpd-textarea" id="lk-conclusion" placeholder="Tuliskan kesimpulan kelompok kalian di sini..."></textarea>
+      </div>
+
+      <div class="lkpd-actions">
+        <button class="btn btn-primary" id="lk-save">Simpan Jawaban</button>
+        <button class="btn btn-ghost" id="lk-print">Cetak / Simpan sebagai PDF</button>
+        <button class="btn btn-ghost" id="lk-reset">Kosongkan Semua</button>
+      </div>
+      <div class="save-note" id="lk-save-note">Belum ada perubahan tersimpan.</div>
+    </div>
+
+    <div class="section-head" style="margin-top:48px">
+      <span class="section-kicker">Refleksi</span>
+      <h2 style="font-size:1.4rem">Refleksi Peserta Didik</h2>
+    </div>
+    <div class="lkpd-shell">
+      <div class="field" style="margin-bottom:18px">
+        <label>1. Bagian mana yang paling mudah dipahami?</label>
+        <textarea class="lkpd-textarea" id="lk-ref1" style="min-height:60px"></textarea>
+      </div>
+      <div class="field" style="margin-bottom:18px">
+        <label>2. Bagian mana yang masih terasa sulit?</label>
+        <textarea class="lkpd-textarea" id="lk-ref2" style="min-height:60px"></textarea>
+      </div>
+      <div class="field">
+        <label>3. Contoh lain penerapan barisan/deret aritmetika dalam kehidupanmu?</label>
+        <textarea class="lkpd-textarea" id="lk-ref3" style="min-height:60px"></textarea>
+      </div>
+      <div class="lkpd-actions">
+        <button class="btn btn-primary" id="lk-ref-save">Simpan Refleksi</button>
+      </div>
+      <div class="save-note" id="lk-ref-save-note">Belum ada perubahan tersimpan.</div>
+    </div>
+  </div>
+</section>
+
+<!-- ===================== GURU / RUBRIK ===================== -->
+<section class="section" id="guru">
+  <div class="container">
+    <div class="section-head">
+      <span class="section-kicker">Bagian VI</span>
+      <h2>Panduan Guru</h2>
+      <p>Rubrik penilaian LKPD dan kunci jawaban latihan mandiri. Bagian ini disembunyikan agar tidak terlihat langsung oleh peserta didik.</p>
+    </div>
+
+    <div class="guru-gate" id="guruGate">
+      <p style="margin-bottom:16px">Konten ini khusus untuk guru — berisi kunci jawaban dan rubrik penilaian.</p>
+      <button class="btn btn-primary" id="guru-gate-btn">Tampilkan Konten Guru</button>
+    </div>
+
+    <div class="guru-content" id="guruContent">
+      <h3 style="font-size:1.1rem">A. Rubrik Penilaian LKPD</h3>
+      <table class="rubric-table">
+        <thead><tr><th>Aspek Penilaian</th><th>Skor 3 (Baik)</th><th>Skor 2 (Cukup)</th><th>Skor 1 (Kurang)</th></tr></thead>
+        <tbody>
+          <tr><td>Identifikasi data (a, b, n)</td><td>Tepat dan lengkap</td><td>Sebagian tepat</td><td>Banyak kesalahan</td></tr>
+          <tr><td>Penerapan rumus Un &amp; Sn</td><td>Rumus dan hitungan benar</td><td>Rumus benar, hitungan kurang tepat</td><td>Rumus tidak tepat</td></tr>
+          <tr><td>Analisis HOTS (keputusan dana)</td><td>Analisis logis dan tepat</td><td>Analisis kurang lengkap</td><td>Tidak ada analisis</td></tr>
+          <tr><td>Kerja sama kelompok</td><td>Semua anggota aktif berkontribusi</td><td>Sebagian anggota aktif</td><td>Didominasi 1 orang</td></tr>
+        </tbody>
+      </table>
+
+      <h3 style="font-size:1.1rem;margin-top:26px">Kunci Jawaban Studi Kasus LKPD</h3>
+      <ul class="key-list">
+        <li>a = 30, b = 4, n = 15</li>
+        <li>U15 = 30 + (14)(4) = 86 kursi</li>
+        <li>S15 = 15/2 (30 + 86) = 870 kursi</li>
+        <li>Estimasi pendapatan = 870 × Rp50.000 = Rp43.500.000</li>
+        <li>Kesimpulan: target Rp40.000.000 TERCAPAI (Rp43.500.000 &gt; Rp40.000.000)</li>
+      </ul>
+
+      <h3 style="font-size:1.1rem;margin-top:26px">B. Kunci Jawaban Latihan Mandiri — Barisan</h3>
+      <ul class="key-list">
+        <li>1. U12 = 7 + (11)(5) = 62</li>
+        <li>2. U9 = 10 + (8)(−3) = −14</li>
+        <li>3. U11 = 150 + (10)(30) = 450 buku</li>
+        <li>4. U7 = 24.000.000 + (6)(2.000.000) = Rp36.000.000</li>
+      </ul>
+
+      <h3 style="font-size:1.1rem;margin-top:26px">C. Kunci Jawaban Latihan Mandiri — Deret</h3>
+      <ul class="key-list">
+        <li>1. S15 = 15/2(12 + 56) = 510</li>
+        <li>2. S10 = 5(16 + 45) = 305</li>
+        <li>3. S14 = 7(12 + 51) = 441 buku</li>
+        <li>4. S20 = 10(40 + 135) = 1.750 donat</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<footer class="footer">
+  <div class="container">
+    <p>Materi Ajar &amp; LKPD Interaktif — Barisan dan Deret Aritmetika<br>
+    Disusun oleh <strong>Wahyu Wijayanti, S.Pd., M.Pd.</strong> — SMA Negeri Karangpandan</p>
+  </div>
+</footer>
+
+<script src="js/main.js"></script>
+</body>
+</html>
