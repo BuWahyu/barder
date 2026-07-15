@@ -4,6 +4,11 @@
   /* ---------------- Math helpers ---------------- */
   function Un(a, b, n) { return a + (n - 1) * b; }
   function Sn(a, b, n) { return (n / 2) * (2 * a + (n - 1) * b); }
+  function UnG(a, r, n) { return a * Math.pow(r, n - 1); }
+  function SnG(a, r, n) {
+    if (r === 1) return a * n;
+    return a * (Math.pow(r, n) - 1) / (r - 1);
+  }
   function fmt(x) {
     // Nice number formatting: integers plain, decimals trimmed, Indonesian thousand-ish spacing skipped for simplicity
     if (Number.isInteger(x)) return x.toLocaleString("id-ID");
@@ -42,7 +47,18 @@
 
   /* ---------------- Active nav link on scroll ---------------- */
   var navLinks = document.querySelectorAll("[data-nav]");
-  var sections = ["barisan", "deret", "rangkuman", "lkpd", "guru"]
+  // Maps each observed section id to the nav link href that should light up.
+  // Barisan/Deret Aritmetika both point to #aritmetika; Barisan/Deret Geometri both point to #geometri.
+  var sectionNavMap = {
+    "barisan": "#aritmetika",
+    "deret": "#aritmetika",
+    "barisan-geo": "#geometri",
+    "deret-geo": "#geometri",
+    "rangkuman": "#rangkuman",
+    "lkpd": "#lkpd",
+    "guru": "#guru"
+  };
+  var sections = Object.keys(sectionNavMap)
     .map(function (id) { return document.getElementById(id); })
     .filter(Boolean);
 
@@ -51,8 +67,9 @@
       function (entries) {
         entries.forEach(function (entry) {
           if (entry.isIntersecting) {
+            var targetHref = sectionNavMap[entry.target.id];
             navLinks.forEach(function (link) {
-              link.classList.toggle("active", link.getAttribute("href") === "#" + entry.target.id);
+              link.classList.toggle("active", link.getAttribute("href") === targetHref);
             });
           }
         });
@@ -187,6 +204,86 @@
         var bar = document.createElement("i");
         var pct = Math.max(4, (Math.abs(v) / maxAbs) * 100);
         bar.style.height = pct + "%";
+        if (v < 0) bar.classList.add("neg");
+        bar.title = v;
+        viz.appendChild(bar);
+      });
+    });
+  }
+
+  /* ---------------- Barisan Geometri calculator ---------------- */
+  var bargBtn = document.getElementById("barg-calc-btn");
+  if (bargBtn) {
+    bargBtn.addEventListener("click", function () {
+      var a = parseFloat(document.getElementById("barg-a").value) || 0;
+      var r = parseFloat(document.getElementById("barg-r").value);
+      if (isNaN(r)) r = 0;
+      var n = parseInt(document.getElementById("barg-n").value, 10) || 1;
+      n = Math.max(1, Math.min(n, 30));
+      var result = UnG(a, r, n);
+
+      var headline = document.getElementById("barg-headline");
+      var steps = document.getElementById("barg-steps");
+      var resultBox = document.getElementById("barg-result");
+      var viz = document.getElementById("barg-viz");
+
+      headline.textContent = "U" + n + " = " + fmt(result);
+      steps.innerHTML =
+        "<li>Un = a \u00D7 r^(n \u2212 1)</li>" +
+        "<li>U" + n + " = " + fmt(a) + " \u00D7 " + fmt(r) + "^(" + n + " \u2212 1)</li>" +
+        "<li>U" + n + " = " + fmt(a) + " \u00D7 " + fmt(r) + "^" + (n - 1) + " = " + fmt(result) + "</li>";
+      resultBox.classList.add("show");
+
+      viz.innerHTML = "";
+      var count = Math.min(n, 10);
+      var vals = [];
+      for (var i = 1; i <= count; i++) vals.push(UnG(a, r, i));
+      var maxAbs = Math.max.apply(null, vals.map(function (v) { return Math.abs(v); }).concat([1]));
+      vals.forEach(function (v) {
+        var bar = document.createElement("i");
+        var pct = Math.max(4, (Math.abs(v) / maxAbs) * 100);
+        bar.style.height = (isFinite(pct) ? pct : 100) + "%";
+        if (v < 0) bar.classList.add("neg");
+        bar.title = v;
+        viz.appendChild(bar);
+      });
+    });
+  }
+
+  /* ---------------- Deret Geometri calculator ---------------- */
+  var dergBtn = document.getElementById("derg-calc-btn");
+  if (dergBtn) {
+    dergBtn.addEventListener("click", function () {
+      var a = parseFloat(document.getElementById("derg-a").value) || 0;
+      var r = parseFloat(document.getElementById("derg-r").value);
+      if (isNaN(r)) r = 0;
+      var n = parseInt(document.getElementById("derg-n").value, 10) || 1;
+      n = Math.max(1, Math.min(n, 30));
+      var lastTerm = UnG(a, r, n);
+      var result = SnG(a, r, n);
+
+      var headline = document.getElementById("derg-headline");
+      var steps = document.getElementById("derg-steps");
+      var resultBox = document.getElementById("derg-result");
+      var viz = document.getElementById("derg-viz");
+
+      headline.textContent = "S" + n + " = " + fmt(result);
+      steps.innerHTML =
+        "<li>Sn = a(r^n \u2212 1) / (r \u2212 1)</li>" +
+        "<li>S" + n + " = " + fmt(a) + "(" + fmt(r) + "^" + n + " \u2212 1) / (" + fmt(r) + " \u2212 1)</li>" +
+        "<li>U" + n + " = " + fmt(lastTerm) + " \u2192 S" + n + " = " + fmt(result) + "</li>";
+      resultBox.classList.add("show");
+
+      viz.innerHTML = "";
+      var count = Math.min(n, 10);
+      var running = 0;
+      var vals = [];
+      for (var i = 1; i <= count; i++) { running += UnG(a, r, i); vals.push(running); }
+      var maxAbs = Math.max.apply(null, vals.map(function (v) { return Math.abs(v); }).concat([1]));
+      vals.forEach(function (v) {
+        var bar = document.createElement("i");
+        var pct = Math.max(4, (Math.abs(v) / maxAbs) * 100);
+        bar.style.height = (isFinite(pct) ? pct : 100) + "%";
         if (v < 0) bar.classList.add("neg");
         bar.title = v;
         viz.appendChild(bar);
@@ -337,13 +434,24 @@
   }
 
   /* ---------------- Guru gate ---------------- */
-  var guruBtn = document.getElementById("guru-gate-btn");
+  var GURU_PASSWORD = "847693";
+  var guruForm = document.getElementById("guru-gate-form");
+  var guruPassInput = document.getElementById("guru-gate-pass");
+  var guruError = document.getElementById("guru-gate-error");
   var guruGate = document.getElementById("guruGate");
   var guruContent = document.getElementById("guruContent");
-  if (guruBtn) {
-    guruBtn.addEventListener("click", function () {
-      guruContent.classList.add("show");
-      guruGate.style.display = "none";
+  if (guruForm) {
+    guruForm.addEventListener("submit", function (e) {
+      e.preventDefault();
+      var entered = (guruPassInput.value || "").trim();
+      if (entered === GURU_PASSWORD) {
+        guruContent.classList.add("show");
+        guruGate.style.display = "none";
+      } else {
+        guruError.style.display = "block";
+        guruPassInput.value = "";
+        guruPassInput.focus();
+      }
     });
   }
 })();
