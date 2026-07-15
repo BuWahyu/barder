@@ -15,6 +15,9 @@
   --amber: #F0A93C;
   --amber-deep: #C77F14;
   --amber-pale: #FCF0DA;
+  --violet: #7C5CFC;
+  --violet-deep: #5A3FD6;
+  --violet-pale: #EEEAFF;
   --paper: #F7F7F4;
   --surface: #FFFFFF;
   --line: #E4E5E0;
@@ -48,6 +51,7 @@ body {
   -webkit-font-smoothing: antialiased;
 }
 section { scroll-margin-top: calc(var(--nav-h) + 14px); }
+#aritmetika, #geometri { scroll-margin-top: calc(var(--nav-h) + 14px); }
 h1, h2, h3, h4 { font-family: var(--font-display); color: var(--navy); margin: 0 0 .5em; line-height: 1.15; }
 p { margin: 0 0 1em; color: var(--ink-soft); }
 a { color: inherit; }
@@ -218,6 +222,8 @@ img, svg { display: block; max-width: 100%; }
 .concept-card .formula { font-family: var(--font-mono); font-weight: 700; color: var(--navy); font-size: 1.15rem; margin: 8px 0; }
 .concept-card.teal { border-top: 4px solid var(--teal); }
 .concept-card.amber { border-top: 4px solid var(--amber); }
+.concept-card.violet { border-top: 4px solid var(--violet); }
+.concept-card .formula sup { font-size: .65em; }
 
 /* ---------- Section framing ---------- */
 .section { padding: 78px 0; }
@@ -227,6 +233,7 @@ img, svg { display: block; max-width: 100%; }
   font-family: var(--font-mono); font-size: .76rem; letter-spacing: .08em; text-transform: uppercase;
   color: var(--teal-deep); margin-bottom: 8px; display: block;
 }
+.section-kicker.violet { color: var(--violet-deep); }
 .section h2 { font-size: clamp(1.6rem, 3vw, 2.2rem); }
 
 /* staircase divider between major sections */
@@ -244,6 +251,8 @@ img, svg { display: block; max-width: 100%; }
 .formula-box .label { font-size: .78rem; letter-spacing: .04em; text-transform: uppercase; color: rgba(255,255,255,.6); margin-bottom: 8px; }
 .formula-box .formula { font-family: var(--font-mono); font-size: clamp(1.15rem, 2.6vw, 1.55rem); font-weight: 700; color: var(--teal); }
 .formula-box .formula.alt { color: var(--amber); }
+.formula-box .formula.violet { color: var(--violet); }
+.formula-box .formula sup { font-size: .6em; vertical-align: super; }
 .formula-box .note { font-size: .82rem; color: rgba(255,255,255,.65); margin-top: 10px; }
 
 /* ---------- Calculator widget ---------- */
@@ -257,6 +266,7 @@ img, svg { display: block; max-width: 100%; }
   color: var(--teal-deep); display: flex; align-items: center; justify-content: center;
   font-family: var(--font-mono); font-weight: 700; font-size: .85rem; flex-shrink: 0;
 }
+.calc-badge.violet { background: var(--violet-pale); color: var(--violet-deep); }
 .calc h3 { margin: 0; font-size: 1.15rem; }
 .calc-sub { font-size: .88rem; margin-bottom: 18px; color: var(--ink-faint); }
 .calc-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 14px; margin-bottom: 18px; }
@@ -369,6 +379,10 @@ textarea.lkpd-textarea {
 
 /* ---------- Guru / Rubric ---------- */
 .guru-gate { text-align: center; padding: 40px 20px; background: var(--surface); border: 1px dashed var(--line-strong); border-radius: var(--radius-lg); }
+.guru-gate-form { display: flex; flex-wrap: wrap; gap: 10px; justify-content: center; align-items: center; }
+.guru-gate-input { padding: 10px 14px; border: 1px solid var(--line-strong); border-radius: var(--radius-md, 8px); font-size: 0.95rem; min-width: 220px; text-align: center; letter-spacing: 2px; }
+.guru-gate-input:focus { outline: 2px solid var(--accent, #2563eb); outline-offset: 1px; }
+.guru-gate-error { margin-top: 14px; color: #dc2626; font-size: 0.9rem; font-weight: 600; }
 .guru-content { display: none; }
 .guru-content.show { display: block; }
 .rubric-table { width: 100%; border-collapse: collapse; margin: 20px 0; font-size: .86rem; }
