@@ -41,64 +41,68 @@
   <a href="#guru">Panduan Guru</a>
 </div>
 
-<!-- ===================== HERO ===================== -->
-<header class="hero" id="beranda">
-  <div class="container hero-inner">
-    <div>
-      <span class="eyebrow">Matematika Wajib · Kelas XI SMA</span>
-      <h1>Belajar <em>Barisan &amp; Deret</em> lewat pola yang kamu lihat setiap hari.</h1>
-      <p class="hero-lede">Susunan kursi bioskop yang bertambah tetap tiap baris itu Aritmetika. Bakteri yang membelah dua kali lipat tiap jam itu Geometri. Di halaman ini kamu bisa menghitung langsung, mencoba soal, dan mengisi LKPD — semua interaktif, langsung di layar HP atau laptopmu.</p>
-      <p class="hero-meta">Disusun oleh Wahyu Wijayanti, S.Pd., M.Pd. — SMA Negeri Karangpandan</p>
-      <div class="hero-actions">
-        <a href="#barisan" class="btn btn-primary">Mulai Belajar Aritmetika →</a>
-        <a href="#barisan-geo" class="btn btn-ghost">Langsung ke Geometri</a>
+<!-- ===================== BAGIAN PENDAHULUAN/BERANDA ===================== -->
+<div id="pendahuluan">
+  <header class="hero" id="beranda">
+    <div class="container hero-inner">
+      <div>
+        <span class="eyebrow">Matematika Wajib · Kelas XI SMA</span>
+        <h1>Belajar <em>Barisan &amp; Deret</em> lewat pola yang kamu lihat setiap hari.</h1>
+        <p class="hero-lede">Susunan kursi bioskop yang bertambah tetap tiap baris itu Aritmetika. Bakteri yang membelah dua kali lipat tiap jam itu Geometri. Di halaman ini kamu bisa menghitung langsung, mencoba soal, dan mengisi LKPD — semua interaktif, langsung di layar HP atau laptopmu.</p>
+        <p class="hero-meta">Disusun oleh Wahyu Wijayanti, S.Pd., M.Pd. — SMA Negeri Karangpandan</p>
+        <div class="hero-actions">
+          <a href="#barisan" class="btn btn-primary">Mulai Belajar Aritmetika →</a>
+          <a href="#barisan-geo" class="btn btn-ghost">Langsung ke Geometri</a>
+        </div>
       </div>
-    </div>
 
-    <div class="stair-card">
-      <div class="stair-card-head">
-        <h3>Coba geser bedanya</h3>
-        <span class="stair-formula">Un = 4 + (n−1)·b</span>
-      </div>
-      <div class="stair-chart" id="heroChart" aria-hidden="true"></div>
-      <div class="stair-controls">
-        <label for="heroB">Beda (b)</label>
-        <input type="range" id="heroB" min="1" max="8" value="3" step="1">
-        <span class="stair-b-val" id="heroBVal">3</span>
+      <div class="stair-card">
+        <div class="stair-card-head">
+          <h3>Coba geser bedanya</h3>
+          <span class="stair-formula">Un = 4 + (n−1)·b</span>
+        </div>
+        <div class="stair-chart" id="heroChart" aria-hidden="true"></div>
+        <div class="stair-controls">
+          <label for="heroB">Beda (b)</label>
+          <input type="range" id="heroB" min="1" max="8" value="3" step="1">
+          <span class="stair-b-val" id="heroBVal">3</span>
+        </div>
       </div>
     </div>
-  </div>
-</header>
+  </header>
 
-<div class="container">
-  <div class="section-head" style="max-width:100%">
-    <span class="section-kicker">Peta Konsep</span>
-    <h2 style="font-size:1.4rem">Empat ide besar yang akan kamu kuasai</h2>
-    <p>Bedanya cuma satu: Aritmetika bertambah dengan <strong>penjumlahan tetap</strong>, Geometri bertambah dengan <strong>perkalian tetap</strong>.</p>
-  </div>
-  <div class="concept-grid">
-    <div class="concept-card teal">
-      <h4>Barisan Aritmetika</h4>
-      <p>Mencari nilai pada satu urutan tertentu, dengan selisih tetap — misalnya kursi di baris ke-12.</p>
-      <div class="formula">Un = a + (n−1)b</div>
+  <div class="container">
+    <div class="section-head" style="max-width:100%">
+      <span class="section-kicker">Peta Konsep</span>
+      <h2 style="font-size:1.4rem">Empat ide besar yang akan kamu kuasai</h2>
+      <p>Bedanya cuma satu: Aritmetika bertambah dengan <strong>penjumlahan tetap</strong>, Geometri bertambah dengan <strong>perkalian tetap</strong>.</p>
     </div>
-    <div class="concept-card amber">
-      <h4>Deret Aritmetika</h4>
-      <p>Mencari jumlah total dari beberapa suku sekaligus — misalnya total seluruh kursi.</p>
-      <div class="formula">Sn = n/2 (a + Un)</div>
-    </div>
-    <div class="concept-card violet">
-      <h4>Barisan Geometri</h4>
-      <p>Mencari nilai pada satu urutan tertentu, dengan rasio (perkalian) tetap — misalnya jumlah bakteri jam ke-6.</p>
-      <div class="formula">Un = a · r<sup>n−1</sup></div>
-    </div>
-    <div class="concept-card violet">
-      <h4>Deret Geometri</h4>
-      <p>Mencari jumlah total dari beberapa suku sekaligus — misalnya total hadiah berlipat ganda.</p>
-      <div class="formula">Sn = a(r<sup>n</sup>−1) / (r−1)</div>
+    <div class="concept-grid">
+      <div class="concept-card teal">
+        <h4>Barisan Aritmetika</h4>
+        <p>Mencari nilai pada satu urutan tertentu, dengan selisih tetap — misalnya kursi di baris ke-12.</p>
+        <div class="formula">Un = a + (n−1)b</div>
+      </div>
+      <div class="concept-card amber">
+        <h4>Deret Aritmetika</h4>
+        <p>Mencari jumlah total dari beberapa suku sekaligus — misalnya total seluruh kursi.</p>
+        <div class="formula">Sn = n/2 (a + Un)</div>
+      </div>
+      <div class="concept-card violet">
+        <h4>Barisan Geometri</h4>
+        <p>Mencari nilai pada satu urutan tertentu, dengan rasio (perkalian) tetap — misalnya jumlah bakteri jam ke-6.</p>
+        <div class="formula">Un = a · r<sup>n−1</sup></div>
+      </div>
+      <div class="concept-card violet">
+        <h4>Deret Geometri</h4>
+        <p>Mencari jumlah total dari beberapa suku sekaligus — misalnya total hadiah berlipat ganda.</p>
+        <div class="formula">Sn = a(r<sup>n</sup>−1) / (r−1)</div>
+      </div>
     </div>
   </div>
 </div>
+<!-- ===================== AKHIR PENDAHULUAN ===================== -->
+
 
 <div class="container"><div class="stair-divider" style="margin-top:70px"><i></i><i></i><i></i><i></i><i></i></div></div>
 
@@ -280,7 +284,7 @@
       <div class="section-head" style="margin-bottom:20px">
         <span class="section-kicker">Latihan Mandiri</span>
         <h2 style="font-size:1.4rem">Uji Pemahamanmu — Barisan Aritmetika</h2>
-        <p>Isi jawabanmu, lalu klik "Cek Jawaban". Kalau masih bingung, buka penjelasannya.</p>
+        <p>Isi jawabanmu, lalu klik "Cek Jawaban" untuk tahu benar atau salah. Pembahasan lengkap ada di bagian Panduan Guru.</p>
       </div>
       <div class="quiz-grid">
 
@@ -291,8 +295,6 @@
             <button class="btn btn-ghost btn-sm quiz-check">Cek Jawaban</button>
             <span class="quiz-feedback"></span>
           </div>
-          <button class="quiz-toggle-explain">Lihat penjelasan</button>
-          <div class="quiz-explain">a = 7, b = 5 → U12 = 7 + (11)(5) = 7 + 55 = 62</div>
         </div>
 
         <div class="quiz-card">
@@ -302,8 +304,6 @@
             <button class="btn btn-ghost btn-sm quiz-check">Cek Jawaban</button>
             <span class="quiz-feedback"></span>
           </div>
-          <button class="quiz-toggle-explain">Lihat penjelasan</button>
-          <div class="quiz-explain">a = 10, b = −3 → U9 = 10 + (8)(−3) = 10 − 24 = −14</div>
         </div>
 
         <div class="quiz-card">
@@ -313,8 +313,6 @@
             <button class="btn btn-ghost btn-sm quiz-check">Cek Jawaban</button>
             <span class="quiz-feedback"></span>
           </div>
-          <button class="quiz-toggle-explain">Lihat penjelasan</button>
-          <div class="quiz-explain">a = 150, b = 30 → U11 = 150 + (10)(30) = 150 + 300 = 450 buku</div>
         </div>
 
         <div class="quiz-card">
@@ -324,11 +322,59 @@
             <button class="btn btn-ghost btn-sm quiz-check">Cek Jawaban</button>
             <span class="quiz-feedback"></span>
           </div>
-          <button class="quiz-toggle-explain">Lihat penjelasan</button>
-          <div class="quiz-explain">a = 24.000.000, b = 2.000.000 → U7 = 24.000.000 + (6)(2.000.000) = Rp36.000.000</div>
         </div>
 
       </div>
+    </div>
+
+    <!-- Tugas - Barisan Aritmetika -->
+    <div style="margin-top:44px">
+      <div class="section-head" style="margin-bottom:20px">
+        <span class="section-kicker">Tugas</span>
+        <h2 style="font-size:1.4rem">Tugas — Barisan Aritmetika</h2>
+        <p>10 soal dengan variasi bentuk (identifikasi, analisis kesalahan, membuat contoh, aplikasi, hingga HOTS). Kerjakan di buku tulismu.</p>
+      </div>
+      <ol class="task-list">
+
+        <li>Perhatikan barisan berikut: 2, 5, 8, 11, .... Apakah barisan ini merupakan barisan aritmetika? Jika ya, tentukan bedanya.</li>
+        <li>Benarkah barisan 1, 4, 9, 16, 25, ... merupakan barisan aritmetika? Jelaskan alasanmu.</li>
+        <li>Seorang siswa menghitung suku ke-8 dari barisan 6, 10, 14, 18, ... dengan cara: U8 = 6 + 8 × 4 = 38. Apakah perhitungan ini benar? Jika salah, tunjukkan letak kesalahannya dan berikan jawaban yang benar.</li>
+        <li>Buatlah sebuah barisan aritmetika dengan suku pertama 12 dan beda −5, lalu tuliskan 5 suku pertamanya.</li>
+        <li>Seorang atlet lari menambah jarak tempuhnya 500 meter setiap minggu, dimulai dari 2 km pada minggu pertama. Pada minggu keberapa jarak tempuhnya akan mencapai 7 km?</li>
+        <li>Perhatikan data berikut: untuk n = 1, 2, 3, 4 diperoleh nilai Un = 15, 22, 29, 36. Apakah data ini termasuk barisan aritmetika? Jika ya, tentukan rumus suku ke-n (Un) dari barisan tersebut.</li>
+        <li>Dua orang pekerja memiliki gaji awal masing-masing Rp3.000.000. Pekerja A mendapat kenaikan tetap Rp150.000 per bulan, sedangkan pekerja B mendapat kenaikan tetap Rp200.000 per bulan. Pada bulan keberapa gaji pekerja B pertama kali melebihi gaji pekerja A sebesar Rp1.000.000?</li>
+        <li class="hots">Diketahui barisan aritmetika dengan rumus suku ke-n: Un = 4n + 3. Buktikan bahwa barisan ini merupakan barisan aritmetika, kemudian tentukan nilai suku pertama (a) dan beda (b)-nya. <span class="hots-badge">HOTS</span></li>
+        <li class="hots">Suatu barisan aritmetika memiliki U4 = 2 × U2 dan beda (b) = 5. Tentukan suku pertama (a) barisan tersebut. <span class="hots-badge">HOTS</span></li>
+        <li class="hots">Menurutmu, mengapa memahami konsep barisan aritmetika penting dalam kehidupan sehari-hari? Berikan minimal dua contoh penerapannya selain yang sudah dibahas dalam materi ini. <span class="hots-badge">HOTS</span></li>
+
+      </ol>
+    </div>
+
+    <!-- Pekerjaan Rumah - Barisan Aritmetika -->
+    <div style="margin-top:44px">
+      <div class="section-head" style="margin-bottom:20px">
+        <span class="section-kicker">Pekerjaan Rumah</span>
+        <h2 style="font-size:1.4rem">PR — Barisan Aritmetika</h2>
+        <p>10 soal, diurutkan dari yang paling sederhana sampai soal HOTS (berpikir tingkat tinggi). Kerjakan di buku tulismu, lalu cek jawaban di sini.</p>
+      </div>
+      <ol class="task-list">
+
+        <li>Tentukan suku ke-6 dari barisan aritmetika: 3, 7, 11, 15, ...</li>
+        <li>Barisan aritmetika dengan suku pertama 5 dan beda 4. Tentukan suku ke-10.</li>
+        <li>Suku pertama suatu barisan aritmetika adalah 20 dan bedanya −3. Tentukan suku ke-8.</li>
+        <li>Sebuah barisan aritmetika: 100, 92, 84, ... Tentukan suku ke-15.</li>
+        <li>Suku ke-3 suatu barisan aritmetika adalah 11, dan suku ke-7 adalah 27. Tentukan beda (b) barisan tersebut.</li>
+        <li>Suku ke-5 suatu barisan aritmetika adalah 22 dan bedanya 3. Tentukan suku pertama (a).</li>
+        <li>Sebuah gedung pertunjukan menata kursi berbaris: baris pertama berisi 18 kursi, dan tiap baris berikutnya bertambah 4 kursi. Berapa banyak kursi pada baris ke-10?</li>
+        <li>Diketahui barisan aritmetika: 5, 9, 13, 17, ... Suku ke berapakah (n) yang nilainya 101?</li>
+        <li class="hots">Tiga bilangan membentuk barisan aritmetika. Jumlah ketiga bilangan itu 33 dan hasil kalinya 1155. Tentukan bilangan terbesar dari ketiga bilangan tersebut. <span class="hots-badge">HOTS</span></li>
+        <li class="hots">Dua barisan aritmetika: Barisan P: 5, 8, 11, 14, ... dan Barisan Q: 2, 6, 10, 14, .... Suku ke berapakah (n) nilai kedua barisan tersebut pertama kali sama? <span class="hots-badge">HOTS</span></li>
+
+      </ol>
+    </div>
+
+    <div class="next-section-nav">
+      <button type="button" class="btn btn-primary next-section-btn" data-unlock="deret">Lanjut ke Bagian III: Deret Aritmetika →</button>
     </div>
   </div>
 </section>
@@ -336,7 +382,7 @@
 <div class="container"><div class="stair-divider"><i></i><i></i><i></i><i></i><i></i></div></div>
 
 <!-- ===================== DERET ===================== -->
-<section class="section section-alt" id="deret">
+<section class="section section-alt section-locked" id="deret">
   <div class="container">
     <div class="section-head">
       <span class="section-kicker">Bagian III</span>
@@ -521,8 +567,6 @@
             <button class="btn btn-ghost btn-sm quiz-check">Cek Jawaban</button>
             <span class="quiz-feedback"></span>
           </div>
-          <button class="quiz-toggle-explain">Lihat penjelasan</button>
-          <div class="quiz-explain">a=6, b=4, n=15 → S15 = 15/2(12 + 56) = 15/2 × 68 = 510</div>
         </div>
 
         <div class="quiz-card">
@@ -532,8 +576,6 @@
             <button class="btn btn-ghost btn-sm quiz-check">Cek Jawaban</button>
             <span class="quiz-feedback"></span>
           </div>
-          <button class="quiz-toggle-explain">Lihat penjelasan</button>
-          <div class="quiz-explain">S10 = 10/2(2(8) + 9(5)) = 5(16 + 45) = 5 × 61 = 305</div>
         </div>
 
         <div class="quiz-card">
@@ -543,8 +585,6 @@
             <button class="btn btn-ghost btn-sm quiz-check">Cek Jawaban</button>
             <span class="quiz-feedback"></span>
           </div>
-          <button class="quiz-toggle-explain">Lihat penjelasan</button>
-          <div class="quiz-explain">U14 = 12 + 13(3) = 51; S14 = 14/2(12 + 51) = 7 × 63 = 441 buku</div>
         </div>
 
         <div class="quiz-card">
@@ -554,11 +594,59 @@
             <button class="btn btn-ghost btn-sm quiz-check">Cek Jawaban</button>
             <span class="quiz-feedback"></span>
           </div>
-          <button class="quiz-toggle-explain">Lihat penjelasan</button>
-          <div class="quiz-explain">U20 = 40 + 19(5) = 135; S20 = 20/2(40 + 135) = 10 × 175 = 1.750 donat</div>
         </div>
 
       </div>
+    </div>
+
+    <!-- Tugas - Deret Aritmetika -->
+    <div style="margin-top:44px">
+      <div class="section-head" style="margin-bottom:20px">
+        <span class="section-kicker">Tugas</span>
+        <h2 style="font-size:1.4rem">Tugas — Deret Aritmetika</h2>
+        <p>10 soal dengan variasi bentuk (konsep, analisis kesalahan, membuat contoh, aplikasi, hingga HOTS). Kerjakan di buku tulismu.</p>
+      </div>
+      <ol class="task-list">
+
+        <li>Jelaskan perbedaan mendasar antara barisan aritmetika dan deret aritmetika, lalu berikan satu contoh untuk masing-masing.</li>
+        <li>Benarkah rumus Sn = n/2(a + Un) hanya bisa digunakan jika kita sudah mengetahui nilai suku terakhir (Un)? Jelaskan alasanmu.</li>
+        <li>Seorang siswa menghitung S6 dari deret 3 + 7 + 11 + 15 + ... dengan cara: S6 = 6 × 15 = 90. Apakah cara ini benar? Jika salah, jelaskan kesalahannya dan hitung jawaban yang benar.</li>
+        <li>Buatlah sebuah deret aritmetika dengan 5 suku yang jumlahnya (S5) sama dengan 100.</li>
+        <li>Sebuah perusahaan konstruksi menumpuk pipa: baris paling atas berisi 3 pipa, dan tiap baris di bawahnya bertambah 3 pipa. Jika terdapat 8 baris, berapa total pipa yang dibutuhkan?</li>
+        <li>Diketahui S4 = 44 dan S8 = 176 dari suatu deret aritmetika. Tanpa menghitung nilai b, apakah jumlah suku ke-5 sampai suku ke-8 sama dengan S4? Jelaskan alasanmu.</li>
+        <li>Dua toko roti mencatat penjualan mingguan berbentuk deret aritmetika. Toko A: 20 roti di minggu pertama, bertambah 4 roti/minggu. Toko B: 15 roti di minggu pertama, bertambah 6 roti/minggu. Toko manakah yang total penjualannya lebih banyak setelah 10 minggu? Tunjukkan perhitunganmu.</li>
+        <li class="hots">Buktikan bahwa jumlah n bilangan asli pertama (1 + 2 + 3 + ... + n) dapat dihitung dengan rumus deret aritmetika Sn = n/2 (n + 1). Tunjukkan langkah pembuktiannya. <span class="hots-badge">HOTS</span></li>
+        <li class="hots">Sebuah usaha katering membuat kue bertingkat: tingkat teratas berisi 5 kue, dan tiap tingkat di bawahnya bertambah 3 kue. Jika total kue yang tersedia hanya 200 buah, berapa tingkat maksimum yang dapat dibuat tanpa kekurangan kue? <span class="hots-badge">HOTS</span></li>
+        <li class="hots">Menurutmu, dalam situasi seperti apa penggunaan rumus Sn (deret) lebih tepat dibandingkan rumus Un (barisan)? Berikan satu contoh kasus nyata untuk mendukung jawabanmu. <span class="hots-badge">HOTS</span></li>
+
+      </ol>
+    </div>
+
+    <!-- Pekerjaan Rumah - Deret Aritmetika -->
+    <div style="margin-top:44px">
+      <div class="section-head" style="margin-bottom:20px">
+        <span class="section-kicker">Pekerjaan Rumah</span>
+        <h2 style="font-size:1.4rem">PR — Deret Aritmetika</h2>
+        <p>10 soal, diurutkan dari yang paling sederhana sampai soal HOTS.</p>
+      </div>
+      <ol class="task-list">
+
+        <li>Hitung jumlah 8 suku pertama dari deret: 4 + 9 + 14 + 19 + ...</li>
+        <li>Suatu deret aritmetika memiliki a = 10 dan b = 6. Tentukan S12.</li>
+        <li>Deret aritmetika: 50 + 45 + 40 + ... Tentukan jumlah 10 suku pertama.</li>
+        <li>Suatu barisan aritmetika mempunyai suku pertama 7 dan suku ke-10 adalah 43. Tentukan jumlah 10 suku pertama (S10).</li>
+        <li>Diketahui deret aritmetika dengan b = 4 dan S10 = 250. Tentukan suku pertama (a).</li>
+        <li>Seorang pekerja menabung tiap bulan: bulan pertama Rp50.000, dan tiap bulan berikutnya Rp10.000 lebih banyak dari bulan sebelumnya. Berapa total tabungan setelah 12 bulan? (isi tanpa titik, contoh: 1000000)</li>
+        <li>Jumlah n suku pertama suatu deret aritmetika dengan a = 3 dan b = 2 adalah 168. Tentukan nilai n.</li>
+        <li>Sebuah toko roti memproduksi 20 roti pada hari pertama, dan bertambah 5 roti tiap hari. Jika toko beroperasi selama 30 hari, berapa total roti yang diproduksi?</li>
+        <li class="hots">Jumlah 6 suku pertama suatu deret aritmetika adalah 72, dan jumlah 10 suku pertama adalah 200. Tentukan beda (b) deret tersebut. <span class="hots-badge">HOTS</span></li>
+        <li class="hots">Total pendapatan sebuah usaha selama 5 tahun pertama membentuk deret aritmetika dan berjumlah Rp150.000.000. Jika pendapatan tahun pertama Rp20.000.000, tentukan kenaikan pendapatan tiap tahun (beda, dalam rupiah, tanpa titik). <span class="hots-badge">HOTS</span></li>
+
+      </ol>
+    </div>
+
+    <div class="next-section-nav">
+      <button type="button" class="btn btn-primary next-section-btn" data-unlock="barisan-geo">Lanjut ke Bagian IV: Barisan Geometri →</button>
     </div>
   </div>
 </section>
@@ -568,7 +656,7 @@
 
 <div id="geometri">
 <!-- ===================== BARISAN GEOMETRI ===================== -->
-<section class="section" id="barisan-geo">
+<section class="section section-locked" id="barisan-geo">
   <div class="container">
     <div class="section-head">
       <span class="section-kicker violet">Bagian IV</span>
@@ -755,8 +843,6 @@
             <button class="btn btn-ghost btn-sm quiz-check">Cek Jawaban</button>
             <span class="quiz-feedback"></span>
           </div>
-          <button class="quiz-toggle-explain">Lihat penjelasan</button>
-          <div class="quiz-explain">a = 4, r = 2 → U5 = 4 × 2⁴ = 4 × 16 = 64</div>
         </div>
 
         <div class="quiz-card">
@@ -766,8 +852,6 @@
             <button class="btn btn-ghost btn-sm quiz-check">Cek Jawaban</button>
             <span class="quiz-feedback"></span>
           </div>
-          <button class="quiz-toggle-explain">Lihat penjelasan</button>
-          <div class="quiz-explain">a = 3, r = 2 → U8 = 3 × 2⁷ = 3 × 128 = 384</div>
         </div>
 
         <div class="quiz-card">
@@ -777,8 +861,6 @@
             <button class="btn btn-ghost btn-sm quiz-check">Cek Jawaban</button>
             <span class="quiz-feedback"></span>
           </div>
-          <button class="quiz-toggle-explain">Lihat penjelasan</button>
-          <div class="quiz-explain">a = 2, r = 3 → U5 = 2 × 3⁴ = 2 × 81 = 162</div>
         </div>
 
         <div class="quiz-card">
@@ -788,11 +870,59 @@
             <button class="btn btn-ghost btn-sm quiz-check">Cek Jawaban</button>
             <span class="quiz-feedback"></span>
           </div>
-          <button class="quiz-toggle-explain">Lihat penjelasan</button>
-          <div class="quiz-explain">a = 80, r = 1/2 → U5 = 80 × (1/2)⁴ = 80 ÷ 16 = 5 cm</div>
         </div>
 
       </div>
+    </div>
+
+    <!-- Tugas - Barisan Geometri -->
+    <div style="margin-top:44px">
+      <div class="section-head" style="margin-bottom:20px">
+        <span class="section-kicker violet">Tugas</span>
+        <h2 style="font-size:1.4rem">Tugas — Barisan Geometri</h2>
+        <p>10 soal dengan variasi bentuk (identifikasi, analisis kesalahan, membuat contoh, aplikasi, hingga HOTS). Kerjakan di buku tulismu.</p>
+      </div>
+      <ol class="task-list">
+
+        <li>Perhatikan barisan berikut: 5, 10, 20, 40, .... Apakah barisan ini merupakan barisan geometri? Jika ya, tentukan rasionya.</li>
+        <li>Benarkah barisan 2, 4, 6, 8, ... merupakan barisan geometri? Jelaskan alasanmu.</li>
+        <li>Seorang siswa menghitung suku ke-5 dari barisan geometri 3, 6, 12, ... dengan cara: U5 = 3 × 2 × 5 = 30. Apakah perhitungan ini benar? Jika salah, tunjukkan kesalahannya dan berikan jawaban yang benar.</li>
+        <li>Buatlah sebuah barisan geometri dengan suku pertama 4 dan rasio 1/2, lalu tuliskan 5 suku pertamanya.</li>
+        <li>Sebuah investasi awal Rp2.000.000 diperkirakan tumbuh 10% setiap tahun. Berapa nilai investasi tersebut setelah 4 tahun? (bulatkan ke rupiah terdekat)</li>
+        <li>Perhatikan data berikut: untuk n = 1, 2, 3, 4 diperoleh nilai Un = 7, 21, 63, 189. Apakah data ini termasuk barisan geometri? Jika ya, tentukan rasio dan rumus umum suku ke-n (Un).</li>
+        <li>Dua populasi bakteri diamati setiap jam. Populasi A: mula-mula 10, berlipat 2 kali tiap jam. Populasi B: mula-mula 40, berlipat 1,5 kali tiap jam. Pada jam keberapa populasi A pertama kali melebihi populasi B?</li>
+        <li class="hots">Diketahui barisan geometri dengan rumus suku ke-n: Un = 5 × 3^(n−1). Buktikan bahwa barisan ini merupakan barisan geometri, kemudian tentukan nilai suku pertama (a) dan rasio (r)-nya. <span class="hots-badge">HOTS</span></li>
+        <li class="hots">Suatu barisan geometri dengan semua suku positif memiliki U3 = 4 × U1. Tentukan nilai rasio (r) barisan tersebut. <span class="hots-badge">HOTS</span></li>
+        <li class="hots">Bandingkan pola pertumbuhan barisan aritmetika dan barisan geometri untuk jangka panjang. Menurutmu, mana yang lebih cocok digunakan untuk memodelkan pertumbuhan penduduk suatu kota? Jelaskan alasanmu. <span class="hots-badge">HOTS</span></li>
+
+      </ol>
+    </div>
+
+    <!-- Pekerjaan Rumah - Barisan Geometri -->
+    <div style="margin-top:44px">
+      <div class="section-head" style="margin-bottom:20px">
+        <span class="section-kicker violet">Pekerjaan Rumah</span>
+        <h2 style="font-size:1.4rem">PR — Barisan Geometri</h2>
+        <p>10 soal, diurutkan dari yang paling sederhana sampai soal HOTS.</p>
+      </div>
+      <ol class="task-list">
+
+        <li>Tentukan suku ke-6 dari barisan geometri: 2, 6, 18, 54, ...</li>
+        <li>Barisan geometri dengan suku pertama 5 dan rasio 2. Tentukan suku ke-7.</li>
+        <li>Diketahui barisan geometri: 64, 32, 16, 8, ... Tentukan suku ke-7.</li>
+        <li>Barisan geometri dengan suku pertama 3 dan rasio −2. Tentukan suku ke-6.</li>
+        <li>Suku ke-2 suatu barisan geometri adalah 6, dan suku ke-5 adalah 48. Tentukan rasio (r) barisan tersebut.</li>
+        <li>Suatu barisan geometri memiliki rasio 3 dan suku ke-4 adalah 135. Tentukan suku pertama (a).</li>
+        <li>Sekelompok bakteri membelah menjadi 2 kali lipat setiap 20 menit. Jika mula-mula ada 5 bakteri, berapa banyak bakteri setelah 5 kali pembelahan (U6)?</li>
+        <li>Barisan geometri: 3, 6, 12, 24, ... Suku ke berapakah (n) yang nilainya 1536?</li>
+        <li class="hots">Tiga bilangan membentuk barisan geometri. Hasil kali ketiganya 216 dan jumlahnya 26. Jika rasio lebih dari 1, tentukan bilangan terbesar dari ketiga bilangan tersebut. <span class="hots-badge">HOTS</span></li>
+        <li class="hots">Sebuah bola dijatuhkan; setiap kali memantul, tingginya menjadi 3/4 dari pantulan sebelumnya. Pantulan pertama mencapai tinggi 27 cm. Pada pantulan keberapa tinggi pantulan pertama kali kurang dari 10 cm? <span class="hots-badge">HOTS</span></li>
+
+      </ol>
+    </div>
+
+    <div class="next-section-nav">
+      <button type="button" class="btn btn-primary next-section-btn" data-unlock="deret-geo">Lanjut ke Bagian V: Deret Geometri →</button>
     </div>
   </div>
 </section>
@@ -800,7 +930,7 @@
 <div class="container"><div class="stair-divider"><i></i><i></i><i></i><i></i><i></i></div></div>
 
 <!-- ===================== DERET GEOMETRI ===================== -->
-<section class="section section-alt" id="deret-geo">
+<section class="section section-alt section-locked" id="deret-geo">
   <div class="container">
     <div class="section-head">
       <span class="section-kicker violet">Bagian V</span>
@@ -986,8 +1116,6 @@
             <button class="btn btn-ghost btn-sm quiz-check">Cek Jawaban</button>
             <span class="quiz-feedback"></span>
           </div>
-          <button class="quiz-toggle-explain">Lihat penjelasan</button>
-          <div class="quiz-explain">a=3, r=2, n=5 → S5 = 3(2⁵−1)/(2−1) = 3 × 31 = 93</div>
         </div>
 
         <div class="quiz-card">
@@ -997,8 +1125,6 @@
             <button class="btn btn-ghost btn-sm quiz-check">Cek Jawaban</button>
             <span class="quiz-feedback"></span>
           </div>
-          <button class="quiz-toggle-explain">Lihat penjelasan</button>
-          <div class="quiz-explain">S4 = 4(3⁴−1)/(3−1) = 4(80)/2 = 160</div>
         </div>
 
         <div class="quiz-card">
@@ -1008,8 +1134,6 @@
             <button class="btn btn-ghost btn-sm quiz-check">Cek Jawaban</button>
             <span class="quiz-feedback"></span>
           </div>
-          <button class="quiz-toggle-explain">Lihat penjelasan</button>
-          <div class="quiz-explain">S5 = 50.000(2⁵−1)/(2−1) = 50.000 × 31 = Rp1.550.000</div>
         </div>
 
         <div class="quiz-card">
@@ -1019,11 +1143,59 @@
             <button class="btn btn-ghost btn-sm quiz-check">Cek Jawaban</button>
             <span class="quiz-feedback"></span>
           </div>
-          <button class="quiz-toggle-explain">Lihat penjelasan</button>
-          <div class="quiz-explain">S3 = 10(1 − (2/5)³)/(1 − 2/5) = 10(0,936)/(0,6) = 15,6 m</div>
         </div>
 
       </div>
+    </div>
+
+    <!-- Tugas - Deret Geometri -->
+    <div style="margin-top:44px">
+      <div class="section-head" style="margin-bottom:20px">
+        <span class="section-kicker violet">Tugas</span>
+        <h2 style="font-size:1.4rem">Tugas — Deret Geometri</h2>
+        <p>10 soal dengan variasi bentuk (konsep, analisis kesalahan, membuat contoh, aplikasi, hingga HOTS). Kerjakan di buku tulismu.</p>
+      </div>
+      <ol class="task-list">
+
+        <li>Jelaskan perbedaan mendasar antara barisan geometri dan deret geometri, lalu berikan satu contoh untuk masing-masing.</li>
+        <li>Benarkah rumus Sn = a(r<sup>n</sup> − 1)/(r − 1) tidak dapat digunakan jika r = 1? Jelaskan alasannya dan bagaimana cara menghitung Sn jika r = 1.</li>
+        <li>Seorang siswa menghitung S4 dari deret geometri 2 + 6 + 18 + 54 + ... dengan cara: S4 = 2 × 3 × 4 = 24. Apakah cara ini benar? Jika salah, tunjukkan kesalahannya dan hitung jawaban yang benar.</li>
+        <li>Buatlah sebuah deret geometri dengan 4 suku, lalu hitung sendiri jumlahnya (S4). Tuliskan nilai a, r, dan S4 yang kamu peroleh.</li>
+        <li>Sebuah pesan berantai: 1 orang mengirim pesan ke 3 orang baru, dan pola ini berlanjut hingga 5 tingkat. Berapa total orang yang menerima pesan hingga tingkat ke-5 (termasuk pengirim pertama)?</li>
+        <li>Diketahui S3 = 26 dan S4 = 80 dari suatu deret geometri. Tentukan nilai suku ke-4 (U4) tanpa harus mencari nilai a dan r terlebih dahulu.</li>
+        <li>Dua skema investasi ditawarkan. Skema A: a = Rp1.000.000, r = 1,2, selama 5 tahun. Skema B: a = Rp1.500.000, r = 1,1, selama 5 tahun. Skema manakah yang menghasilkan total dana lebih besar setelah 5 tahun? Tunjukkan perhitunganmu.</li>
+        <li class="hots">Buktikan bahwa jumlah n suku pertama deret geometri dapat dinyatakan sebagai Sn = a(1 − r<sup>n</sup>)/(1 − r) untuk r ≠ 1, dengan menurunkannya dari Sn − r·Sn. <span class="hots-badge">HOTS</span></li>
+        <li class="hots">Sebuah deret geometri memiliki S2 = 12 dan S4 = 120. Tentukan rasio (r) deret tersebut, dengan syarat r &gt; 0. <span class="hots-badge">HOTS</span></li>
+        <li class="hots">Menurutmu, mengapa deret geometri lebih sering digunakan untuk memodelkan pertumbuhan investasi atau penyebaran informasi (viral) dibandingkan deret aritmetika? Jelaskan dengan alasan matematis. <span class="hots-badge">HOTS</span></li>
+
+      </ol>
+    </div>
+
+    <!-- Pekerjaan Rumah - Deret Geometri -->
+    <div style="margin-top:44px">
+      <div class="section-head" style="margin-bottom:20px">
+        <span class="section-kicker violet">Pekerjaan Rumah</span>
+        <h2 style="font-size:1.4rem">PR — Deret Geometri</h2>
+        <p>10 soal, diurutkan dari yang paling sederhana sampai soal HOTS.</p>
+      </div>
+      <ol class="task-list">
+
+        <li>Hitung jumlah 5 suku pertama dari deret geometri: 2 + 6 + 18 + 54 + ...</li>
+        <li>Deret geometri dengan a = 4 dan r = 2. Tentukan S6.</li>
+        <li>Deret geometri: 5 + 10 + 20 + 40 + ... Tentukan jumlah 7 suku pertama.</li>
+        <li>Deret geometri dengan suku pertama 81 dan rasio 1/3. Tentukan jumlah 4 suku pertama.</li>
+        <li>Suatu deret geometri memiliki rasio 2 dan jumlah 4 suku pertama (S4) adalah 45. Tentukan suku pertama (a).</li>
+        <li>Suatu deret geometri memiliki suku pertama 4, dan S3 = 52. Tentukan rasio (r), dengan r &gt; 1.</li>
+        <li>Jumlah penonton bioskop tahun pertama 1.000 orang, dan diperkirakan naik menjadi 1,5 kali lipat tiap tahun. Berapa total penonton selama 4 tahun?</li>
+        <li>Sebuah startup memiliki 3 karyawan pada bulan pertama. Jumlah karyawan direncanakan menjadi 2 kali lipat tiap bulan. Berapa total karyawan yang pernah direkrut hingga bulan ke-5 (S5)?</li>
+        <li class="hots">Diketahui deret geometri dengan jumlah 3 suku pertama (S3) = 26 dan jumlah 6 suku pertama (S6) = 728. Tentukan rasio (r) deret tersebut. (Petunjuk: S6/S3 = 1 + r³) <span class="hots-badge">HOTS</span></li>
+        <li class="hots">Sebuah mesin fotokopi memperbanyak dokumen: sesi pertama 6 lembar, dan tiap sesi berikutnya menjadi 3 kali lipat sesi sebelumnya. Jika total salinan setelah beberapa sesi adalah 2.184 lembar, ada berapa sesi fotokopi yang telah dilakukan? (Petunjuk: gunakan rumus Sn dan cari n) <span class="hots-badge">HOTS</span></li>
+
+      </ol>
+    </div>
+
+    <div class="next-section-nav">
+      <button type="button" class="btn btn-primary next-section-btn" data-unlock="rangkuman">Lanjut ke Bagian VI: Rangkuman →</button>
     </div>
   </div>
 </section>
@@ -1032,7 +1204,7 @@
 <div class="container"><div class="stair-divider"><i></i><i></i><i></i><i></i><i></i></div></div>
 
 <!-- ===================== RANGKUMAN ===================== -->
-<section class="section" id="rangkuman">
+<section class="section section-locked" id="rangkuman">
   <div class="container">
     <div class="section-head">
       <span class="section-kicker">Bagian VI</span>
@@ -1068,13 +1240,17 @@
       <li><span class="dot"></span><span>Kata kunci <em>"total/jumlah keseluruhan selama..."</em> biasanya mengarah ke rumus <strong>Sn</strong>.</span></li>
       <li><span class="dot"></span><span>Cek dulu polanya: selisih antar suku tetap → Aritmetika. Hasil bagi antar suku tetap → Geometri.</span></li>
     </ul>
+
+    <div class="next-section-nav">
+      <button type="button" class="btn btn-primary next-section-btn" data-unlock="lkpd">Lanjut ke Bagian VII: LKPD Interaktif →</button>
+    </div>
   </div>
 </section>
 
 <div class="container"><div class="stair-divider"><i></i><i></i><i></i><i></i><i></i></div></div>
 
 <!-- ===================== LKPD ===================== -->
-<section class="section section-alt" id="lkpd">
+<section class="section section-alt section-locked" id="lkpd">
   <div class="container">
     <div class="section-head">
       <span class="section-kicker">Bagian VII</span>
@@ -1234,17 +1410,21 @@
         <button class="btn btn-primary" id="lk-ref-save">Simpan Refleksi</button>
       </div>
       <div class="save-note" id="lk-ref-save-note">Belum ada perubahan tersimpan.</div>
+
+      <div class="next-section-nav">
+        <button type="button" class="btn btn-primary next-section-btn" data-unlock="guru">Lanjut ke Bagian VIII: Panduan Guru →</button>
+      </div>
     </div>
   </div>
 </section>
 
 <!-- ===================== GURU / RUBRIK ===================== -->
-<section class="section" id="guru">
+<section class="section section-locked" id="guru">
   <div class="container">
     <div class="section-head">
       <span class="section-kicker">Bagian VIII</span>
       <h2>Panduan Guru</h2>
-      <p>Rubrik penilaian LKPD dan kunci jawaban seluruh latihan mandiri (Aritmetika &amp; Geometri). Bagian ini disembunyikan agar tidak terlihat langsung oleh peserta didik.</p>
+      <p>Rubrik penilaian LKPD dan kunci jawaban seluruh latihan mandiri serta PR (Aritmetika &amp; Geometri). Bagian ini disembunyikan agar tidak terlihat langsung oleh peserta didik.</p>
     </div>
 
     <div class="guru-gate" id="guruGate">
@@ -1316,6 +1496,118 @@
         <li>2. S4 = 4(3⁴−1)/(3−1) = 160</li>
         <li>3. S5 = 50.000(2⁵−1) = Rp1.550.000</li>
         <li>4. S3 = 10(1−(2/5)³)/(1−2/5) = 15,6 m</li>
+      </ul>
+
+      <h3 style="font-size:1.1rem;margin-top:26px">F. Kunci Jawaban Tugas — Barisan Aritmetika</h3>
+      <ul class="key-list">
+        <li>1. Ya, aritmetika, dengan b = 3</li>
+        <li>2. Bukan — selisih antar suku tidak tetap (3, 5, 7, ...), jadi bukan barisan aritmetika (ini pola barisan kuadrat)</li>
+        <li>3. Salah — rumus yang benar Un = a + (n−1)b, sehingga U8 = 6 + (7)(4) = 34, bukan 38 (kesalahan siswa: memakai faktor n = 8, seharusnya (n−1) = 7)</li>
+        <li>4. Contoh jawaban: 12, 7, 2, −3, −8</li>
+        <li>5. a = 2 km, b = 0,5 km → 7 = 2 + (n−1)(0,5) → n = 11 (minggu ke-11)</li>
+        <li>6. Ya, aritmetika dengan b = 7 → Un = 15 + (n−1)(7) = 7n + 8</li>
+        <li>7. Selisih gaji = (n−1)(50.000). Pada bulan ke-21 selisih tepat Rp1.000.000; bulan pertama yang selisihnya melebihi Rp1.000.000 adalah bulan ke-22</li>
+        <li>8. HOTS — Un = 4n+3 → beda U(n+1) − Un = 4 (tetap) → terbukti aritmetika; a = U1 = 7, b = 4</li>
+        <li>9. HOTS — a+3b = 2(a+b) → a+15 = 2a+10 → a = 5</li>
+        <li>10. HOTS — esai reflektif, jawaban bervariasi (nilai penuh untuk penalaran & contoh yang relevan, mis. gaji dengan kenaikan tetap, cicilan tetap, dsb.)</li>
+      </ul>
+
+      <h3 style="font-size:1.1rem;margin-top:26px">G. Kunci Jawaban Tugas — Deret Aritmetika</h3>
+      <ul class="key-list">
+        <li>1. Barisan mencari nilai satu suku; deret mencari jumlah beberapa suku. Contoh barisan: 2,4,6,8; deret: 2+4+6+8</li>
+        <li>2. Salah — Sn = n/2(a+Un) butuh Un, tapi Un bisa dicari lebih dulu dari Un = a+(n−1)b, atau langsung pakai Sn = n/2(2a+(n−1)b)</li>
+        <li>3. Salah — cara yang benar: a=3, b=4, n=6 → S6 = 6/2(2(3)+5(4)) = 3(6+20) = 78, bukan 90 (kesalahan: mengalikan n dengan U6, bukan memakai rumus Sn)</li>
+        <li>4. Contoh jawaban: 20,20,20,20,20 (b=0) atau 12,16,20,24,28 (a=12, b=4, S5=100)</li>
+        <li>5. a=3, b=3, n=8 → S8 = 8/2(6+7(3)) = 4(27) = 108 pipa</li>
+        <li>6. Tidak sama — jumlah suku ke-5 s.d. ke-8 = S8−S4 = 176−44 = 132 ≠ 44, karena deret aritmetika naik sehingga suku-suku belakangan lebih besar</li>
+        <li>7. Toko A: S10 = 380; Toko B: S10 = 420 → Toko B lebih banyak</li>
+        <li>8. HOTS — dengan a=1, b=1: Sn = n/2(2(1)+(n−1)(1)) = n/2(n+1) ✓ terbukti</li>
+        <li>9. HOTS — a=5, b=3, Sn≤200 → S10=185 (memenuhi), S11=220 (melebihi) → tingkat maksimum = 10</li>
+        <li>10. HOTS — esai reflektif, mis. saat butuh total/akumulasi (total tabungan, total produksi), bukan nilai pada satu titik waktu</li>
+      </ul>
+
+      <h3 style="font-size:1.1rem;margin-top:26px">H. Kunci Jawaban Tugas — Barisan Geometri</h3>
+      <ul class="key-list">
+        <li>1. Ya, geometri, dengan r = 2</li>
+        <li>2. Bukan — selisihnya tetap (+2) tapi rasionya tidak tetap (2; 1,5; 1,33; ...), berarti ini aritmetika, bukan geometri</li>
+        <li>3. Salah — rumus yang benar Un = a×r^(n−1), sehingga U5 = 3×2⁴ = 48, bukan 30 (kesalahan: mengalikan berulang secara linear, bukan memangkatkan rasio)</li>
+        <li>4. Contoh jawaban: 4, 2, 1, 0,5, 0,25</li>
+        <li>5. a=2.000.000, r=1,1 → nilai setelah 4 tahun = 2.000.000×1,1⁴ ≈ Rp2.928.200</li>
+        <li>6. Ya, geometri dengan r = 3 → Un = 7×3^(n−1)</li>
+        <li>7. Pada jam ke-6: A6=320, B6=303,75 → A pertama kali melebihi B di jam ke-6</li>
+        <li>8. HOTS — Un=5×3^(n−1) → rasio U(n+1)/Un = 3 (tetap) → terbukti geometri; a=5, r=3</li>
+        <li>9. HOTS — r² = 4 → r = 2 (dipilih positif karena semua suku positif)</li>
+        <li>10. HOTS — esai reflektif, mis. geometri lebih cocok untuk penduduk karena pertumbuhannya bersifat proporsional/persentase, bukan penambahan tetap</li>
+      </ul>
+
+      <h3 style="font-size:1.1rem;margin-top:26px">I. Kunci Jawaban Tugas — Deret Geometri</h3>
+      <ul class="key-list">
+        <li>1. Barisan geometri: nilai satu suku dengan rasio tetap; deret geometri: jumlah beberapa suku. Contoh barisan: 2,4,8,16; deret: 2+4+8+16</li>
+        <li>2. Benar — pembagian oleh (r−1) tidak terdefinisi jika r=1. Jika r=1, gunakan Sn = a×n</li>
+        <li>3. Salah — cara yang benar: a=2, r=3, n=4 → S4 = 2(3⁴−1)/(3−1) = 2(80)/2 = 80, bukan 24 (kesalahan: mengalikan linear, bukan memakai rumus Sn)</li>
+        <li>4. Jawaban bervariasi, contoh: a=2, r=3 → S4 = 80</li>
+        <li>5. a=1, r=3, n=5 → S5 = 1(3⁵−1)/(3−1) = 242/2 = 121 orang</li>
+        <li>6. U4 = S4−S3 = 80−26 = 54</li>
+        <li>7. Skema A: S5 ≈ Rp7.441.600; Skema B: S5 ≈ Rp9.157.650 → Skema B lebih besar</li>
+        <li>8. HOTS — Sn = a+ar+ar²+...+ar^(n−1); rSn = ar+ar²+...+ar^n; Sn−rSn = a−ar^n → Sn(1−r) = a(1−r^n) → Sn = a(1−r^n)/(1−r)</li>
+        <li>9. HOTS — S4−S2 = r²×S2 → 120−12 = 108 = r²(12) → r² = 9 → r = 3</li>
+        <li>10. HOTS — esai reflektif, mis. deret geometri mencerminkan pertumbuhan berlipat (multiplikatif) seperti bunga majemuk/viral, berbeda dari deret aritmetika yang bersifat penambahan tetap</li>
+      </ul>
+
+      <h3 style="font-size:1.1rem;margin-top:26px">J. Kunci Jawaban PR — Barisan Aritmetika</h3>
+      <ul class="key-list">
+        <li>1. U6 = 3+(5)(4) = 23</li>
+        <li>2. U10 = 5+(9)(4) = 41</li>
+        <li>3. U8 = 20+(7)(−3) = −1</li>
+        <li>4. U15 = 100+(14)(−8) = −12</li>
+        <li>5. b = (27−11)/4 = 4</li>
+        <li>6. a = 22−4(3) = 10</li>
+        <li>7. U10 = 18+(9)(4) = 54 kursi</li>
+        <li>8. n = 25 (dari 101 = 5+(n−1)(4))</li>
+        <li>9. HOTS — bilangan: 7, 11, 15 → terbesar = 15</li>
+        <li>10. HOTS — 3n+2 = 4n−2 → n = 4</li>
+      </ul>
+
+      <h3 style="font-size:1.1rem;margin-top:26px">K. Kunci Jawaban PR — Deret Aritmetika</h3>
+      <ul class="key-list">
+        <li>1. S8 = 4(8+35) = 172</li>
+        <li>2. S12 = 6(20+66) = 516</li>
+        <li>3. S10 = 5(100−45) = 275</li>
+        <li>4. S10 = 5(7+43) = 250</li>
+        <li>5. a = (250−180)/10 = 7</li>
+        <li>6. S12 = 6(100.000+110.000) = Rp1.260.000</li>
+        <li>7. n(n+2) = 168 → n = 12</li>
+        <li>8. S30 = 15(40+145) = 2.775 roti</li>
+        <li>9. HOTS — 2a+5b=24 dan 2a+9b=40 → b = 4</li>
+        <li>10. HOTS — 40.000.000+4b = 60.000.000 → b = Rp5.000.000</li>
+      </ul>
+
+      <h3 style="font-size:1.1rem;margin-top:26px">L. Kunci Jawaban PR — Barisan Geometri</h3>
+      <ul class="key-list">
+        <li>1. U6 = 2×3⁵ = 486</li>
+        <li>2. U7 = 5×2⁶ = 320</li>
+        <li>3. U7 = 64×(1/2)⁶ = 1</li>
+        <li>4. U6 = 3×(−2)⁵ = −96</li>
+        <li>5. r³ = 48/6 = 8 → r = 2</li>
+        <li>6. a = 135/27 = 5</li>
+        <li>7. U6 = 5×2⁵ = 160 bakteri</li>
+        <li>8. n = 10 (dari 1536 = 3×2⁽ⁿ⁻¹⁾)</li>
+        <li>9. HOTS — bilangan: 2, 6, 18 → terbesar = 18</li>
+        <li>10. HOTS — pantulan ke-5 &lt; 10 cm</li>
+      </ul>
+
+      <h3 style="font-size:1.1rem;margin-top:26px">M. Kunci Jawaban PR — Deret Geometri</h3>
+      <ul class="key-list">
+        <li>1. S5 = 2(3⁵−1)/2 = 242</li>
+        <li>2. S6 = 4(2⁶−1) = 252</li>
+        <li>3. S7 = 5(2⁷−1) = 635</li>
+        <li>4. S4 = 81(1−(1/3)⁴)/(2/3) = 120</li>
+        <li>5. a = 45/15 = 3</li>
+        <li>6. r²+r−12 = 0 → r = 3</li>
+        <li>7. S4 = 1000(1,5⁴−1)/0,5 = 8.125 orang</li>
+        <li>8. S5 = 3(2⁵−1) = 93 karyawan</li>
+        <li>9. HOTS — S6/S3 = 1+r³ = 28 → r = 3</li>
+        <li>10. HOTS — 3ⁿ = 729 → n = 6</li>
       </ul>
     </div>
   </div>
