@@ -41,68 +41,64 @@
   <a href="#guru">Panduan Guru</a>
 </div>
 
-<!-- ===================== BAGIAN PENDAHULUAN/BERANDA ===================== -->
-<div id="pendahuluan">
-  <header class="hero" id="beranda">
-    <div class="container hero-inner">
-      <div>
-        <span class="eyebrow">Matematika Wajib · Kelas XI SMA</span>
-        <h1>Belajar <em>Barisan &amp; Deret</em> lewat pola yang kamu lihat setiap hari.</h1>
-        <p class="hero-lede">Susunan kursi bioskop yang bertambah tetap tiap baris itu Aritmetika. Bakteri yang membelah dua kali lipat tiap jam itu Geometri. Di halaman ini kamu bisa menghitung langsung, mencoba soal, dan mengisi LKPD — semua interaktif, langsung di layar HP atau laptopmu.</p>
-        <p class="hero-meta">Disusun oleh Wahyu Wijayanti, S.Pd., M.Pd. — SMA Negeri Karangpandan</p>
-        <div class="hero-actions">
-          <a href="#barisan" class="btn btn-primary">Mulai Belajar Aritmetika →</a>
-          <a href="#barisan-geo" class="btn btn-ghost">Langsung ke Geometri</a>
-        </div>
-      </div>
-
-      <div class="stair-card">
-        <div class="stair-card-head">
-          <h3>Coba geser bedanya</h3>
-          <span class="stair-formula">Un = 4 + (n−1)·b</span>
-        </div>
-        <div class="stair-chart" id="heroChart" aria-hidden="true"></div>
-        <div class="stair-controls">
-          <label for="heroB">Beda (b)</label>
-          <input type="range" id="heroB" min="1" max="8" value="3" step="1">
-          <span class="stair-b-val" id="heroBVal">3</span>
-        </div>
+<!-- ===================== HERO ===================== -->
+<header class="hero" id="beranda">
+  <div class="container hero-inner">
+    <div>
+      <span class="eyebrow">Matematika Wajib · Kelas XI SMA</span>
+      <h1>Belajar <em>Barisan &amp; Deret</em> lewat pola yang kamu lihat setiap hari.</h1>
+      <p class="hero-lede">Susunan kursi bioskop yang bertambah tetap tiap baris itu Aritmetika. Bakteri yang membelah dua kali lipat tiap jam itu Geometri. Di halaman ini kamu bisa menghitung langsung, mencoba soal, dan mengisi LKPD — semua interaktif, langsung di layar HP atau laptopmu.</p>
+      <p class="hero-meta">Disusun oleh Wahyu Wijayanti, S.Pd., M.Pd. — SMA Negeri Karangpandan</p>
+      <div class="hero-actions">
+        <a href="#barisan" class="btn btn-primary">Mulai Belajar Aritmetika →</a>
+        <a href="#barisan-geo" class="btn btn-ghost">Langsung ke Geometri</a>
       </div>
     </div>
-  </header>
 
-  <div class="container">
-    <div class="section-head" style="max-width:100%">
-      <span class="section-kicker">Peta Konsep</span>
-      <h2 style="font-size:1.4rem">Empat ide besar yang akan kamu kuasai</h2>
-      <p>Bedanya cuma satu: Aritmetika bertambah dengan <strong>penjumlahan tetap</strong>, Geometri bertambah dengan <strong>perkalian tetap</strong>.</p>
-    </div>
-    <div class="concept-grid">
-      <div class="concept-card teal">
-        <h4>Barisan Aritmetika</h4>
-        <p>Mencari nilai pada satu urutan tertentu, dengan selisih tetap — misalnya kursi di baris ke-12.</p>
-        <div class="formula">Un = a + (n−1)b</div>
+    <div class="stair-card">
+      <div class="stair-card-head">
+        <h3>Coba geser bedanya</h3>
+        <span class="stair-formula">Un = 4 + (n−1)·b</span>
       </div>
-      <div class="concept-card amber">
-        <h4>Deret Aritmetika</h4>
-        <p>Mencari jumlah total dari beberapa suku sekaligus — misalnya total seluruh kursi.</p>
-        <div class="formula">Sn = n/2 (a + Un)</div>
-      </div>
-      <div class="concept-card violet">
-        <h4>Barisan Geometri</h4>
-        <p>Mencari nilai pada satu urutan tertentu, dengan rasio (perkalian) tetap — misalnya jumlah bakteri jam ke-6.</p>
-        <div class="formula">Un = a · r<sup>n−1</sup></div>
-      </div>
-      <div class="concept-card violet">
-        <h4>Deret Geometri</h4>
-        <p>Mencari jumlah total dari beberapa suku sekaligus — misalnya total hadiah berlipat ganda.</p>
-        <div class="formula">Sn = a(r<sup>n</sup>−1) / (r−1)</div>
+      <div class="stair-chart" id="heroChart" aria-hidden="true"></div>
+      <div class="stair-controls">
+        <label for="heroB">Beda (b)</label>
+        <input type="range" id="heroB" min="1" max="8" value="3" step="1">
+        <span class="stair-b-val" id="heroBVal">3</span>
       </div>
     </div>
   </div>
-</div>
-<!-- ===================== AKHIR PENDAHULUAN ===================== -->
+</header>
 
+<div class="container">
+  <div class="section-head" style="max-width:100%">
+    <span class="section-kicker">Peta Konsep</span>
+    <h2 style="font-size:1.4rem">Empat ide besar yang akan kamu kuasai</h2>
+    <p>Bedanya cuma satu: Aritmetika bertambah dengan <strong>penjumlahan tetap</strong>, Geometri bertambah dengan <strong>perkalian tetap</strong>.</p>
+  </div>
+  <div class="concept-grid">
+    <div class="concept-card teal">
+      <h4>Barisan Aritmetika</h4>
+      <p>Mencari nilai pada satu urutan tertentu, dengan selisih tetap — misalnya kursi di baris ke-12.</p>
+      <div class="formula">Un = a + (n−1)b</div>
+    </div>
+    <div class="concept-card amber">
+      <h4>Deret Aritmetika</h4>
+      <p>Mencari jumlah total dari beberapa suku sekaligus — misalnya total seluruh kursi.</p>
+      <div class="formula">Sn = n/2 (a + Un)</div>
+    </div>
+    <div class="concept-card violet">
+      <h4>Barisan Geometri</h4>
+      <p>Mencari nilai pada satu urutan tertentu, dengan rasio (perkalian) tetap — misalnya jumlah bakteri jam ke-6.</p>
+      <div class="formula">Un = a · r<sup>n−1</sup></div>
+    </div>
+    <div class="concept-card violet">
+      <h4>Deret Geometri</h4>
+      <p>Mencari jumlah total dari beberapa suku sekaligus — misalnya total hadiah berlipat ganda.</p>
+      <div class="formula">Sn = a(r<sup>n</sup>−1) / (r−1)</div>
+    </div>
+  </div>
+</div>
 
 <div class="container"><div class="stair-divider" style="margin-top:70px"><i></i><i></i><i></i><i></i><i></i></div></div>
 
@@ -177,8 +173,6 @@
             <button class="example-header"><span class="example-num">3</span><span class="example-title">Rumus Suku ke-n dari Dua Suku Diketahui<small>U3 = 11 dan U7 = 23. Tentukan rumus suku ke-n.</small></span><svg class="example-chevron" viewBox="0 0 20 20" fill="none"><path d="M5 7l5 6 5-6" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg></button>
             <div class="example-body"><div class="example-body-inner">
               <div class="steps">
-                <div>U7 = 23 → a + 6b = 23</div>
-                <div>U3 = 11 → a + 2b = 11</div>
                 <div>U7 − U3 = 4b → 23 − 11 = 4b → b = 3</div>
                 <div>U3 = a + 2b → 11 = a + 6 → a = 5</div>
                 <div>Un = 5 + (n − 1)(3) = 3n + 2</div>
@@ -191,8 +185,6 @@
             <button class="example-header"><span class="example-num">4</span><span class="example-title">Suku Tertentu dari Dua Suku Diketahui<small>U4 = 18 dan U9 = 38. Tentukan U20.</small></span><svg class="example-chevron" viewBox="0 0 20 20" fill="none"><path d="M5 7l5 6 5-6" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg></button>
             <div class="example-body"><div class="example-body-inner">
               <div class="steps">
-                <div>U4 = 18 → a + 3b = 18</div>
-                <div>U9 = 38 → a + 8b = 38</div>
                 <div>U9 − U4 = 5b → 38 − 18 = 5b → b = 4</div>
                 <div>U4 = a + 3b → 18 = a + 12 → a = 6</div>
                 <div>U20 = 6 + 19(4) = 6 + 76 = 82</div>
@@ -336,7 +328,7 @@
       <div class="section-head" style="margin-bottom:20px">
         <span class="section-kicker">Tugas</span>
         <h2 style="font-size:1.4rem">Tugas — Barisan Aritmetika</h2>
-        <!-- <p>10 soal dengan variasi bentuk (identifikasi, analisis kesalahan, membuat contoh, aplikasi, hingga HOTS). Kerjakan di buku tulismu.</p> -->
+        <p>10 soal dengan variasi bentuk (identifikasi, analisis kesalahan, membuat contoh, aplikasi, hingga HOTS). Kerjakan di buku tulismu.</p>
       </div>
       <ol class="task-list">
 
@@ -359,7 +351,7 @@
       <div class="section-head" style="margin-bottom:20px">
         <span class="section-kicker">Pekerjaan Rumah</span>
         <h2 style="font-size:1.4rem">PR — Barisan Aritmetika</h2>
-        <!-- <p>10 soal, diurutkan dari yang paling sederhana sampai soal HOTS (berpikir tingkat tinggi). Kerjakan di buku tulismu, lalu cek jawaban di sini.</p> -->
+        <p>10 soal, diurutkan dari yang paling sederhana sampai soal HOTS (berpikir tingkat tinggi). Kerjakan di buku tulismu, lalu cek jawaban di sini.</p>
       </div>
       <ol class="task-list">
 
@@ -452,10 +444,9 @@
           </div>
 
           <div class="example">
-            <button class="example-header"><span class="example-num">3</span><span class="example-title">Menggunakan Sn = n/2(a + Un)<small>Diketahui 13 bilangan membentuk deret aritmetika dengan suku pertama = 5 dan suku terakhir = 65. Tentukan jumlah bilangan tersebut.</small></span><svg class="example-chevron" viewBox="0 0 20 20" fill="none"><path d="M5 7l5 6 5-6" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg></button>
+            <button class="example-header"><span class="example-num">3</span><span class="example-title">Menggunakan Sn = n/2(a + Un)<small>a = 5, U13 = 65, n = 13. Tentukan jumlah deret.</small></span><svg class="example-chevron" viewBox="0 0 20 20" fill="none"><path d="M5 7l5 6 5-6" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg></button>
             <div class="example-body"><div class="example-body-inner">
               <div class="steps">
-                <div>a = 5, U13 = 65, n = 13</div>
                 <div>S13 = 13/2 (5 + 65)</div>
                 <div>S13 = 13/2 × 70 = 13 × 35 = 455</div>
               </div>
@@ -464,7 +455,7 @@
           </div>
 
           <div class="example">
-            <button class="example-header"><span class="example-num">4</span><span class="example-title">Mencari Beda dari Jumlah Diketahui<small>Diketahui deret aritmetika dengan jumlah delapan suku pertama = 144. Jika suku pertama = 4, maka tentukan beda dan suku ke-8 deret tersebut.</small></span><svg class="example-chevron" viewBox="0 0 20 20" fill="none"><path d="M5 7l5 6 5-6" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg></button>
+            <button class="example-header"><span class="example-num">4</span><span class="example-title">Mencari Beda dari Jumlah Diketahui<small>S8 = 144, a = 4. Tentukan beda, lalu U8.</small></span><svg class="example-chevron" viewBox="0 0 20 20" fill="none"><path d="M5 7l5 6 5-6" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg></button>
             <div class="example-body"><div class="example-body-inner">
               <div class="steps">
                 <div>144 = 8/2 (2(4) + 7b) = 4(8 + 7b)</div>
@@ -476,7 +467,7 @@
           </div>
 
           <div class="example">
-            <button class="example-header"><span class="example-num">5</span><span class="example-title">Jumlah Bilangan Kelipatan Tertentu<small>Hitung jumlah semua bilangan kelipatan 3 antara 1 dan 100.</small></span><svg class="example-chevron" viewBox="0 0 20 20" fill="none"><path d="M5 7l5 6 5-6" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg></button>
+            <button class="example-header"><span class="example-num">5</span><span class="example-title">Jumlah Bilangan Kelipatan Tertentu<small>Jumlah semua kelipatan 3 antara 1 dan 100.</small></span><svg class="example-chevron" viewBox="0 0 20 20" fill="none"><path d="M5 7l5 6 5-6" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg></button>
             <div class="example-body"><div class="example-body-inner">
               <div class="steps">
                 <div>3, 6, 9, ..., 99 → a = 3, b = 3</div>
@@ -609,7 +600,7 @@
       <div class="section-head" style="margin-bottom:20px">
         <span class="section-kicker">Tugas</span>
         <h2 style="font-size:1.4rem">Tugas — Deret Aritmetika</h2>
-        <!-- <p>10 soal dengan variasi bentuk (konsep, analisis kesalahan, membuat contoh, aplikasi, hingga HOTS). Kerjakan di buku tulismu.</p> -->
+        <p>10 soal dengan variasi bentuk (konsep, analisis kesalahan, membuat contoh, aplikasi, hingga HOTS). Kerjakan di buku tulismu.</p>
       </div>
       <ol class="task-list">
 
@@ -632,7 +623,7 @@
       <div class="section-head" style="margin-bottom:20px">
         <span class="section-kicker">Pekerjaan Rumah</span>
         <h2 style="font-size:1.4rem">PR — Deret Aritmetika</h2>
-        <!-- <p>10 soal, diurutkan dari yang paling sederhana sampai soal HOTS.</p> -->
+        <p>10 soal, diurutkan dari yang paling sederhana sampai soal HOTS.</p>
       </div>
       <ol class="task-list">
 
@@ -885,7 +876,7 @@
       <div class="section-head" style="margin-bottom:20px">
         <span class="section-kicker violet">Tugas</span>
         <h2 style="font-size:1.4rem">Tugas — Barisan Geometri</h2>
-        <!-- <p>10 soal dengan variasi bentuk (identifikasi, analisis kesalahan, membuat contoh, aplikasi, hingga HOTS). Kerjakan di buku tulismu.</p> -->
+        <p>10 soal dengan variasi bentuk (identifikasi, analisis kesalahan, membuat contoh, aplikasi, hingga HOTS). Kerjakan di buku tulismu.</p>
       </div>
       <ol class="task-list">
 
@@ -908,7 +899,7 @@
       <div class="section-head" style="margin-bottom:20px">
         <span class="section-kicker violet">Pekerjaan Rumah</span>
         <h2 style="font-size:1.4rem">PR — Barisan Geometri</h2>
-        <!-- <p>10 soal, diurutkan dari yang paling sederhana sampai soal HOTS.</p> -->
+        <p>10 soal, diurutkan dari yang paling sederhana sampai soal HOTS.</p>
       </div>
       <ol class="task-list">
 
@@ -1158,7 +1149,7 @@
       <div class="section-head" style="margin-bottom:20px">
         <span class="section-kicker violet">Tugas</span>
         <h2 style="font-size:1.4rem">Tugas — Deret Geometri</h2>
-        <!-- <p>10 soal dengan variasi bentuk (konsep, analisis kesalahan, membuat contoh, aplikasi, hingga HOTS). Kerjakan di buku tulismu.</p> -->
+        <p>10 soal dengan variasi bentuk (konsep, analisis kesalahan, membuat contoh, aplikasi, hingga HOTS). Kerjakan di buku tulismu.</p>
       </div>
       <ol class="task-list">
 
@@ -1181,7 +1172,7 @@
       <div class="section-head" style="margin-bottom:20px">
         <span class="section-kicker violet">Pekerjaan Rumah</span>
         <h2 style="font-size:1.4rem">PR — Deret Geometri</h2>
-        <!-- <p>10 soal, diurutkan dari yang paling sederhana sampai soal HOTS.</p> -->
+        <p>10 soal, diurutkan dari yang paling sederhana sampai soal HOTS.</p>
       </div>
       <ol class="task-list">
 
