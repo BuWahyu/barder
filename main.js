@@ -2,20 +2,15 @@
   "use strict";
 
   /* ---------------- Math helpers ---------------- */
-  function Un(a, b, n) {
-    return a + (n - 1) * b;
-  }
-  function Sn(a, b, n) {
-    return (n / 2) * (2 * a + (n - 1) * b);
-  }
-  function UnG(a, r, n) {
-    return a * Math.pow(r, n - 1);
-  }
+  function Un(a, b, n) { return a + (n - 1) * b; }
+  function Sn(a, b, n) { return (n / 2) * (2 * a + (n - 1) * b); }
+  function UnG(a, r, n) { return a * Math.pow(r, n - 1); }
   function SnG(a, r, n) {
     if (r === 1) return a * n;
-    return (a * (Math.pow(r, n) - 1)) / (r - 1);
+    return a * (Math.pow(r, n) - 1) / (r - 1);
   }
   function fmt(x) {
+    // Nice number formatting: integers plain, decimals trimmed, Indonesian thousand-ish spacing skipped for simplicity
     if (Number.isInteger(x)) return x.toLocaleString("id-ID");
     return x.toLocaleString("id-ID", { maximumFractionDigits: 3 });
   }
@@ -50,13 +45,45 @@
     });
   }
 
+  /* ---------------- Active nav link on scroll ---------------- */
+  var navLinks = document.querySelectorAll("[data-nav]");
+  // Maps each observed section id to the nav link href that should light up.
+  // Barisan/Deret Aritmetika both point to #aritmetika; Barisan/Deret Geometri both point to #geometri.
+  var sectionNavMap = {
+    "barisan": "#aritmetika",
+    "deret": "#aritmetika",
+    "barisan-geo": "#geometri",
+    "deret-geo": "#geometri",
+    "rangkuman": "#rangkuman",
+    "lkpd": "#lkpd",
+    "guru": "#guru"
+  };
+  var sections = Object.keys(sectionNavMap)
+    .map(function (id) { return document.getElementById(id); })
+    .filter(Boolean);
+
+  if ("IntersectionObserver" in window && sections.length) {
+    var observer = new IntersectionObserver(
+      function (entries) {
+        entries.forEach(function (entry) {
+          if (entry.isIntersecting) {
+            var targetHref = sectionNavMap[entry.target.id];
+            navLinks.forEach(function (link) {
+              link.classList.toggle("active", link.getAttribute("href") === targetHref);
+            });
+          }
+        });
+      },
+      { rootMargin: "-40% 0px -55% 0px" }
+    );
+    sections.forEach(function (s) { observer.observe(s); });
+  }
+
   /* ---------------- Hero staircase widget ---------------- */
   var heroChart = document.getElementById("heroChart");
   var heroB = document.getElementById("heroB");
   var heroBVal = document.getElementById("heroBVal");
-  var HERO_A = 4,
-    HERO_N = 8,
-    HERO_MAXB = 8;
+  var HERO_A = 4, HERO_N = 8, HERO_MAXB = 8;
 
   function renderHeroChart(b) {
     if (!heroChart) return;
@@ -87,15 +114,11 @@
     var btns = list.querySelectorAll(".tab-btn");
     btns.forEach(function (btn) {
       btn.addEventListener("click", function () {
-        btns.forEach(function (b) {
-          b.classList.remove("active");
-        });
+        btns.forEach(function (b) { b.classList.remove("active"); });
         btn.classList.add("active");
         var target = btn.getAttribute("data-tab");
         var panels = document.querySelectorAll(".tab-panel");
-        panels.forEach(function (p) {
-          p.classList.remove("active");
-        });
+        panels.forEach(function (p) { p.classList.remove("active"); });
         var panel = document.getElementById(target);
         if (panel) panel.classList.add("active");
       });
@@ -110,21 +133,15 @@
     });
   });
 
-  /* ---------------- FIXED: Navigasi Per Section (Step-by-Step) ---------------- */
-  // 'beranda' diubah menjadi 'pendahuluan' agar menyembunyikan hero sekaligus peta konsep
-  var ALL_SECTIONS = [
-    "pendahuluan",
-    "barisan",
-    "deret",
-    "barisan-geo",
-    "deret-geo",
-    "rangkuman",
-    "lkpd",
-    "guru",
-  ];
+  /* ---------------- Progressive section unlock ---------------- */
+  var LOCKABLE_SECTIONS = ["deret", "barisan-geo", "deret-geo", "rangkuman", "lkpd", "guru"];
+  var WRAPPER_UNLOCK_MAP = {
+    "aritmetika": ["barisan", "deret"],
+    "geometri": ["barisan-geo", "deret-geo"]
+  };
   var UNLOCK_KEY = "unlocked-sections-barisan-deret-v1";
 
-  function safeLocalStorage() {
+  function safeLS() {
     try {
       var testKey = "__test__";
       window.localStorage.setItem(testKey, "1");
@@ -134,95 +151,64 @@
       return null;
     }
   }
-  var ls = safeLocalStorage();
+  var unlockLs = safeLS();
 
-  function getActiveSection() {
-    if (!ls) return "pendahuluan";
-    return ls.getItem(UNLOCK_KEY) || "pendahuluan";
-  }
-
-  function saveActiveSection(id) {
-    if (!ls) return;
+  function getUnlockedSet() {
+    if (!unlockLs) return {};
     try {
-      ls.setItem(UNLOCK_KEY, id);
-    } catch (e) {}
+      var raw = unlockLs.getItem(UNLOCK_KEY);
+      return raw ? JSON.parse(raw) : {};
+    } catch (e) {
+      return {};
+    }
   }
 
-  function showSection(targetId) {
-    // Normalisasi pemanggilan navigasi bernilai umum ke id section spesifik pertama
-    if (targetId === "beranda" || targetId === "pendahuluan")
-      targetId = "pendahuluan";
-    if (targetId === "aritmetika") targetId = "barisan";
-    if (targetId === "geometri") targetId = "barisan-geo";
+  function saveUnlockedSet(set) {
+    if (!unlockLs) return;
+    try { unlockLs.setItem(UNLOCK_KEY, JSON.stringify(set)); } catch (e) {}
+  }
 
-    if (ALL_SECTIONS.indexOf(targetId) === -1) return;
+  function unlockSectionById(id) {
+    if (LOCKABLE_SECTIONS.indexOf(id) === -1) return;
+    var el = document.getElementById(id);
+    if (el) el.classList.remove("section-locked");
+    var set = getUnlockedSet();
+    set[id] = true;
+    saveUnlockedSet(set);
+  }
 
-    // Sembunyikan seluruh section kecuali id yang dipilih
-    ALL_SECTIONS.forEach(function (id) {
-      var el = document.getElementById(id);
-      if (el) {
-        el.classList.remove("section-locked"); // Reset state dari style CSS lama
-        if (id === targetId) {
-          el.style.setProperty("display", "block", "important");
-        } else {
-          el.style.setProperty("display", "none", "important");
-        }
+  function unlockTarget(id) {
+    if (WRAPPER_UNLOCK_MAP[id]) {
+      WRAPPER_UNLOCK_MAP[id].forEach(unlockSectionById);
+    } else {
+      unlockSectionById(id);
+    }
+  }
+
+  // Restore previously unlocked sections (so a returning student doesn't get re-locked)
+  var previouslyUnlocked = getUnlockedSet();
+  Object.keys(previouslyUnlocked).forEach(function (id) {
+    if (previouslyUnlocked[id]) unlockSectionById(id);
+  });
+
+  // Wire up "next section" buttons
+  document.querySelectorAll(".next-section-btn[data-unlock]").forEach(function (btn) {
+    btn.addEventListener("click", function () {
+      var targetId = btn.getAttribute("data-unlock");
+      unlockTarget(targetId);
+      var targetEl = document.getElementById(targetId);
+      if (targetEl) {
+        targetEl.scrollIntoView({ behavior: "smooth", block: "start" });
       }
     });
+  });
 
-    // Perbarui penanda active link pada sistem top-nav/navbar
-    var targetHref = "#" + targetId;
-    if (targetId === "pendahuluan") targetHref = "#beranda";
-    if (targetId === "barisan" || targetId === "deret")
-      targetHref = "#aritmetika";
-    if (targetId === "barisan-geo" || targetId === "deret-geo")
-      targetHref = "#geometri";
-
-    var navLinks = document.querySelectorAll("[data-nav]");
-    navLinks.forEach(function (link) {
-      link.classList.toggle("active", link.getAttribute("href") === targetHref);
-    });
-
-    saveActiveSection(targetId);
-
-    // Auto-scroll ke atas halaman baru agar tidak membingungkan pengguna
-    window.scrollTo({ top: 0, behavior: "smooth" });
-    updateProgress();
-  }
-
-  // Mengembalikan sesi halaman aktif pengguna saat pertama kali dibuka / memprioritaskan hash URL
-  var initialSection = getActiveSection();
-  if (window.location.hash) {
-    initialSection = window.location.hash.slice(1);
-  }
-  showSection(initialSection);
-
-  // Pasang sistem tombol lanjut antar materi
-  document
-    .querySelectorAll(".next-section-btn[data-unlock]")
-    .forEach(function (btn) {
-      btn.addEventListener("click", function () {
-        var targetId = btn.getAttribute("data-unlock");
-        showSection(targetId);
-      });
-    });
-
-  // Hubungkan semua tautan jangkar (navigasi atas, menu mobile, DAN tombol hero)
+  // Any in-page anchor link (top nav, mobile panel, hero shortcuts) should also
+  // unlock the section it points to, so navigation never lands on a hidden section.
   document.querySelectorAll('a[href^="#"]').forEach(function (a) {
-    a.addEventListener("click", function (e) {
+    a.addEventListener("click", function () {
       var id = a.getAttribute("href").slice(1);
-      // Validasi tujuan navigasi yang valid
-      if (
-        id &&
-        (ALL_SECTIONS.indexOf(id) !== -1 ||
-          id === "beranda" ||
-          id === "aritmetika" ||
-          id === "geometri" ||
-          id === "barisan-geo")
-      ) {
-        e.preventDefault();
-        showSection(id);
-      }
+      if (id) unlockTarget(id);
     });
   });
 
@@ -244,26 +230,8 @@
       headline.textContent = "U" + n + " = " + fmt(result);
       steps.innerHTML =
         "<li>Un = a + (n \u2212 1)b</li>" +
-        "<li>U" +
-        n +
-        " = " +
-        fmt(a) +
-        " + (" +
-        n +
-        " \u2212 1)(" +
-        fmt(b) +
-        ")</li>" +
-        "<li>U" +
-        n +
-        " = " +
-        fmt(a) +
-        " + (" +
-        (n - 1) +
-        ")(" +
-        fmt(b) +
-        ") = " +
-        fmt(result) +
-        "</li>";
+        "<li>U" + n + " = " + fmt(a) + " + (" + n + " \u2212 1)(" + fmt(b) + ")</li>" +
+        "<li>U" + n + " = " + fmt(a) + " + (" + (n - 1) + ")(" + fmt(b) + ") = " + fmt(result) + "</li>";
       resultBox.classList.add("show");
 
       viz.innerHTML = "";
@@ -301,42 +269,15 @@
       headline.textContent = "S" + n + " = " + fmt(result);
       steps.innerHTML =
         "<li>Sn = n/2 (2a + (n \u2212 1)b)</li>" +
-        "<li>S" +
-        n +
-        " = " +
-        n +
-        "/2 (2(" +
-        fmt(a) +
-        ") + (" +
-        (n - 1) +
-        ")(" +
-        fmt(b) +
-        "))</li>" +
-        "<li>U" +
-        n +
-        " = " +
-        fmt(lastTerm) +
-        " \u2192 S" +
-        n +
-        " = " +
-        n +
-        "/2 (" +
-        fmt(a) +
-        " + " +
-        fmt(lastTerm) +
-        ") = " +
-        fmt(result) +
-        "</li>";
+        "<li>S" + n + " = " + n + "/2 (2(" + fmt(a) + ") + (" + (n - 1) + ")(" + fmt(b) + "))</li>" +
+        "<li>U" + n + " = " + fmt(lastTerm) + " \u2192 S" + n + " = " + n + "/2 (" + fmt(a) + " + " + fmt(lastTerm) + ") = " + fmt(result) + "</li>";
       resultBox.classList.add("show");
 
       viz.innerHTML = "";
       var count = Math.min(n, 12);
       var running = 0;
       var vals = [];
-      for (var i = 1; i <= count; i++) {
-        running += Un(a, b, i);
-        vals.push(running);
-      }
+      for (var i = 1; i <= count; i++) { running += Un(a, b, i); vals.push(running); }
       var maxAbs = Math.max.apply(null, vals.map(Math.abs).concat([1]));
       vals.forEach(function (v) {
         var bar = document.createElement("i");
@@ -368,40 +309,15 @@
       headline.textContent = "U" + n + " = " + fmt(result);
       steps.innerHTML =
         "<li>Un = a \u00D7 r^(n \u2212 1)</li>" +
-        "<li>U" +
-        n +
-        " = " +
-        fmt(a) +
-        " \u00D7 " +
-        fmt(r) +
-        "^(" +
-        n +
-        " \u2212 1)</li>" +
-        "<li>U" +
-        n +
-        " = " +
-        fmt(a) +
-        " \u00D7 " +
-        fmt(r) +
-        "^" +
-        (n - 1) +
-        " = " +
-        fmt(result) +
-        "</li>";
+        "<li>U" + n + " = " + fmt(a) + " \u00D7 " + fmt(r) + "^(" + n + " \u2212 1)</li>" +
+        "<li>U" + n + " = " + fmt(a) + " \u00D7 " + fmt(r) + "^" + (n - 1) + " = " + fmt(result) + "</li>";
       resultBox.classList.add("show");
 
       viz.innerHTML = "";
       var count = Math.min(n, 10);
       var vals = [];
       for (var i = 1; i <= count; i++) vals.push(UnG(a, r, i));
-      var maxAbs = Math.max.apply(
-        null,
-        vals
-          .map(function (v) {
-            return Math.abs(v);
-          })
-          .concat([1]),
-      );
+      var maxAbs = Math.max.apply(null, vals.map(function (v) { return Math.abs(v); }).concat([1]));
       vals.forEach(function (v) {
         var bar = document.createElement("i");
         var pct = Math.max(4, (Math.abs(v) / maxAbs) * 100);
@@ -433,44 +349,16 @@
       headline.textContent = "S" + n + " = " + fmt(result);
       steps.innerHTML =
         "<li>Sn = a(r^n \u2212 1) / (r \u2212 1)</li>" +
-        "<li>S" +
-        n +
-        " = " +
-        fmt(a) +
-        "(" +
-        fmt(r) +
-        "^" +
-        n +
-        " \u2212 1) / (" +
-        fmt(r) +
-        " \u2212 1)</li>" +
-        "<li>U" +
-        n +
-        " = " +
-        fmt(lastTerm) +
-        " \u2192 S" +
-        n +
-        " = " +
-        fmt(result) +
-        "</li>";
+        "<li>S" + n + " = " + fmt(a) + "(" + fmt(r) + "^" + n + " \u2212 1) / (" + fmt(r) + " \u2212 1)</li>" +
+        "<li>U" + n + " = " + fmt(lastTerm) + " \u2192 S" + n + " = " + fmt(result) + "</li>";
       resultBox.classList.add("show");
 
       viz.innerHTML = "";
       var count = Math.min(n, 10);
       var running = 0;
       var vals = [];
-      for (var i = 1; i <= count; i++) {
-        running += UnG(a, r, i);
-        vals.push(running);
-      }
-      var maxAbs = Math.max.apply(
-        null,
-        vals
-          .map(function (v) {
-            return Math.abs(v);
-          })
-          .concat([1]),
-      );
+      for (var i = 1; i <= count; i++) { running += UnG(a, r, i); vals.push(running); }
+      var maxAbs = Math.max.apply(null, vals.map(function (v) { return Math.abs(v); }).concat([1]));
       vals.forEach(function (v) {
         var bar = document.createElement("i");
         var pct = Math.max(4, (Math.abs(v) / maxAbs) * 100);
@@ -483,6 +371,13 @@
   }
 
   /* ---------------- Quiz check (latihan mandiri) ---------------- */
+  function numbersMatch(userVal, answerVal) {
+    var u = parseFloat(String(userVal).replace(/\./g, "").replace(",", "."));
+    var a = parseFloat(answerVal);
+    if (isNaN(u) || isNaN(a)) return false;
+    return Math.abs(u - a) < 0.01;
+  }
+
   document.querySelectorAll(".quiz-check").forEach(function (btn) {
     btn.addEventListener("click", function () {
       var row = btn.closest(".quiz-row");
@@ -512,13 +407,10 @@
       var allOk = true;
       inputs.forEach(function (inp) {
         var ok = numbersMatch(inp.value, inp.getAttribute("data-answer"));
-        inp.style.borderColor =
-          inp.value.trim() === "" ? "" : ok ? "#0EA5A0" : "#F0A93C";
+        inp.style.borderColor = inp.value.trim() === "" ? "" : (ok ? "#0EA5A0" : "#F0A93C");
         if (!ok) allOk = false;
       });
-      feedback.textContent = allOk
-        ? "✓ Semua benar!"
-        : "✗ Periksa kembali perhitunganmu";
+      feedback.textContent = allOk ? "✓ Semua benar!" : "✗ Periksa kembali perhitunganmu";
       feedback.className = "quiz-feedback " + (allOk ? "correct" : "wrong");
     });
   });
@@ -534,8 +426,7 @@
     });
     data.group = (document.getElementById("lk-group") || {}).value || "";
     data.members = (document.getElementById("lk-members") || {}).value || "";
-    data.conclusion =
-      (document.getElementById("lk-conclusion") || {}).value || "";
+    data.conclusion = (document.getElementById("lk-conclusion") || {}).value || "";
     return data;
   }
 
@@ -545,35 +436,38 @@
       var key = el.getAttribute("data-lkpd");
       if (data[key] !== undefined) el.value = data[key];
     });
-    if (document.getElementById("lk-group"))
-      document.getElementById("lk-group").value = data.group || "";
-    if (document.getElementById("lk-members"))
-      document.getElementById("lk-members").value = data.members || "";
-    if (document.getElementById("lk-conclusion"))
-      document.getElementById("lk-conclusion").value = data.conclusion || "";
+    if (document.getElementById("lk-group")) document.getElementById("lk-group").value = data.group || "";
+    if (document.getElementById("lk-members")) document.getElementById("lk-members").value = data.members || "";
+    if (document.getElementById("lk-conclusion")) document.getElementById("lk-conclusion").value = data.conclusion || "";
   }
+
+  function safeLocalStorage() {
+    try {
+      var testKey = "__test__";
+      window.localStorage.setItem(testKey, "1");
+      window.localStorage.removeItem(testKey);
+      return window.localStorage;
+    } catch (e) {
+      return null;
+    }
+  }
+  var ls = safeLocalStorage();
 
   var saveBtn = document.getElementById("lk-save");
   var saveNote = document.getElementById("lk-save-note");
   if (saveBtn && ls) {
     saveBtn.addEventListener("click", function () {
       ls.setItem(LKPD_KEY, JSON.stringify(collectLkpdFields()));
-      saveNote.textContent =
-        "Tersimpan di perangkat ini pada " +
-        new Date().toLocaleTimeString("id-ID");
+      saveNote.textContent = "Tersimpan di perangkat ini pada " + new Date().toLocaleTimeString("id-ID");
       saveNote.classList.add("show-saved");
     });
     var saved = ls.getItem(LKPD_KEY);
     if (saved) {
-      try {
-        applyLkpdFields(JSON.parse(saved));
-        saveNote.textContent = "Memuat jawaban tersimpan sebelumnya.";
-      } catch (e) {}
+      try { applyLkpdFields(JSON.parse(saved)); saveNote.textContent = "Memuat jawaban tersimpan sebelumnya."; } catch (e) {}
     }
   } else if (saveBtn) {
     saveBtn.addEventListener("click", function () {
-      saveNote.textContent =
-        "Penyimpanan browser tidak tersedia di perangkat ini.";
+      saveNote.textContent = "Penyimpanan browser tidak tersedia di perangkat ini.";
     });
   }
 
@@ -582,9 +476,7 @@
     resetBtn.addEventListener("click", function () {
       if (!confirm("Kosongkan semua jawaban LKPD di perangkat ini?")) return;
       applyLkpdFields({});
-      document.querySelectorAll("[data-lkpd]").forEach(function (el) {
-        el.style.borderColor = "";
-      });
+      document.querySelectorAll("[data-lkpd]").forEach(function (el) { el.style.borderColor = ""; });
       if (ls) ls.removeItem(LKPD_KEY);
       saveNote.textContent = "Jawaban telah dikosongkan.";
       saveNote.classList.remove("show-saved");
@@ -593,9 +485,7 @@
 
   var printBtn = document.getElementById("lk-print");
   if (printBtn) {
-    printBtn.addEventListener("click", function () {
-      window.print();
-    });
+    printBtn.addEventListener("click", function () { window.print(); });
   }
 
   var refSaveBtn = document.getElementById("lk-ref-save");
@@ -608,8 +498,7 @@
         r3: document.getElementById("lk-ref3").value,
       };
       ls.setItem(REF_KEY, JSON.stringify(data));
-      refSaveNote.textContent =
-        "Refleksi tersimpan pada " + new Date().toLocaleTimeString("id-ID");
+      refSaveNote.textContent = "Refleksi tersimpan pada " + new Date().toLocaleTimeString("id-ID");
       refSaveNote.classList.add("show-saved");
     });
     var savedRef = ls.getItem(REF_KEY);
