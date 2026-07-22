@@ -1,0 +1,1647 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Barisan &amp; Deret Aritmetika dan Geometri — Matematika Kelas XI</title>
+<meta name="description" content="Materi ajar interaktif Barisan dan Deret Aritmetika serta Geometri untuk SMA Kelas XI, dilengkapi kalkulator, contoh soal, latihan, dan LKPD digital. Disusun oleh Wahyu Wijayanti, S.Pd., M.Pd.">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><rect width=%22100%22 height=%22100%22 rx=%2222%22 fill=%22%2316233F%22/><rect x=%2218%22 y=%2062%22 width=%2214%22 height=%2222%22 rx=%223%22 fill=%22%230EA5A0%22/><rect x=%2237%22 y=%2048%22 width=%2214%22 height=%2236%22 rx=%223%22 fill=%22%230EA5A0%22/><rect x=%2256%22 y=%2232%22 width=%2214%22 height=%2252%22 rx=%223%22 fill=%22%23F0A93C%22/></svg>">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,600;9..144,700&family=Manrope:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<div class="progress-bar" id="progressBar"></div>
+
+<nav class="nav">
+  <div class="nav-inner">
+    <a href="#beranda" class="brand">
+      <span class="brand-mark"><span></span><span></span><span></span><span></span></span>
+      <span class="brand-text">Barisan &amp; Deret<small>Aritmetika &amp; Geometri · Kelas XI</small></span>
+    </a>
+    <ul class="nav-links">
+      <li><a href="#aritmetika" data-nav>Aritmetika</a></li>
+      <li><a href="#geometri" data-nav>Geometri</a></li>
+      <li><a href="#rangkuman" data-nav>Rangkuman</a></li>
+      <li><a href="#lkpd" data-nav>LKPD</a></li>
+      <li><a href="#guru" data-nav>Guru</a></li>
+    </ul>
+    <button class="nav-toggle" id="navToggle" aria-label="Buka menu" aria-expanded="false"><span></span></button>
+  </div>
+</nav>
+<div class="mobile-panel" id="mobilePanel">
+  <a href="#barisan">Barisan Aritmetika</a>
+  <a href="#deret">Deret Aritmetika</a>
+  <a href="#barisan-geo">Barisan Geometri</a>
+  <a href="#deret-geo">Deret Geometri</a>
+  <a href="#rangkuman">Rangkuman</a>
+  <a href="#lkpd">LKPD Interaktif</a>
+  <a href="#guru">Panduan Guru</a>
+</div>
+
+<!-- ===================== HERO ===================== -->
+<header class="hero" id="beranda">
+  <div class="container hero-inner">
+    <div>
+      <span class="eyebrow">Matematika Wajib · Kelas XI SMA</span>
+      <h1>Belajar <em>Barisan &amp; Deret</em> lewat pola yang kamu lihat setiap hari.</h1>
+      <p class="hero-lede">Susunan kursi bioskop yang bertambah tetap tiap baris itu Aritmetika. Bakteri yang membelah dua kali lipat tiap jam itu Geometri. Di halaman ini kamu bisa menghitung langsung, mencoba soal, dan mengisi LKPD — semua interaktif, langsung di layar HP atau laptopmu.</p>
+      <p class="hero-meta">Disusun oleh Wahyu Wijayanti, S.Pd., M.Pd. — SMA Negeri Karangpandan</p>
+      <div class="hero-actions">
+        <a href="#barisan" class="btn btn-primary">Mulai Belajar Aritmetika →</a>
+        <a href="#barisan-geo" class="btn btn-ghost">Langsung ke Geometri</a>
+      </div>
+    </div>
+
+    <div class="stair-card">
+      <div class="stair-card-head">
+        <h3>Coba geser bedanya</h3>
+        <span class="stair-formula">Un = 4 + (n−1)·b</span>
+      </div>
+      <div class="stair-chart" id="heroChart" aria-hidden="true"></div>
+      <div class="stair-controls">
+        <label for="heroB">Beda (b)</label>
+        <input type="range" id="heroB" min="1" max="8" value="3" step="1">
+        <span class="stair-b-val" id="heroBVal">3</span>
+      </div>
+    </div>
+  </div>
+</header>
+
+<div class="container">
+  <div class="section-head" style="max-width:100%">
+    <span class="section-kicker">Peta Konsep</span>
+    <h2 style="font-size:1.4rem">Empat ide besar yang akan kamu kuasai</h2>
+    <p>Bedanya cuma satu: Aritmetika bertambah dengan <strong>penjumlahan tetap</strong>, Geometri bertambah dengan <strong>perkalian tetap</strong>.</p>
+  </div>
+  <div class="concept-grid">
+    <div class="concept-card teal">
+      <h4>Barisan Aritmetika</h4>
+      <p>Mencari nilai pada satu urutan tertentu, dengan selisih tetap — misalnya kursi di baris ke-12.</p>
+      <div class="formula">Un = a + (n−1)b</div>
+    </div>
+    <div class="concept-card amber">
+      <h4>Deret Aritmetika</h4>
+      <p>Mencari jumlah total dari beberapa suku sekaligus — misalnya total seluruh kursi.</p>
+      <div class="formula">Sn = n/2 (a + Un)</div>
+    </div>
+    <div class="concept-card violet">
+      <h4>Barisan Geometri</h4>
+      <p>Mencari nilai pada satu urutan tertentu, dengan rasio (perkalian) tetap — misalnya jumlah bakteri jam ke-6.</p>
+      <div class="formula">Un = a · r<sup>n−1</sup></div>
+    </div>
+    <div class="concept-card violet">
+      <h4>Deret Geometri</h4>
+      <p>Mencari jumlah total dari beberapa suku sekaligus — misalnya total hadiah berlipat ganda.</p>
+      <div class="formula">Sn = a(r<sup>n</sup>−1) / (r−1)</div>
+    </div>
+  </div>
+</div>
+
+<div class="container"><div class="stair-divider" style="margin-top:70px"><i></i><i></i><i></i><i></i><i></i></div></div>
+
+<div id="aritmetika">
+<!-- ===================== BARISAN ARITMETIKA ===================== -->
+<section class="section" id="barisan">
+  <div class="container">
+    <div class="section-head">
+      <span class="section-kicker">Bagian II</span>
+      <h2>Barisan Aritmetika</h2>
+      <p>Barisan aritmetika adalah susunan bilangan dengan pola penambahan atau pengurangan yang selalu tetap. Selisih tetap ini disebut <strong>Beda (b)</strong>, dicari dengan b = Un − Un₋1.</p>
+    </div>
+
+    <div class="formula-box">
+      <div class="label">Rumus Suku ke-n</div>
+      <div class="formula">Un = a + (n − 1)b</div>
+      <div class="note">a = suku pertama · b = beda · n = urutan suku · Un = nilai suku ke-n</div>
+    </div>
+
+    <!-- Calculator -->
+    <div class="calc">
+      <div class="calc-head"><span class="calc-badge">Un</span><h3>Kalkulator Barisan Aritmetika</h3></div>
+      <p class="calc-sub">Masukkan suku pertama, beda, dan urutan suku yang ingin dicari.</p>
+      <div class="calc-grid">
+        <div class="field"><label for="bar-a">Suku pertama (a)</label><input type="number" id="bar-a" value="2"></div>
+        <div class="field"><label for="bar-b">Beda (b)</label><input type="number" id="bar-b" value="3"></div>
+        <div class="field"><label for="bar-n">Suku ke- (n)</label><input type="number" id="bar-n" value="10" min="1" max="12"></div>
+        <div class="field" style="display:flex;align-items:flex-end"><button class="btn btn-teal" style="width:100%;justify-content:center" id="bar-calc-btn">Hitung Un</button></div>
+      </div>
+      <div class="calc-result" id="bar-result">
+        <div class="headline" id="bar-headline"></div>
+        <ol id="bar-steps"></ol>
+        <div class="calc-viz" id="bar-viz" aria-hidden="true"></div>
+      </div>
+    </div>
+
+    <!-- Examples: tabs -->
+    <div class="tabs">
+      <div class="tab-list" role="tablist">
+        <button class="tab-btn active" data-tab="barisan-angka">Contoh Bentuk Angka</button>
+        <button class="tab-btn" data-tab="barisan-konteks">Contoh Kontekstual</button>
+      </div>
+
+      <div class="tab-panel active" id="barisan-angka">
+        <div class="example-list">
+
+          <div class="example">
+            <button class="example-header"><span class="example-num">1</span><span class="example-title">Menentukan Suku ke-n (Beda Positif)<small>Tentukan suku ke-10 dari barisan: 2, 5, 8, 11, ...</small></span><svg class="example-chevron" viewBox="0 0 20 20" fill="none"><path d="M5 7l5 6 5-6" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg></button>
+            <div class="example-body"><div class="example-body-inner">
+              <div class="steps">
+                <div>a = 2, b = 5 − 2 = 3</div>
+                <div>U10 = 2 + (10 − 1)(3)</div>
+                <div>U10 = 2 + 27 = 29</div>
+              </div>
+              <div class="conclusion">Suku ke-10 dari barisan tersebut adalah 29.</div>
+            </div></div>
+          </div>
+
+          <div class="example">
+            <button class="example-header"><span class="example-num">2</span><span class="example-title">Menentukan Suku ke-n (Beda Negatif)<small>Tentukan suku ke-15 dari barisan: 50, 45, 40, 35, ...</small></span><svg class="example-chevron" viewBox="0 0 20 20" fill="none"><path d="M5 7l5 6 5-6" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg></button>
+            <div class="example-body"><div class="example-body-inner">
+              <div class="steps">
+                <div>a = 50, b = 45 − 50 = −5</div>
+                <div>U15 = 50 + (15 − 1)(−5)</div>
+                <div>U15 = 50 − 70 = −20</div>
+              </div>
+              <div class="conclusion">Suku ke-15 dari barisan tersebut adalah −20.</div>
+            </div></div>
+          </div>
+
+          <div class="example">
+            <button class="example-header"><span class="example-num">3</span><span class="example-title">Rumus Suku ke-n dari Dua Suku Diketahui<small>U3 = 11 dan U7 = 23. Tentukan rumus suku ke-n.</small></span><svg class="example-chevron" viewBox="0 0 20 20" fill="none"><path d="M5 7l5 6 5-6" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg></button>
+            <div class="example-body"><div class="example-body-inner">
+              <div class="steps">
+                <div>U7 − U3 = 4b → 23 − 11 = 4b → b = 3</div>
+                <div>U3 = a + 2b → 11 = a + 6 → a = 5</div>
+                <div>Un = 5 + (n − 1)(3) = 3n + 2</div>
+              </div>
+              <div class="conclusion">Rumus suku ke-n barisan tersebut adalah Un = 3n + 2.</div>
+            </div></div>
+          </div>
+
+          <div class="example">
+            <button class="example-header"><span class="example-num">4</span><span class="example-title">Suku Tertentu dari Dua Suku Diketahui<small>U4 = 18 dan U9 = 38. Tentukan U20.</small></span><svg class="example-chevron" viewBox="0 0 20 20" fill="none"><path d="M5 7l5 6 5-6" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg></button>
+            <div class="example-body"><div class="example-body-inner">
+              <div class="steps">
+                <div>U9 − U4 = 5b → 38 − 18 = 5b → b = 4</div>
+                <div>U4 = a + 3b → 18 = a + 12 → a = 6</div>
+                <div>U20 = 6 + 19(4) = 6 + 76 = 82</div>
+              </div>
+              <div class="conclusion">Suku ke-20 dari barisan tersebut adalah 82.</div>
+            </div></div>
+          </div>
+
+          <div class="example">
+            <button class="example-header"><span class="example-num">5</span><span class="example-title">Menentukan Banyak Suku (n)<small>Barisan: 4, 9, 14, ..., 124. Ada berapa suku?</small></span><svg class="example-chevron" viewBox="0 0 20 20" fill="none"><path d="M5 7l5 6 5-6" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg></button>
+            <div class="example-body"><div class="example-body-inner">
+              <div class="steps">
+                <div>a = 4, b = 5, Un = 124</div>
+                <div>124 = 4 + (n − 1)(5)</div>
+                <div>120 = (n − 1)(5) → n − 1 = 24 → n = 25</div>
+              </div>
+              <div class="conclusion">Banyaknya suku pada barisan tersebut adalah 25 suku.</div>
+            </div></div>
+          </div>
+
+        </div>
+      </div>
+
+      <div class="tab-panel" id="barisan-konteks">
+        <div class="example-list">
+
+          <div class="example">
+            <button class="example-header"><span class="example-num">1</span><span class="example-title">Target Menabung<small>Andi menabung Rp5.000 hari pertama, naik Rp1.000 tiap hari. Berapa tabungannya hari ke-15?</small></span><svg class="example-chevron" viewBox="0 0 20 20" fill="none"><path d="M5 7l5 6 5-6" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg></button>
+            <div class="example-body"><div class="example-body-inner">
+              <div class="steps">
+                <div>a = 5.000, b = 1.000, dicari U15</div>
+                <div>U15 = 5.000 + (14)(1.000)</div>
+                <div>U15 = 5.000 + 14.000 = 19.000</div>
+              </div>
+              <div class="conclusion">Pada hari ke-15, Andi menabung sebesar Rp19.000.</div>
+            </div></div>
+          </div>
+
+          <div class="example">
+            <button class="example-header"><span class="example-num">2</span><span class="example-title">Susunan Kursi Gedung<small>Baris pertama 20 kursi, tiap baris berikutnya +4 kursi. Berapa kursi di baris ke-12?</small></span><svg class="example-chevron" viewBox="0 0 20 20" fill="none"><path d="M5 7l5 6 5-6" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg></button>
+            <div class="example-body"><div class="example-body-inner">
+              <div class="steps">
+                <div>a = 20, b = 4, dicari U12</div>
+                <div>U12 = 20 + (11)(4)</div>
+                <div>U12 = 20 + 44 = 64</div>
+              </div>
+              <div class="conclusion">Terdapat 64 kursi pada baris ke-12.</div>
+            </div></div>
+          </div>
+
+          <div class="example">
+            <button class="example-header"><span class="example-num">3</span><span class="example-title">Kenaikan Gaji Karyawan Magang<small>Gaji pertama Rp1.200.000, naik Rp150.000 tiap bulan. Berapa gaji bulan ke-8?</small></span><svg class="example-chevron" viewBox="0 0 20 20" fill="none"><path d="M5 7l5 6 5-6" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg></button>
+            <div class="example-body"><div class="example-body-inner">
+              <div class="steps">
+                <div>a = 1.200.000, b = 150.000, dicari U8</div>
+                <div>U8 = 1.200.000 + (7)(150.000)</div>
+                <div>U8 = 1.200.000 + 1.050.000 = 2.250.000</div>
+              </div>
+              <div class="conclusion">Gaji karyawan tersebut pada bulan ke-8 adalah Rp2.250.000.</div>
+            </div></div>
+          </div>
+
+          <div class="example">
+            <button class="example-header"><span class="example-num">4</span><span class="example-title">Pertumbuhan Tinggi Bambu<small>Tinggi awal 40 cm, bertambah 25 cm tiap minggu. Berapa tinggi di minggu ke-10?</small></span><svg class="example-chevron" viewBox="0 0 20 20" fill="none"><path d="M5 7l5 6 5-6" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg></button>
+            <div class="example-body"><div class="example-body-inner">
+              <div class="steps">
+                <div>a = 40, b = 25, dicari U10</div>
+                <div>U10 = 40 + (9)(25)</div>
+                <div>U10 = 40 + 225 = 265</div>
+              </div>
+              <div class="conclusion">Tinggi bambu pada minggu ke-10 adalah 265 cm.</div>
+            </div></div>
+          </div>
+
+          <div class="example">
+            <button class="example-header"><span class="example-num">5</span><span class="example-title">Penyusutan Nilai Motor<small>Harga awal Rp18.000.000, turun Rp1.500.000 tiap tahun. Berapa nilainya tahun ke-6?</small></span><svg class="example-chevron" viewBox="0 0 20 20" fill="none"><path d="M5 7l5 6 5-6" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg></button>
+            <div class="example-body"><div class="example-body-inner">
+              <div class="steps">
+                <div>a = 18.000.000, b = −1.500.000, dicari U6</div>
+                <div>U6 = 18.000.000 + (5)(−1.500.000)</div>
+                <div>U6 = 18.000.000 − 7.500.000 = 10.500.000</div>
+              </div>
+              <div class="conclusion">Perkiraan nilai jual motor pada tahun ke-6 adalah Rp10.500.000.</div>
+            </div></div>
+          </div>
+
+        </div>
+      </div>
+    </div>
+
+    <!-- Latihan mandiri -->
+    <div style="margin-top:44px">
+      <div class="section-head" style="margin-bottom:20px">
+        <span class="section-kicker">Latihan Mandiri</span>
+        <h2 style="font-size:1.4rem">Uji Pemahamanmu — Barisan Aritmetika</h2>
+        <p>Isi jawabanmu, lalu klik "Cek Jawaban" untuk tahu benar atau salah. Pembahasan lengkap ada di bagian Panduan Guru.</p>
+      </div>
+      <div class="quiz-grid">
+
+        <div class="quiz-card">
+          <div class="quiz-q"><span class="qnum">1.</span><span>Tentukan suku ke-12 dari barisan aritmetika: 7, 12, 17, 22, ...</span></div>
+          <div class="quiz-row">
+            <input type="text" inputmode="decimal" placeholder="Jawaban" data-answer="62">
+            <button class="btn btn-ghost btn-sm quiz-check">Cek Jawaban</button>
+            <span class="quiz-feedback"></span>
+          </div>
+        </div>
+
+        <div class="quiz-card">
+          <div class="quiz-q"><span class="qnum">2.</span><span>Barisan aritmetika dengan suku pertama 10 dan beda −3. Tentukan suku ke-9.</span></div>
+          <div class="quiz-row">
+            <input type="text" inputmode="decimal" placeholder="Jawaban" data-answer="-14">
+            <button class="btn btn-ghost btn-sm quiz-check">Cek Jawaban</button>
+            <span class="quiz-feedback"></span>
+          </div>
+        </div>
+
+        <div class="quiz-card">
+          <div class="quiz-q"><span class="qnum">3.</span><span>Perpustakaan menambah koleksi buku tiap bulan. Bulan pertama 150 buku, bertambah 30 buku tiap bulan. Berapa jumlah buku pada bulan ke-11?</span></div>
+          <div class="quiz-row">
+            <input type="text" inputmode="decimal" placeholder="Jawaban" data-answer="450">
+            <button class="btn btn-ghost btn-sm quiz-check">Cek Jawaban</button>
+            <span class="quiz-feedback"></span>
+          </div>
+        </div>
+
+        <div class="quiz-card">
+          <div class="quiz-q"><span class="qnum">4.</span><span>Sewa ruko tahun pertama Rp24.000.000, naik Rp2.000.000 tiap tahun. Berapa harga sewa tahun ke-7? (isi dalam rupiah tanpa titik, contoh: 30000000)</span></div>
+          <div class="quiz-row">
+            <input type="text" inputmode="decimal" placeholder="Jawaban" data-answer="36000000">
+            <button class="btn btn-ghost btn-sm quiz-check">Cek Jawaban</button>
+            <span class="quiz-feedback"></span>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- Tugas - Barisan Aritmetika -->
+    <div style="margin-top:44px">
+      <div class="section-head" style="margin-bottom:20px">
+        <span class="section-kicker">Tugas</span>
+        <h2 style="font-size:1.4rem">Tugas — Barisan Aritmetika</h2>
+        <p>10 soal dengan variasi bentuk (identifikasi, analisis kesalahan, membuat contoh, aplikasi, hingga HOTS). Kerjakan di buku tulismu.</p>
+      </div>
+      <ol class="task-list">
+
+        <li>Perhatikan barisan berikut: 2, 5, 8, 11, .... Apakah barisan ini merupakan barisan aritmetika? Jika ya, tentukan bedanya.</li>
+        <li>Benarkah barisan 1, 4, 9, 16, 25, ... merupakan barisan aritmetika? Jelaskan alasanmu.</li>
+        <li>Seorang siswa menghitung suku ke-8 dari barisan 6, 10, 14, 18, ... dengan cara: U8 = 6 + 8 × 4 = 38. Apakah perhitungan ini benar? Jika salah, tunjukkan letak kesalahannya dan berikan jawaban yang benar.</li>
+        <li>Buatlah sebuah barisan aritmetika dengan suku pertama 12 dan beda −5, lalu tuliskan 5 suku pertamanya.</li>
+        <li>Seorang atlet lari menambah jarak tempuhnya 500 meter setiap minggu, dimulai dari 2 km pada minggu pertama. Pada minggu keberapa jarak tempuhnya akan mencapai 7 km?</li>
+        <li>Perhatikan data berikut: untuk n = 1, 2, 3, 4 diperoleh nilai Un = 15, 22, 29, 36. Apakah data ini termasuk barisan aritmetika? Jika ya, tentukan rumus suku ke-n (Un) dari barisan tersebut.</li>
+        <li>Dua orang pekerja memiliki gaji awal masing-masing Rp3.000.000. Pekerja A mendapat kenaikan tetap Rp150.000 per bulan, sedangkan pekerja B mendapat kenaikan tetap Rp200.000 per bulan. Pada bulan keberapa gaji pekerja B pertama kali melebihi gaji pekerja A sebesar Rp1.000.000?</li>
+        <li class="hots">Diketahui barisan aritmetika dengan rumus suku ke-n: Un = 4n + 3. Buktikan bahwa barisan ini merupakan barisan aritmetika, kemudian tentukan nilai suku pertama (a) dan beda (b)-nya. <span class="hots-badge">HOTS</span></li>
+        <li class="hots">Suatu barisan aritmetika memiliki U4 = 2 × U2 dan beda (b) = 5. Tentukan suku pertama (a) barisan tersebut. <span class="hots-badge">HOTS</span></li>
+        <li class="hots">Menurutmu, mengapa memahami konsep barisan aritmetika penting dalam kehidupan sehari-hari? Berikan minimal dua contoh penerapannya selain yang sudah dibahas dalam materi ini. <span class="hots-badge">HOTS</span></li>
+
+      </ol>
+    </div>
+
+    <!-- Pekerjaan Rumah - Barisan Aritmetika -->
+    <div style="margin-top:44px">
+      <div class="section-head" style="margin-bottom:20px">
+        <span class="section-kicker">Pekerjaan Rumah</span>
+        <h2 style="font-size:1.4rem">PR — Barisan Aritmetika</h2>
+        <p>10 soal, diurutkan dari yang paling sederhana sampai soal HOTS (berpikir tingkat tinggi). Kerjakan di buku tulismu, lalu cek jawaban di sini.</p>
+      </div>
+      <ol class="task-list">
+
+        <li>Tentukan suku ke-6 dari barisan aritmetika: 3, 7, 11, 15, ...</li>
+        <li>Barisan aritmetika dengan suku pertama 5 dan beda 4. Tentukan suku ke-10.</li>
+        <li>Suku pertama suatu barisan aritmetika adalah 20 dan bedanya −3. Tentukan suku ke-8.</li>
+        <li>Sebuah barisan aritmetika: 100, 92, 84, ... Tentukan suku ke-15.</li>
+        <li>Suku ke-3 suatu barisan aritmetika adalah 11, dan suku ke-7 adalah 27. Tentukan beda (b) barisan tersebut.</li>
+        <li>Suku ke-5 suatu barisan aritmetika adalah 22 dan bedanya 3. Tentukan suku pertama (a).</li>
+        <li>Sebuah gedung pertunjukan menata kursi berbaris: baris pertama berisi 18 kursi, dan tiap baris berikutnya bertambah 4 kursi. Berapa banyak kursi pada baris ke-10?</li>
+        <li>Diketahui barisan aritmetika: 5, 9, 13, 17, ... Suku ke berapakah (n) yang nilainya 101?</li>
+        <li class="hots">Tiga bilangan membentuk barisan aritmetika. Jumlah ketiga bilangan itu 33 dan hasil kalinya 1155. Tentukan bilangan terbesar dari ketiga bilangan tersebut. <span class="hots-badge">HOTS</span></li>
+        <li class="hots">Dua barisan aritmetika: Barisan P: 5, 8, 11, 14, ... dan Barisan Q: 2, 6, 10, 14, .... Suku ke berapakah (n) nilai kedua barisan tersebut pertama kali sama? <span class="hots-badge">HOTS</span></li>
+
+      </ol>
+    </div>
+
+    <div class="next-section-nav">
+      <button type="button" class="btn btn-primary next-section-btn" data-unlock="deret">Lanjut ke Bagian III: Deret Aritmetika →</button>
+    </div>
+  </div>
+</section>
+
+<div class="container"><div class="stair-divider"><i></i><i></i><i></i><i></i><i></i></div></div>
+
+<!-- ===================== DERET ===================== -->
+<section class="section section-alt section-locked" id="deret">
+  <div class="container">
+    <div class="section-head">
+      <span class="section-kicker">Bagian III</span>
+      <h2>Deret Aritmetika</h2>
+      <p>Jika barisan mencari nilai satu suku, deret mencari <strong>jumlah total</strong> dari n suku pertama. Jumlah ini disimbolkan Sn.</p>
+    </div>
+
+    <div class="formula-box">
+      <div class="label">Rumus Deret Aritmetika</div>
+      <div class="formula alt">Sn = n/2 (2a + (n − 1)b)&nbsp; atau &nbsp;Sn = n/2 (a + Un)</div>
+      <div class="note">Sn = jumlah n suku pertama</div>
+    </div>
+
+    <!-- Calculator -->
+    <div class="calc">
+      <div class="calc-head"><span class="calc-badge">Sn</span><h3>Kalkulator Deret Aritmetika</h3></div>
+      <p class="calc-sub">Masukkan suku pertama, beda, dan banyak suku yang ingin dijumlahkan.</p>
+      <div class="calc-grid">
+        <div class="field"><label for="der-a">Suku pertama (a)</label><input type="number" id="der-a" value="3"></div>
+        <div class="field"><label for="der-b">Beda (b)</label><input type="number" id="der-b" value="4"></div>
+        <div class="field"><label for="der-n">Banyak suku (n)</label><input type="number" id="der-n" value="10" min="1" max="12"></div>
+        <div class="field" style="display:flex;align-items:flex-end"><button class="btn btn-teal" style="width:100%;justify-content:center" id="der-calc-btn">Hitung Sn</button></div>
+      </div>
+      <div class="calc-result" id="der-result">
+        <div class="headline" id="der-headline"></div>
+        <ol id="der-steps"></ol>
+        <div class="calc-viz" id="der-viz" aria-hidden="true"></div>
+      </div>
+    </div>
+
+    <!-- Examples: tabs -->
+    <div class="tabs">
+      <div class="tab-list" role="tablist">
+        <button class="tab-btn active" data-tab="deret-angka">Contoh Bentuk Angka</button>
+        <button class="tab-btn" data-tab="deret-konteks">Contoh Kontekstual</button>
+      </div>
+
+      <div class="tab-panel active" id="deret-angka">
+        <div class="example-list">
+
+          <div class="example">
+            <button class="example-header"><span class="example-num">1</span><span class="example-title">Jumlah n Suku Pertama<small>Hitung jumlah 10 suku pertama: 3 + 7 + 11 + 15 + ...</small></span><svg class="example-chevron" viewBox="0 0 20 20" fill="none"><path d="M5 7l5 6 5-6" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg></button>
+            <div class="example-body"><div class="example-body-inner">
+              <div class="steps">
+                <div>a = 3, b = 4, n = 10</div>
+                <div>S10 = 10/2 (2(3) + (9)(4))</div>
+                <div>S10 = 5(6 + 36) = 5 × 42 = 210</div>
+              </div>
+              <div class="conclusion">Jumlah 10 suku pertama deret tersebut adalah 210.</div>
+            </div></div>
+          </div>
+
+          <div class="example">
+            <button class="example-header"><span class="example-num">2</span><span class="example-title">Deret dengan Beda Negatif<small>Hitung jumlah 20 suku pertama: 100 + 95 + 90 + ...</small></span><svg class="example-chevron" viewBox="0 0 20 20" fill="none"><path d="M5 7l5 6 5-6" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg></button>
+            <div class="example-body"><div class="example-body-inner">
+              <div class="steps">
+                <div>a = 100, b = −5, n = 20</div>
+                <div>S20 = 20/2 (2(100) + (19)(−5))</div>
+                <div>S20 = 10(200 − 95) = 10 × 105 = 1.050</div>
+              </div>
+              <div class="conclusion">Jumlah 20 suku pertama deret tersebut adalah 1.050.</div>
+            </div></div>
+          </div>
+
+          <div class="example">
+            <button class="example-header"><span class="example-num">3</span><span class="example-title">Menggunakan Sn = n/2(a + Un)<small>a = 5, U13 = 65, n = 13. Tentukan jumlah deret.</small></span><svg class="example-chevron" viewBox="0 0 20 20" fill="none"><path d="M5 7l5 6 5-6" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg></button>
+            <div class="example-body"><div class="example-body-inner">
+              <div class="steps">
+                <div>S13 = 13/2 (5 + 65)</div>
+                <div>S13 = 13/2 × 70 = 13 × 35 = 455</div>
+              </div>
+              <div class="conclusion">Jumlah deret tersebut (S13) adalah 455.</div>
+            </div></div>
+          </div>
+
+          <div class="example">
+            <button class="example-header"><span class="example-num">4</span><span class="example-title">Mencari Beda dari Jumlah Diketahui<small>S8 = 144, a = 4. Tentukan beda, lalu U8.</small></span><svg class="example-chevron" viewBox="0 0 20 20" fill="none"><path d="M5 7l5 6 5-6" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg></button>
+            <div class="example-body"><div class="example-body-inner">
+              <div class="steps">
+                <div>144 = 8/2 (2(4) + 7b) = 4(8 + 7b)</div>
+                <div>36 = 8 + 7b → 7b = 28 → b = 4</div>
+                <div>U8 = 4 + 7(4) = 32</div>
+              </div>
+              <div class="conclusion">Beda deret tersebut adalah 4, dan U8 = 32.</div>
+            </div></div>
+          </div>
+
+          <div class="example">
+            <button class="example-header"><span class="example-num">5</span><span class="example-title">Jumlah Bilangan Kelipatan Tertentu<small>Jumlah semua kelipatan 3 antara 1 dan 100.</small></span><svg class="example-chevron" viewBox="0 0 20 20" fill="none"><path d="M5 7l5 6 5-6" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg></button>
+            <div class="example-body"><div class="example-body-inner">
+              <div class="steps">
+                <div>3, 6, 9, ..., 99 → a = 3, b = 3</div>
+                <div>99 = 3 + (n − 1)(3) → n = 33</div>
+                <div>S33 = 33/2 (3 + 99) = 33 × 51 = 1.683</div>
+              </div>
+              <div class="conclusion">Jumlah semua kelipatan 3 antara 1 dan 100 adalah 1.683.</div>
+            </div></div>
+          </div>
+
+        </div>
+      </div>
+
+      <div class="tab-panel" id="deret-konteks">
+        <div class="example-list">
+
+          <div class="example">
+            <button class="example-header"><span class="example-num">1</span><span class="example-title">Kapasitas Total Gedung<small>15 baris kursi, baris pertama 20 kursi, tiap baris +4. Total kapasitas?</small></span><svg class="example-chevron" viewBox="0 0 20 20" fill="none"><path d="M5 7l5 6 5-6" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg></button>
+            <div class="example-body"><div class="example-body-inner">
+              <div class="steps">
+                <div>a = 20, b = 4, n = 15</div>
+                <div>S15 = 15/2 (40 + 56)</div>
+                <div>S15 = 15/2 × 96 = 15 × 48 = 720</div>
+              </div>
+              <div class="conclusion">Kapasitas total gedung pertunjukan adalah 720 kursi.</div>
+            </div></div>
+          </div>
+
+          <div class="example">
+            <button class="example-header"><span class="example-num">2</span><span class="example-title">Total Tabungan 20 Hari<small>Tabungan Andi: hari pertama Rp5.000, naik Rp1.000/hari. Total 20 hari?</small></span><svg class="example-chevron" viewBox="0 0 20 20" fill="none"><path d="M5 7l5 6 5-6" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg></button>
+            <div class="example-body"><div class="example-body-inner">
+              <div class="steps">
+                <div>a = 5.000, b = 1.000, n = 20</div>
+                <div>S20 = 10(10.000 + 19.000)</div>
+                <div>S20 = 10 × 29.000 = 290.000</div>
+              </div>
+              <div class="conclusion">Total tabungan Andi selama 20 hari pertama adalah Rp290.000.</div>
+            </div></div>
+          </div>
+
+          <div class="example">
+            <button class="example-header"><span class="example-num">3</span><span class="example-title">Total Cicilan Menurun<small>Cicilan pertama Rp2.000.000, turun Rp100.000/bulan, 12 bulan. Total?</small></span><svg class="example-chevron" viewBox="0 0 20 20" fill="none"><path d="M5 7l5 6 5-6" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg></button>
+            <div class="example-body"><div class="example-body-inner">
+              <div class="steps">
+                <div>a = 2.000.000, b = −100.000, n = 12</div>
+                <div>U12 = 2.000.000 − 1.100.000 = 900.000</div>
+                <div>S12 = 6(2.000.000 + 900.000) = 17.400.000</div>
+              </div>
+              <div class="conclusion">Total cicilan yang dibayarkan selama 12 bulan adalah Rp17.400.000.</div>
+            </div></div>
+          </div>
+
+          <div class="example">
+            <button class="example-header"><span class="example-num">4</span><span class="example-title">Total Produksi Pabrik Setahun<small>Bulan pertama 500 unit, naik 50 unit/bulan, 12 bulan. Total?</small></span><svg class="example-chevron" viewBox="0 0 20 20" fill="none"><path d="M5 7l5 6 5-6" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg></button>
+            <div class="example-body"><div class="example-body-inner">
+              <div class="steps">
+                <div>a = 500, b = 50, n = 12</div>
+                <div>U12 = 500 + 550 = 1.050</div>
+                <div>S12 = 6(500 + 1.050) = 6 × 1.550 = 9.300</div>
+              </div>
+              <div class="conclusion">Total produksi pabrik selama 12 bulan pertama adalah 9.300 unit.</div>
+            </div></div>
+          </div>
+
+          <div class="example">
+            <button class="example-header"><span class="example-num">5</span><span class="example-title">Total Jarak Lari Latihan<small>Hari pertama 2 km, naik 0,5 km/hari, 10 hari. Total jarak?</small></span><svg class="example-chevron" viewBox="0 0 20 20" fill="none"><path d="M5 7l5 6 5-6" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg></button>
+            <div class="example-body"><div class="example-body-inner">
+              <div class="steps">
+                <div>a = 2, b = 0,5, n = 10</div>
+                <div>U10 = 2 + 4,5 = 6,5</div>
+                <div>S10 = 5(2 + 6,5) = 5 × 8,5 = 42,5</div>
+              </div>
+              <div class="conclusion">Total jarak yang ditempuh selama 10 hari latihan adalah 42,5 km.</div>
+            </div></div>
+          </div>
+
+        </div>
+      </div>
+    </div>
+
+    <!-- Latihan mandiri deret -->
+    <div style="margin-top:44px">
+      <div class="section-head" style="margin-bottom:20px">
+        <span class="section-kicker">Latihan Mandiri</span>
+        <h2 style="font-size:1.4rem">Uji Pemahamanmu — Deret Aritmetika</h2>
+      </div>
+      <div class="quiz-grid">
+
+        <div class="quiz-card">
+          <div class="quiz-q"><span class="qnum">1.</span><span>Hitung jumlah 15 suku pertama dari deret: 6 + 10 + 14 + 18 + ...</span></div>
+          <div class="quiz-row">
+            <input type="text" inputmode="decimal" placeholder="Jawaban" data-answer="510">
+            <button class="btn btn-ghost btn-sm quiz-check">Cek Jawaban</button>
+            <span class="quiz-feedback"></span>
+          </div>
+        </div>
+
+        <div class="quiz-card">
+          <div class="quiz-q"><span class="qnum">2.</span><span>Deret aritmetika dengan a = 8, b = 5, n = 10. Tentukan S10.</span></div>
+          <div class="quiz-row">
+            <input type="text" inputmode="decimal" placeholder="Jawaban" data-answer="305">
+            <button class="btn btn-ghost btn-sm quiz-check">Cek Jawaban</button>
+            <span class="quiz-feedback"></span>
+          </div>
+        </div>
+
+        <div class="quiz-card">
+          <div class="quiz-q"><span class="qnum">3.</span><span>Koperasi menjual buku: hari pertama 12, bertambah 3 buku/hari. Total terjual selama 14 hari?</span></div>
+          <div class="quiz-row">
+            <input type="text" inputmode="decimal" placeholder="Jawaban" data-answer="441">
+            <button class="btn btn-ghost btn-sm quiz-check">Cek Jawaban</button>
+            <span class="quiz-feedback"></span>
+          </div>
+        </div>
+
+        <div class="quiz-card">
+          <div class="quiz-q"><span class="qnum">4.</span><span>Toko kue: hari pertama 40 donat, bertambah 5 donat/hari, selama 20 hari. Total produksi?</span></div>
+          <div class="quiz-row">
+            <input type="text" inputmode="decimal" placeholder="Jawaban" data-answer="1750">
+            <button class="btn btn-ghost btn-sm quiz-check">Cek Jawaban</button>
+            <span class="quiz-feedback"></span>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- Tugas - Deret Aritmetika -->
+    <div style="margin-top:44px">
+      <div class="section-head" style="margin-bottom:20px">
+        <span class="section-kicker">Tugas</span>
+        <h2 style="font-size:1.4rem">Tugas — Deret Aritmetika</h2>
+        <p>10 soal dengan variasi bentuk (konsep, analisis kesalahan, membuat contoh, aplikasi, hingga HOTS). Kerjakan di buku tulismu.</p>
+      </div>
+      <ol class="task-list">
+
+        <li>Jelaskan perbedaan mendasar antara barisan aritmetika dan deret aritmetika, lalu berikan satu contoh untuk masing-masing.</li>
+        <li>Benarkah rumus Sn = n/2(a + Un) hanya bisa digunakan jika kita sudah mengetahui nilai suku terakhir (Un)? Jelaskan alasanmu.</li>
+        <li>Seorang siswa menghitung S6 dari deret 3 + 7 + 11 + 15 + ... dengan cara: S6 = 6 × 15 = 90. Apakah cara ini benar? Jika salah, jelaskan kesalahannya dan hitung jawaban yang benar.</li>
+        <li>Buatlah sebuah deret aritmetika dengan 5 suku yang jumlahnya (S5) sama dengan 100.</li>
+        <li>Sebuah perusahaan konstruksi menumpuk pipa: baris paling atas berisi 3 pipa, dan tiap baris di bawahnya bertambah 3 pipa. Jika terdapat 8 baris, berapa total pipa yang dibutuhkan?</li>
+        <li>Diketahui S4 = 44 dan S8 = 176 dari suatu deret aritmetika. Tanpa menghitung nilai b, apakah jumlah suku ke-5 sampai suku ke-8 sama dengan S4? Jelaskan alasanmu.</li>
+        <li>Dua toko roti mencatat penjualan mingguan berbentuk deret aritmetika. Toko A: 20 roti di minggu pertama, bertambah 4 roti/minggu. Toko B: 15 roti di minggu pertama, bertambah 6 roti/minggu. Toko manakah yang total penjualannya lebih banyak setelah 10 minggu? Tunjukkan perhitunganmu.</li>
+        <li class="hots">Buktikan bahwa jumlah n bilangan asli pertama (1 + 2 + 3 + ... + n) dapat dihitung dengan rumus deret aritmetika Sn = n/2 (n + 1). Tunjukkan langkah pembuktiannya. <span class="hots-badge">HOTS</span></li>
+        <li class="hots">Sebuah usaha katering membuat kue bertingkat: tingkat teratas berisi 5 kue, dan tiap tingkat di bawahnya bertambah 3 kue. Jika total kue yang tersedia hanya 200 buah, berapa tingkat maksimum yang dapat dibuat tanpa kekurangan kue? <span class="hots-badge">HOTS</span></li>
+        <li class="hots">Menurutmu, dalam situasi seperti apa penggunaan rumus Sn (deret) lebih tepat dibandingkan rumus Un (barisan)? Berikan satu contoh kasus nyata untuk mendukung jawabanmu. <span class="hots-badge">HOTS</span></li>
+
+      </ol>
+    </div>
+
+    <!-- Pekerjaan Rumah - Deret Aritmetika -->
+    <div style="margin-top:44px">
+      <div class="section-head" style="margin-bottom:20px">
+        <span class="section-kicker">Pekerjaan Rumah</span>
+        <h2 style="font-size:1.4rem">PR — Deret Aritmetika</h2>
+        <p>10 soal, diurutkan dari yang paling sederhana sampai soal HOTS.</p>
+      </div>
+      <ol class="task-list">
+
+        <li>Hitung jumlah 8 suku pertama dari deret: 4 + 9 + 14 + 19 + ...</li>
+        <li>Suatu deret aritmetika memiliki a = 10 dan b = 6. Tentukan S12.</li>
+        <li>Deret aritmetika: 50 + 45 + 40 + ... Tentukan jumlah 10 suku pertama.</li>
+        <li>Suatu barisan aritmetika mempunyai suku pertama 7 dan suku ke-10 adalah 43. Tentukan jumlah 10 suku pertama (S10).</li>
+        <li>Diketahui deret aritmetika dengan b = 4 dan S10 = 250. Tentukan suku pertama (a).</li>
+        <li>Seorang pekerja menabung tiap bulan: bulan pertama Rp50.000, dan tiap bulan berikutnya Rp10.000 lebih banyak dari bulan sebelumnya. Berapa total tabungan setelah 12 bulan? (isi tanpa titik, contoh: 1000000)</li>
+        <li>Jumlah n suku pertama suatu deret aritmetika dengan a = 3 dan b = 2 adalah 168. Tentukan nilai n.</li>
+        <li>Sebuah toko roti memproduksi 20 roti pada hari pertama, dan bertambah 5 roti tiap hari. Jika toko beroperasi selama 30 hari, berapa total roti yang diproduksi?</li>
+        <li class="hots">Jumlah 6 suku pertama suatu deret aritmetika adalah 72, dan jumlah 10 suku pertama adalah 200. Tentukan beda (b) deret tersebut. <span class="hots-badge">HOTS</span></li>
+        <li class="hots">Total pendapatan sebuah usaha selama 5 tahun pertama membentuk deret aritmetika dan berjumlah Rp150.000.000. Jika pendapatan tahun pertama Rp20.000.000, tentukan kenaikan pendapatan tiap tahun (beda, dalam rupiah, tanpa titik). <span class="hots-badge">HOTS</span></li>
+
+      </ol>
+    </div>
+
+    <div class="next-section-nav">
+      <button type="button" class="btn btn-primary next-section-btn" data-unlock="barisan-geo">Lanjut ke Bagian IV: Barisan Geometri →</button>
+    </div>
+  </div>
+</section>
+</div><!-- /#aritmetika -->
+
+<div class="container"><div class="stair-divider"><i></i><i></i><i></i><i></i><i></i></div></div>
+
+<div id="geometri">
+<!-- ===================== BARISAN GEOMETRI ===================== -->
+<section class="section section-locked" id="barisan-geo">
+  <div class="container">
+    <div class="section-head">
+      <span class="section-kicker violet">Bagian IV</span>
+      <h2>Barisan Geometri</h2>
+      <p>Barisan geometri adalah susunan bilangan dengan pola <strong>perkalian tetap</strong> antar suku. Perkalian tetap ini disebut <strong>Rasio (r)</strong>, dicari dengan r = Un ÷ Un₋1.</p>
+    </div>
+
+    <div class="formula-box">
+      <div class="label">Rumus Suku ke-n</div>
+      <div class="formula violet">Un = a · r<sup>n−1</sup></div>
+      <div class="note">a = suku pertama · r = rasio · n = urutan suku · Un = nilai suku ke-n</div>
+    </div>
+
+    <!-- Calculator -->
+    <div class="calc">
+      <div class="calc-head"><span class="calc-badge violet">Un</span><h3>Kalkulator Barisan Geometri</h3></div>
+      <p class="calc-sub">Masukkan suku pertama, rasio, dan urutan suku yang ingin dicari.</p>
+      <div class="calc-grid">
+        <div class="field"><label for="barg-a">Suku pertama (a)</label><input type="number" id="barg-a" value="3"></div>
+        <div class="field"><label for="barg-r">Rasio (r)</label><input type="number" id="barg-r" value="2" step="any"></div>
+        <div class="field"><label for="barg-n">Suku ke- (n)</label><input type="number" id="barg-n" value="7" min="1" max="20"></div>
+        <div class="field" style="display:flex;align-items:flex-end"><button class="btn btn-teal" style="width:100%;justify-content:center" id="barg-calc-btn">Hitung Un</button></div>
+      </div>
+      <div class="calc-result" id="barg-result">
+        <div class="headline" id="barg-headline"></div>
+        <ol id="barg-steps"></ol>
+        <div class="calc-viz" id="barg-viz" aria-hidden="true"></div>
+      </div>
+    </div>
+
+    <!-- Examples: tabs -->
+    <div class="tabs">
+      <div class="tab-list" role="tablist">
+        <button class="tab-btn active" data-tab="barisangeo-angka">Contoh Bentuk Angka</button>
+        <button class="tab-btn" data-tab="barisangeo-konteks">Contoh Kontekstual</button>
+      </div>
+
+      <div class="tab-panel active" id="barisangeo-angka">
+        <div class="example-list">
+
+          <div class="example">
+            <button class="example-header"><span class="example-num">1</span><span class="example-title">Menentukan Suku ke-n (Rasio &gt; 1)<small>Tentukan suku ke-7 dari barisan: 3, 6, 12, 24, ...</small></span><svg class="example-chevron" viewBox="0 0 20 20" fill="none"><path d="M5 7l5 6 5-6" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg></button>
+            <div class="example-body"><div class="example-body-inner">
+              <div class="steps">
+                <div>a = 3, r = 6 ÷ 3 = 2</div>
+                <div>U7 = 3 × 2⁶</div>
+                <div>U7 = 3 × 64 = 192</div>
+              </div>
+              <div class="conclusion">Suku ke-7 dari barisan tersebut adalah 192.</div>
+            </div></div>
+          </div>
+
+          <div class="example">
+            <button class="example-header"><span class="example-num">2</span><span class="example-title">Menentukan Suku ke-n (Rasio Pecahan)<small>Tentukan suku ke-6 dari barisan: 243, 81, 27, 9, ...</small></span><svg class="example-chevron" viewBox="0 0 20 20" fill="none"><path d="M5 7l5 6 5-6" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg></button>
+            <div class="example-body"><div class="example-body-inner">
+              <div class="steps">
+                <div>a = 243, r = 81 ÷ 243 = 1/3</div>
+                <div>U6 = 243 × (1/3)⁵</div>
+                <div>U6 = 243 ÷ 243 = 1</div>
+              </div>
+              <div class="conclusion">Suku ke-6 dari barisan tersebut adalah 1.</div>
+            </div></div>
+          </div>
+
+          <div class="example">
+            <button class="example-header"><span class="example-num">3</span><span class="example-title">Rasio &amp; Suku Pertama dari Dua Suku Diketahui<small>U2 = 6 dan U5 = 48. Tentukan rumus suku ke-n.</small></span><svg class="example-chevron" viewBox="0 0 20 20" fill="none"><path d="M5 7l5 6 5-6" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg></button>
+            <div class="example-body"><div class="example-body-inner">
+              <div class="steps">
+                <div>U5 ÷ U2 = r³ → 48 ÷ 6 = r³ → r = 2</div>
+                <div>U2 = a·r → 6 = a(2) → a = 3</div>
+                <div>Un = 3 × 2ⁿ⁻¹</div>
+              </div>
+              <div class="conclusion">Rumus suku ke-n barisan tersebut adalah Un = 3 × 2ⁿ⁻¹.</div>
+            </div></div>
+          </div>
+
+          <div class="example">
+            <button class="example-header"><span class="example-num">4</span><span class="example-title">Suku Tertentu dari Dua Suku Diketahui<small>U3 = 20 dan U6 = 160. Tentukan U8.</small></span><svg class="example-chevron" viewBox="0 0 20 20" fill="none"><path d="M5 7l5 6 5-6" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg></button>
+            <div class="example-body"><div class="example-body-inner">
+              <div class="steps">
+                <div>U6 ÷ U3 = r³ → 160 ÷ 20 = r³ → r = 2</div>
+                <div>U3 = a·r² → 20 = a(4) → a = 5</div>
+                <div>U8 = 5 × 2⁷ = 5 × 128 = 640</div>
+              </div>
+              <div class="conclusion">Suku ke-8 dari barisan tersebut adalah 640.</div>
+            </div></div>
+          </div>
+
+          <div class="example">
+            <button class="example-header"><span class="example-num">5</span><span class="example-title">Menentukan Banyak Suku (n)<small>Barisan: 2, 6, 18, ..., 486. Ada berapa suku?</small></span><svg class="example-chevron" viewBox="0 0 20 20" fill="none"><path d="M5 7l5 6 5-6" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg></button>
+            <div class="example-body"><div class="example-body-inner">
+              <div class="steps">
+                <div>a = 2, r = 3, Un = 486</div>
+                <div>486 = 2 × 3ⁿ⁻¹ → 3ⁿ⁻¹ = 243 = 3⁵</div>
+                <div>n − 1 = 5 → n = 6</div>
+              </div>
+              <div class="conclusion">Banyaknya suku pada barisan tersebut adalah 6 suku.</div>
+            </div></div>
+          </div>
+
+        </div>
+      </div>
+
+      <div class="tab-panel" id="barisangeo-konteks">
+        <div class="example-list">
+
+          <div class="example">
+            <button class="example-header"><span class="example-num">1</span><span class="example-title">Perkembangbiakan Bakteri<small>Mula-mula 5 bakteri, membelah jadi 2× lipat tiap jam. Jumlah bakteri jam ke-6?</small></span><svg class="example-chevron" viewBox="0 0 20 20" fill="none"><path d="M5 7l5 6 5-6" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg></button>
+            <div class="example-body"><div class="example-body-inner">
+              <div class="steps">
+                <div>a = 5, r = 2, dicari U7 (jam ke-6 = suku ke-7)</div>
+                <div>U7 = 5 × 2⁶</div>
+                <div>U7 = 5 × 64 = 320</div>
+              </div>
+              <div class="conclusion">Jumlah bakteri pada jam ke-6 adalah 320 bakteri.</div>
+            </div></div>
+          </div>
+
+          <div class="example">
+            <button class="example-header"><span class="example-num">2</span><span class="example-title">Tinggi Pantulan Bola<small>Pantulan pertama 8 m, tiap pantulan setengah dari sebelumnya. Tinggi pantulan ke-5?</small></span><svg class="example-chevron" viewBox="0 0 20 20" fill="none"><path d="M5 7l5 6 5-6" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg></button>
+            <div class="example-body"><div class="example-body-inner">
+              <div class="steps">
+                <div>a = 8, r = 1/2, dicari U5</div>
+                <div>U5 = 8 × (1/2)⁴</div>
+                <div>U5 = 8 ÷ 16 = 0,5</div>
+              </div>
+              <div class="conclusion">Tinggi pantulan ke-5 adalah 0,5 meter.</div>
+            </div></div>
+          </div>
+
+          <div class="example">
+            <button class="example-header"><span class="example-num">3</span><span class="example-title">Penyebaran Informasi<small>1 orang menyebar ke 3 orang tiap jam. Berapa penerima baru pada jam ke-5?</small></span><svg class="example-chevron" viewBox="0 0 20 20" fill="none"><path d="M5 7l5 6 5-6" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg></button>
+            <div class="example-body"><div class="example-body-inner">
+              <div class="steps">
+                <div>a = 1, r = 3, dicari U5</div>
+                <div>U5 = 1 × 3⁴</div>
+                <div>U5 = 81</div>
+              </div>
+              <div class="conclusion">Penerima baru pada jam ke-5 sebanyak 81 orang.</div>
+            </div></div>
+          </div>
+
+          <div class="example">
+            <button class="example-header"><span class="example-num">4</span><span class="example-title">Nilai Investasi Berbunga Majemuk<small>Modal awal Rp2.000.000, tumbuh 10% per tahun. Nilai tahun ke-4?</small></span><svg class="example-chevron" viewBox="0 0 20 20" fill="none"><path d="M5 7l5 6 5-6" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg></button>
+            <div class="example-body"><div class="example-body-inner">
+              <div class="steps">
+                <div>a = 2.000.000, r = 1,1, dicari U4</div>
+                <div>U4 = 2.000.000 × 1,1³</div>
+                <div>U4 = 2.000.000 × 1,331 = 2.662.000</div>
+              </div>
+              <div class="conclusion">Nilai investasi pada tahun ke-4 adalah Rp2.662.000.</div>
+            </div></div>
+          </div>
+
+          <div class="example">
+            <button class="example-header"><span class="example-num">5</span><span class="example-title">Populasi Kelinci<small>Mula-mula 4 ekor, berlipat 2× tiap bulan. Populasi bulan ke-6?</small></span><svg class="example-chevron" viewBox="0 0 20 20" fill="none"><path d="M5 7l5 6 5-6" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg></button>
+            <div class="example-body"><div class="example-body-inner">
+              <div class="steps">
+                <div>a = 4, r = 2, dicari U6</div>
+                <div>U6 = 4 × 2⁵</div>
+                <div>U6 = 4 × 32 = 128</div>
+              </div>
+              <div class="conclusion">Populasi kelinci pada bulan ke-6 adalah 128 ekor.</div>
+            </div></div>
+          </div>
+
+        </div>
+      </div>
+    </div>
+
+    <!-- Latihan mandiri barisan geometri -->
+    <div style="margin-top:44px">
+      <div class="section-head" style="margin-bottom:20px">
+        <span class="section-kicker violet">Latihan Mandiri</span>
+        <h2 style="font-size:1.4rem">Uji Pemahamanmu — Barisan Geometri</h2>
+        <p>Isi jawabanmu, lalu klik "Cek Jawaban".</p>
+      </div>
+      <div class="quiz-grid">
+
+        <div class="quiz-card">
+          <div class="quiz-q"><span class="qnum">1.</span><span>Tentukan suku ke-5 dari barisan geometri: 4, 8, 16, ...</span></div>
+          <div class="quiz-row">
+            <input type="text" inputmode="decimal" placeholder="Jawaban" data-answer="64">
+            <button class="btn btn-ghost btn-sm quiz-check">Cek Jawaban</button>
+            <span class="quiz-feedback"></span>
+          </div>
+        </div>
+
+        <div class="quiz-card">
+          <div class="quiz-q"><span class="qnum">2.</span><span>Barisan geometri dengan suku pertama 3 dan rasio 2. Tentukan suku ke-8.</span></div>
+          <div class="quiz-row">
+            <input type="text" inputmode="decimal" placeholder="Jawaban" data-answer="384">
+            <button class="btn btn-ghost btn-sm quiz-check">Cek Jawaban</button>
+            <span class="quiz-feedback"></span>
+          </div>
+        </div>
+
+        <div class="quiz-card">
+          <div class="quiz-q"><span class="qnum">3.</span><span>Virus komputer mula-mula menginfeksi 2 komputer, tiap jam menjadi 3× lipat. Berapa komputer terinfeksi pada jam ke-5 (U5)?</span></div>
+          <div class="quiz-row">
+            <input type="text" inputmode="decimal" placeholder="Jawaban" data-answer="162">
+            <button class="btn btn-ghost btn-sm quiz-check">Cek Jawaban</button>
+            <span class="quiz-feedback"></span>
+          </div>
+        </div>
+
+        <div class="quiz-card">
+          <div class="quiz-q"><span class="qnum">4.</span><span>Mesin fotokopi memperkecil gambar jadi setengah tiap kali. Ukuran awal 80 cm. Berapa ukuran setelah 4 kali pengecilan (U5)?</span></div>
+          <div class="quiz-row">
+            <input type="text" inputmode="decimal" placeholder="Jawaban" data-answer="5">
+            <button class="btn btn-ghost btn-sm quiz-check">Cek Jawaban</button>
+            <span class="quiz-feedback"></span>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- Tugas - Barisan Geometri -->
+    <div style="margin-top:44px">
+      <div class="section-head" style="margin-bottom:20px">
+        <span class="section-kicker violet">Tugas</span>
+        <h2 style="font-size:1.4rem">Tugas — Barisan Geometri</h2>
+        <p>10 soal dengan variasi bentuk (identifikasi, analisis kesalahan, membuat contoh, aplikasi, hingga HOTS). Kerjakan di buku tulismu.</p>
+      </div>
+      <ol class="task-list">
+
+        <li>Perhatikan barisan berikut: 5, 10, 20, 40, .... Apakah barisan ini merupakan barisan geometri? Jika ya, tentukan rasionya.</li>
+        <li>Benarkah barisan 2, 4, 6, 8, ... merupakan barisan geometri? Jelaskan alasanmu.</li>
+        <li>Seorang siswa menghitung suku ke-5 dari barisan geometri 3, 6, 12, ... dengan cara: U5 = 3 × 2 × 5 = 30. Apakah perhitungan ini benar? Jika salah, tunjukkan kesalahannya dan berikan jawaban yang benar.</li>
+        <li>Buatlah sebuah barisan geometri dengan suku pertama 4 dan rasio 1/2, lalu tuliskan 5 suku pertamanya.</li>
+        <li>Sebuah investasi awal Rp2.000.000 diperkirakan tumbuh 10% setiap tahun. Berapa nilai investasi tersebut setelah 4 tahun? (bulatkan ke rupiah terdekat)</li>
+        <li>Perhatikan data berikut: untuk n = 1, 2, 3, 4 diperoleh nilai Un = 7, 21, 63, 189. Apakah data ini termasuk barisan geometri? Jika ya, tentukan rasio dan rumus umum suku ke-n (Un).</li>
+        <li>Dua populasi bakteri diamati setiap jam. Populasi A: mula-mula 10, berlipat 2 kali tiap jam. Populasi B: mula-mula 40, berlipat 1,5 kali tiap jam. Pada jam keberapa populasi A pertama kali melebihi populasi B?</li>
+        <li class="hots">Diketahui barisan geometri dengan rumus suku ke-n: Un = 5 × 3^(n−1). Buktikan bahwa barisan ini merupakan barisan geometri, kemudian tentukan nilai suku pertama (a) dan rasio (r)-nya. <span class="hots-badge">HOTS</span></li>
+        <li class="hots">Suatu barisan geometri dengan semua suku positif memiliki U3 = 4 × U1. Tentukan nilai rasio (r) barisan tersebut. <span class="hots-badge">HOTS</span></li>
+        <li class="hots">Bandingkan pola pertumbuhan barisan aritmetika dan barisan geometri untuk jangka panjang. Menurutmu, mana yang lebih cocok digunakan untuk memodelkan pertumbuhan penduduk suatu kota? Jelaskan alasanmu. <span class="hots-badge">HOTS</span></li>
+
+      </ol>
+    </div>
+
+    <!-- Pekerjaan Rumah - Barisan Geometri -->
+    <div style="margin-top:44px">
+      <div class="section-head" style="margin-bottom:20px">
+        <span class="section-kicker violet">Pekerjaan Rumah</span>
+        <h2 style="font-size:1.4rem">PR — Barisan Geometri</h2>
+        <p>10 soal, diurutkan dari yang paling sederhana sampai soal HOTS.</p>
+      </div>
+      <ol class="task-list">
+
+        <li>Tentukan suku ke-6 dari barisan geometri: 2, 6, 18, 54, ...</li>
+        <li>Barisan geometri dengan suku pertama 5 dan rasio 2. Tentukan suku ke-7.</li>
+        <li>Diketahui barisan geometri: 64, 32, 16, 8, ... Tentukan suku ke-7.</li>
+        <li>Barisan geometri dengan suku pertama 3 dan rasio −2. Tentukan suku ke-6.</li>
+        <li>Suku ke-2 suatu barisan geometri adalah 6, dan suku ke-5 adalah 48. Tentukan rasio (r) barisan tersebut.</li>
+        <li>Suatu barisan geometri memiliki rasio 3 dan suku ke-4 adalah 135. Tentukan suku pertama (a).</li>
+        <li>Sekelompok bakteri membelah menjadi 2 kali lipat setiap 20 menit. Jika mula-mula ada 5 bakteri, berapa banyak bakteri setelah 5 kali pembelahan (U6)?</li>
+        <li>Barisan geometri: 3, 6, 12, 24, ... Suku ke berapakah (n) yang nilainya 1536?</li>
+        <li class="hots">Tiga bilangan membentuk barisan geometri. Hasil kali ketiganya 216 dan jumlahnya 26. Jika rasio lebih dari 1, tentukan bilangan terbesar dari ketiga bilangan tersebut. <span class="hots-badge">HOTS</span></li>
+        <li class="hots">Sebuah bola dijatuhkan; setiap kali memantul, tingginya menjadi 3/4 dari pantulan sebelumnya. Pantulan pertama mencapai tinggi 27 cm. Pada pantulan keberapa tinggi pantulan pertama kali kurang dari 10 cm? <span class="hots-badge">HOTS</span></li>
+
+      </ol>
+    </div>
+
+    <div class="next-section-nav">
+      <button type="button" class="btn btn-primary next-section-btn" data-unlock="deret-geo">Lanjut ke Bagian V: Deret Geometri →</button>
+    </div>
+  </div>
+</section>
+
+<div class="container"><div class="stair-divider"><i></i><i></i><i></i><i></i><i></i></div></div>
+
+<!-- ===================== DERET GEOMETRI ===================== -->
+<section class="section section-alt section-locked" id="deret-geo">
+  <div class="container">
+    <div class="section-head">
+      <span class="section-kicker violet">Bagian V</span>
+      <h2>Deret Geometri</h2>
+      <p>Sama seperti deret aritmetika, deret geometri mencari <strong>jumlah total</strong> dari n suku pertama sebuah barisan geometri.</p>
+    </div>
+
+    <div class="formula-box">
+      <div class="label">Rumus Deret Geometri</div>
+      <div class="formula violet">Sn = a(r<sup>n</sup> − 1) / (r − 1)&nbsp; atau &nbsp;Sn = a(1 − r<sup>n</sup>) / (1 − r)</div>
+      <div class="note">gunakan bentuk kedua bila 0 &lt; r &lt; 1, agar hasil bagi tetap positif</div>
+    </div>
+
+    <!-- Calculator -->
+    <div class="calc">
+      <div class="calc-head"><span class="calc-badge violet">Sn</span><h3>Kalkulator Deret Geometri</h3></div>
+      <p class="calc-sub">Masukkan suku pertama, rasio, dan banyak suku yang ingin dijumlahkan.</p>
+      <div class="calc-grid">
+        <div class="field"><label for="derg-a">Suku pertama (a)</label><input type="number" id="derg-a" value="2"></div>
+        <div class="field"><label for="derg-r">Rasio (r)</label><input type="number" id="derg-r" value="3" step="any"></div>
+        <div class="field"><label for="derg-n">Banyak suku (n)</label><input type="number" id="derg-n" value="6" min="1" max="20"></div>
+        <div class="field" style="display:flex;align-items:flex-end"><button class="btn btn-teal" style="width:100%;justify-content:center" id="derg-calc-btn">Hitung Sn</button></div>
+      </div>
+      <div class="calc-result" id="derg-result">
+        <div class="headline" id="derg-headline"></div>
+        <ol id="derg-steps"></ol>
+        <div class="calc-viz" id="derg-viz" aria-hidden="true"></div>
+      </div>
+    </div>
+
+    <!-- Examples: tabs -->
+    <div class="tabs">
+      <div class="tab-list" role="tablist">
+        <button class="tab-btn active" data-tab="deretgeo-angka">Contoh Bentuk Angka</button>
+        <button class="tab-btn" data-tab="deretgeo-konteks">Contoh Kontekstual</button>
+      </div>
+
+      <div class="tab-panel active" id="deretgeo-angka">
+        <div class="example-list">
+
+          <div class="example">
+            <button class="example-header"><span class="example-num">1</span><span class="example-title">Jumlah n Suku Pertama<small>Hitung jumlah 6 suku pertama: 2 + 6 + 18 + 54 + ...</small></span><svg class="example-chevron" viewBox="0 0 20 20" fill="none"><path d="M5 7l5 6 5-6" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg></button>
+            <div class="example-body"><div class="example-body-inner">
+              <div class="steps">
+                <div>a = 2, r = 3, n = 6</div>
+                <div>S6 = 2(3⁶ − 1) / (3 − 1)</div>
+                <div>S6 = 2(728) / 2 = 728</div>
+              </div>
+              <div class="conclusion">Jumlah 6 suku pertama deret tersebut adalah 728.</div>
+            </div></div>
+          </div>
+
+          <div class="example">
+            <button class="example-header"><span class="example-num">2</span><span class="example-title">Deret dengan Rasio Pecahan<small>Hitung jumlah 5 suku pertama: 96 + 48 + 24 + ...</small></span><svg class="example-chevron" viewBox="0 0 20 20" fill="none"><path d="M5 7l5 6 5-6" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg></button>
+            <div class="example-body"><div class="example-body-inner">
+              <div class="steps">
+                <div>a = 96, r = 1/2, n = 5</div>
+                <div>S5 = 96(1 − (1/2)⁵) / (1 − 1/2)</div>
+                <div>S5 = 96(31/32) × 2 = 186</div>
+              </div>
+              <div class="conclusion">Jumlah 5 suku pertama deret tersebut adalah 186.</div>
+            </div></div>
+          </div>
+
+          <div class="example">
+            <button class="example-header"><span class="example-num">3</span><span class="example-title">Menghitung Sn Langsung<small>a = 5, r = 3. Tentukan S4.</small></span><svg class="example-chevron" viewBox="0 0 20 20" fill="none"><path d="M5 7l5 6 5-6" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg></button>
+            <div class="example-body"><div class="example-body-inner">
+              <div class="steps">
+                <div>S4 = 5(3⁴ − 1) / (3 − 1)</div>
+                <div>S4 = 5(80) / 2</div>
+                <div>S4 = 400 / 2 = 200</div>
+              </div>
+              <div class="conclusion">Jumlah 4 suku pertama deret tersebut (S4) adalah 200.</div>
+            </div></div>
+          </div>
+
+          <div class="example">
+            <button class="example-header"><span class="example-num">4</span><span class="example-title">Mencari Rasio dari Jumlah Diketahui<small>S3 = 26, a = 2. Tentukan rasio, lalu U3.</small></span><svg class="example-chevron" viewBox="0 0 20 20" fill="none"><path d="M5 7l5 6 5-6" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg></button>
+            <div class="example-body"><div class="example-body-inner">
+              <div class="steps">
+                <div>26 = 2(1 + r + r²) → 1 + r + r² = 13</div>
+                <div>r² + r − 12 = 0 → (r+4)(r−3) = 0 → r = 3</div>
+                <div>U3 = a·r² = 2 × 9 = 18</div>
+              </div>
+              <div class="conclusion">Rasio deret tersebut adalah 3, dan U3 = 18.</div>
+            </div></div>
+          </div>
+
+          <div class="example">
+            <button class="example-header"><span class="example-num">5</span><span class="example-title">Deret dengan Suku Terakhir Diketahui<small>Tentukan jumlah deret: 1 + 2 + 4 + 8 + ... + 256.</small></span><svg class="example-chevron" viewBox="0 0 20 20" fill="none"><path d="M5 7l5 6 5-6" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg></button>
+            <div class="example-body"><div class="example-body-inner">
+              <div class="steps">
+                <div>a = 1, r = 2, Un = 256 → 2ⁿ⁻¹ = 256 = 2⁸ → n = 9</div>
+                <div>S9 = 1(2⁹ − 1) / (2 − 1)</div>
+                <div>S9 = 511</div>
+              </div>
+              <div class="conclusion">Jumlah deret tersebut adalah 511.</div>
+            </div></div>
+          </div>
+
+        </div>
+      </div>
+
+      <div class="tab-panel" id="deretgeo-konteks">
+        <div class="example-list">
+
+          <div class="example">
+            <button class="example-header"><span class="example-num">1</span><span class="example-title">Total Tinggi Pantulan Bola<small>Pantulan pertama 8 m, rasio 1/2. Total tinggi 4 pantulan pertama?</small></span><svg class="example-chevron" viewBox="0 0 20 20" fill="none"><path d="M5 7l5 6 5-6" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg></button>
+            <div class="example-body"><div class="example-body-inner">
+              <div class="steps">
+                <div>a = 8, r = 1/2, n = 4</div>
+                <div>S4 = 8(1 − (1/2)⁴) / (1 − 1/2)</div>
+                <div>S4 = 8(15/16) × 2 = 15</div>
+              </div>
+              <div class="conclusion">Total tinggi 4 pantulan pertama adalah 15 meter.</div>
+            </div></div>
+          </div>
+
+          <div class="example">
+            <button class="example-header"><span class="example-num">2</span><span class="example-title">Total Penyebaran Pesan Viral<small>Mulai dari 1 orang, tiap jam jadi 3× lipat. Total penerima setelah 5 jam?</small></span><svg class="example-chevron" viewBox="0 0 20 20" fill="none"><path d="M5 7l5 6 5-6" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg></button>
+            <div class="example-body"><div class="example-body-inner">
+              <div class="steps">
+                <div>a = 1, r = 3, n = 5</div>
+                <div>S5 = 1(3⁵ − 1) / (3 − 1)</div>
+                <div>S5 = 242 / 2 = 121</div>
+              </div>
+              <div class="conclusion">Total orang yang telah menerima pesan adalah 121 orang.</div>
+            </div></div>
+          </div>
+
+          <div class="example">
+            <button class="example-header"><span class="example-num">3</span><span class="example-title">Total Hadiah Turnamen Berlipat<small>Hadiah babak 1 Rp100.000, berlipat 2× tiap babak, 6 babak. Total hadiah?</small></span><svg class="example-chevron" viewBox="0 0 20 20" fill="none"><path d="M5 7l5 6 5-6" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg></button>
+            <div class="example-body"><div class="example-body-inner">
+              <div class="steps">
+                <div>a = 100.000, r = 2, n = 6</div>
+                <div>S6 = 100.000(2⁶ − 1) / (2 − 1)</div>
+                <div>S6 = 100.000 × 63 = 6.300.000</div>
+              </div>
+              <div class="conclusion">Total hadiah yang dibagikan selama 6 babak adalah Rp6.300.000.</div>
+            </div></div>
+          </div>
+
+          <div class="example">
+            <button class="example-header"><span class="example-num">4</span><span class="example-title">Total Tabungan Berlipat Ganda<small>Hari pertama Rp1.000, digandakan tiap hari, 8 hari. Total tabungan?</small></span><svg class="example-chevron" viewBox="0 0 20 20" fill="none"><path d="M5 7l5 6 5-6" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg></button>
+            <div class="example-body"><div class="example-body-inner">
+              <div class="steps">
+                <div>a = 1.000, r = 2, n = 8</div>
+                <div>S8 = 1.000(2⁸ − 1) / (2 − 1)</div>
+                <div>S8 = 1.000 × 255 = 255.000</div>
+              </div>
+              <div class="conclusion">Total tabungan selama 8 hari tersebut adalah Rp255.000.</div>
+            </div></div>
+          </div>
+
+          <div class="example">
+            <button class="example-header"><span class="example-num">5</span><span class="example-title">Total Udara Dikeluarkan Pompa Vakum<small>Tarikan pertama 512 ml, tiap tarikan setengah dari sebelumnya, 5 tarikan. Total?</small></span><svg class="example-chevron" viewBox="0 0 20 20" fill="none"><path d="M5 7l5 6 5-6" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg></button>
+            <div class="example-body"><div class="example-body-inner">
+              <div class="steps">
+                <div>a = 512, r = 1/2, n = 5</div>
+                <div>S5 = 512(1 − (1/2)⁵) / (1 − 1/2)</div>
+                <div>S5 = 512(31/32) × 2 = 992</div>
+              </div>
+              <div class="conclusion">Total udara yang dikeluarkan setelah 5 tarikan adalah 992 ml.</div>
+            </div></div>
+          </div>
+
+        </div>
+      </div>
+    </div>
+
+    <!-- Latihan mandiri deret geometri -->
+    <div style="margin-top:44px">
+      <div class="section-head" style="margin-bottom:20px">
+        <span class="section-kicker violet">Latihan Mandiri</span>
+        <h2 style="font-size:1.4rem">Uji Pemahamanmu — Deret Geometri</h2>
+      </div>
+      <div class="quiz-grid">
+
+        <div class="quiz-card">
+          <div class="quiz-q"><span class="qnum">1.</span><span>Hitung jumlah 5 suku pertama dari deret geometri: 3 + 6 + 12 + 24 + ...</span></div>
+          <div class="quiz-row">
+            <input type="text" inputmode="decimal" placeholder="Jawaban" data-answer="93">
+            <button class="btn btn-ghost btn-sm quiz-check">Cek Jawaban</button>
+            <span class="quiz-feedback"></span>
+          </div>
+        </div>
+
+        <div class="quiz-card">
+          <div class="quiz-q"><span class="qnum">2.</span><span>Deret geometri dengan a = 4, r = 3, n = 4. Tentukan S4.</span></div>
+          <div class="quiz-row">
+            <input type="text" inputmode="decimal" placeholder="Jawaban" data-answer="160">
+            <button class="btn btn-ghost btn-sm quiz-check">Cek Jawaban</button>
+            <span class="quiz-feedback"></span>
+          </div>
+        </div>
+
+        <div class="quiz-card">
+          <div class="quiz-q"><span class="qnum">3.</span><span>Turnamen esport: hadiah babak 1 Rp50.000, berlipat 2× tiap babak, 5 babak. Total hadiah?</span></div>
+          <div class="quiz-row">
+            <input type="text" inputmode="decimal" placeholder="Jawaban" data-answer="1550000">
+            <button class="btn btn-ghost btn-sm quiz-check">Cek Jawaban</button>
+            <span class="quiz-feedback"></span>
+          </div>
+        </div>
+
+        <div class="quiz-card">
+          <div class="quiz-q"><span class="qnum">4.</span><span>Bola: tinggi pantulan pertama 10 m, rasio 2/5. Total tinggi 3 pantulan pertama? (boleh desimal, contoh: 15.6)</span></div>
+          <div class="quiz-row">
+            <input type="text" inputmode="decimal" placeholder="Jawaban" data-answer="15.6">
+            <button class="btn btn-ghost btn-sm quiz-check">Cek Jawaban</button>
+            <span class="quiz-feedback"></span>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- Tugas - Deret Geometri -->
+    <div style="margin-top:44px">
+      <div class="section-head" style="margin-bottom:20px">
+        <span class="section-kicker violet">Tugas</span>
+        <h2 style="font-size:1.4rem">Tugas — Deret Geometri</h2>
+        <p>10 soal dengan variasi bentuk (konsep, analisis kesalahan, membuat contoh, aplikasi, hingga HOTS). Kerjakan di buku tulismu.</p>
+      </div>
+      <ol class="task-list">
+
+        <li>Jelaskan perbedaan mendasar antara barisan geometri dan deret geometri, lalu berikan satu contoh untuk masing-masing.</li>
+        <li>Benarkah rumus Sn = a(r<sup>n</sup> − 1)/(r − 1) tidak dapat digunakan jika r = 1? Jelaskan alasannya dan bagaimana cara menghitung Sn jika r = 1.</li>
+        <li>Seorang siswa menghitung S4 dari deret geometri 2 + 6 + 18 + 54 + ... dengan cara: S4 = 2 × 3 × 4 = 24. Apakah cara ini benar? Jika salah, tunjukkan kesalahannya dan hitung jawaban yang benar.</li>
+        <li>Buatlah sebuah deret geometri dengan 4 suku, lalu hitung sendiri jumlahnya (S4). Tuliskan nilai a, r, dan S4 yang kamu peroleh.</li>
+        <li>Sebuah pesan berantai: 1 orang mengirim pesan ke 3 orang baru, dan pola ini berlanjut hingga 5 tingkat. Berapa total orang yang menerima pesan hingga tingkat ke-5 (termasuk pengirim pertama)?</li>
+        <li>Diketahui S3 = 26 dan S4 = 80 dari suatu deret geometri. Tentukan nilai suku ke-4 (U4) tanpa harus mencari nilai a dan r terlebih dahulu.</li>
+        <li>Dua skema investasi ditawarkan. Skema A: a = Rp1.000.000, r = 1,2, selama 5 tahun. Skema B: a = Rp1.500.000, r = 1,1, selama 5 tahun. Skema manakah yang menghasilkan total dana lebih besar setelah 5 tahun? Tunjukkan perhitunganmu.</li>
+        <li class="hots">Buktikan bahwa jumlah n suku pertama deret geometri dapat dinyatakan sebagai Sn = a(1 − r<sup>n</sup>)/(1 − r) untuk r ≠ 1, dengan menurunkannya dari Sn − r·Sn. <span class="hots-badge">HOTS</span></li>
+        <li class="hots">Sebuah deret geometri memiliki S2 = 12 dan S4 = 120. Tentukan rasio (r) deret tersebut, dengan syarat r &gt; 0. <span class="hots-badge">HOTS</span></li>
+        <li class="hots">Menurutmu, mengapa deret geometri lebih sering digunakan untuk memodelkan pertumbuhan investasi atau penyebaran informasi (viral) dibandingkan deret aritmetika? Jelaskan dengan alasan matematis. <span class="hots-badge">HOTS</span></li>
+
+      </ol>
+    </div>
+
+    <!-- Pekerjaan Rumah - Deret Geometri -->
+    <div style="margin-top:44px">
+      <div class="section-head" style="margin-bottom:20px">
+        <span class="section-kicker violet">Pekerjaan Rumah</span>
+        <h2 style="font-size:1.4rem">PR — Deret Geometri</h2>
+        <p>10 soal, diurutkan dari yang paling sederhana sampai soal HOTS.</p>
+      </div>
+      <ol class="task-list">
+
+        <li>Hitung jumlah 5 suku pertama dari deret geometri: 2 + 6 + 18 + 54 + ...</li>
+        <li>Deret geometri dengan a = 4 dan r = 2. Tentukan S6.</li>
+        <li>Deret geometri: 5 + 10 + 20 + 40 + ... Tentukan jumlah 7 suku pertama.</li>
+        <li>Deret geometri dengan suku pertama 81 dan rasio 1/3. Tentukan jumlah 4 suku pertama.</li>
+        <li>Suatu deret geometri memiliki rasio 2 dan jumlah 4 suku pertama (S4) adalah 45. Tentukan suku pertama (a).</li>
+        <li>Suatu deret geometri memiliki suku pertama 4, dan S3 = 52. Tentukan rasio (r), dengan r &gt; 1.</li>
+        <li>Jumlah penonton bioskop tahun pertama 1.000 orang, dan diperkirakan naik menjadi 1,5 kali lipat tiap tahun. Berapa total penonton selama 4 tahun?</li>
+        <li>Sebuah startup memiliki 3 karyawan pada bulan pertama. Jumlah karyawan direncanakan menjadi 2 kali lipat tiap bulan. Berapa total karyawan yang pernah direkrut hingga bulan ke-5 (S5)?</li>
+        <li class="hots">Diketahui deret geometri dengan jumlah 3 suku pertama (S3) = 26 dan jumlah 6 suku pertama (S6) = 728. Tentukan rasio (r) deret tersebut. (Petunjuk: S6/S3 = 1 + r³) <span class="hots-badge">HOTS</span></li>
+        <li class="hots">Sebuah mesin fotokopi memperbanyak dokumen: sesi pertama 6 lembar, dan tiap sesi berikutnya menjadi 3 kali lipat sesi sebelumnya. Jika total salinan setelah beberapa sesi adalah 2.184 lembar, ada berapa sesi fotokopi yang telah dilakukan? (Petunjuk: gunakan rumus Sn dan cari n) <span class="hots-badge">HOTS</span></li>
+
+      </ol>
+    </div>
+
+    <div class="next-section-nav">
+      <button type="button" class="btn btn-primary next-section-btn" data-unlock="rangkuman">Lanjut ke Bagian VI: Rangkuman →</button>
+    </div>
+  </div>
+</section>
+</div><!-- /#geometri -->
+
+<div class="container"><div class="stair-divider"><i></i><i></i><i></i><i></i><i></i></div></div>
+
+<!-- ===================== RANGKUMAN ===================== -->
+<section class="section section-locked" id="rangkuman">
+  <div class="container">
+    <div class="section-head">
+      <span class="section-kicker">Bagian VI</span>
+      <h2>Rangkuman &amp; Peta Rumus</h2>
+    </div>
+    <div class="summary-grid">
+      <div class="formula-box" style="margin:0">
+        <div class="label">Barisan Aritmetika</div>
+        <div class="formula">Un = a + (n − 1)b</div>
+        <div class="note">mencari nilai satu suku tertentu</div>
+      </div>
+      <div class="formula-box" style="margin:0">
+        <div class="label">Deret Aritmetika</div>
+        <div class="formula alt">Sn = n/2 (2a + (n−1)b) = n/2 (a + Un)</div>
+        <div class="note">mencari jumlah total n suku pertama</div>
+      </div>
+      <div class="formula-box" style="margin:0">
+        <div class="label">Barisan Geometri</div>
+        <div class="formula violet">Un = a · r<sup>n−1</sup></div>
+        <div class="note">mencari nilai satu suku tertentu</div>
+      </div>
+      <div class="formula-box" style="margin:0">
+        <div class="label">Deret Geometri</div>
+        <div class="formula violet">Sn = a(r<sup>n</sup>−1) / (r−1)</div>
+        <div class="note">mencari jumlah total n suku pertama</div>
+      </div>
+    </div>
+    <h3 style="font-size:1.1rem;margin-bottom:14px">Tips Mengingat</h3>
+    <ul class="tips-list">
+      <li><span class="dot"></span><span><strong>Aritmetika</strong> → antar suku selisihnya <em>tetap dijumlah/dikurang</em> (beda, b). <strong>Geometri</strong> → antar suku <em>tetap dikali/dibagi</em> (rasio, r).</span></li>
+      <li><span class="dot"></span><span><strong>b atau r positif &gt; 1</strong> → barisan naik (tabungan, gaji, bakteri, investasi). <strong>0 &lt; r &lt; 1</strong> → barisan menurun mendekati nol (pantulan bola, penyusutan).</span></li>
+      <li><span class="dot"></span><span>Kata kunci <em>"pada urutan/hari/bulan/baris/jam ke-..."</em> biasanya mengarah ke rumus <strong>Un</strong>.</span></li>
+      <li><span class="dot"></span><span>Kata kunci <em>"total/jumlah keseluruhan selama..."</em> biasanya mengarah ke rumus <strong>Sn</strong>.</span></li>
+      <li><span class="dot"></span><span>Cek dulu polanya: selisih antar suku tetap → Aritmetika. Hasil bagi antar suku tetap → Geometri.</span></li>
+    </ul>
+
+    <div class="next-section-nav">
+      <button type="button" class="btn btn-primary next-section-btn" data-unlock="lkpd">Lanjut ke Bagian VII: LKPD Interaktif →</button>
+    </div>
+  </div>
+</section>
+
+<div class="container"><div class="stair-divider"><i></i><i></i><i></i><i></i><i></i></div></div>
+
+<!-- ===================== LKPD ===================== -->
+<section class="section section-alt section-locked" id="lkpd">
+  <div class="container">
+    <div class="section-head">
+      <span class="section-kicker">Bagian VII</span>
+      <h2>LKPD Interaktif — Studi Kasus Aritmetika &amp; Geometri</h2>
+      <p>Isi lembar kerja ini bersama kelompokmu. Ada dua studi kasus: Proyek Konser Amal (Aritmetika) dan Gerakan Menanam Berantai (Geometri). Jawabanmu otomatis tersimpan di browser ini, sehingga bisa dilanjutkan nanti.</p>
+    </div>
+
+    <div class="lkpd-shell">
+      <div class="lkpd-top">
+        <div>
+          <strong>Identitas Peserta Didik</strong><br>
+          Isi bagian ini terlebih dahulu sebelum mengerjakan LKPD 1 maupun LKPD 2.
+        </div>
+        <div class="lkpd-meta">Otomatis muncul di lembar cetak / PDF kedua LKPD</div>
+      </div>
+      <div class="group-grid lkpd-identity">
+        <div class="field"><label for="lk-nama">Nama</label><input type="text" id="lk-nama" placeholder="Nama lengkap"></div>
+        <div class="field"><label for="lk-kelas">Kelas</label><input type="text" id="lk-kelas" placeholder="Contoh: XI-2"></div>
+        <div class="field"><label for="lk-absen">Nomor Absen</label><input type="text" id="lk-absen" placeholder="Contoh: 15"></div>
+      </div>
+    </div>
+
+    <div class="lkpd-shell">
+      <div class="lkpd-top">
+        <div>
+          <strong>Materi:</strong> Barisan &amp; Deret Aritmetika — Studi Kasus 1<br>
+          <strong>Mapel:</strong> Matematika SMA Kelas XI · <strong>Waktu:</strong> 35 Menit
+        </div>
+        <div class="lkpd-meta">Jawaban tersimpan otomatis di perangkat ini</div>
+      </div>
+
+      <div class="group-grid">
+        <div class="field"><label for="lk-group">Nama Kelompok</label><input type="text" id="lk-group" placeholder="Contoh: Kelompok 3"></div>
+        <div class="field"><label for="lk-members">Anggota (pisahkan dengan koma)</label><input type="text" id="lk-members" placeholder="Contoh: Ani, Budi, Citra, Dedi"></div>
+      </div>
+
+      <p><strong>Studi Kasus 1 — Proyek Konser Amal Pensi Sekolah:</strong> OSIS SMAN 1 merencanakan Konser Amal di aula sekolah. Baris ke-1 diisi 30 kursi, baris ke-2 diisi 34 kursi, baris ke-3 diisi 38 kursi — pola ini berlanjut sampai maksimal 15 baris. Tiket dijual seragam Rp50.000, dengan target dana minimal Rp40.000.000.</p>
+
+      <div class="lkpd-step">
+        <h4>Langkah 1 — Identifikasi Masalah</h4>
+        <div class="lkpd-fields">
+          <div class="field"><label>Suku pertama (a)</label><input type="text" data-lkpd="a" data-answer="30"></div>
+          <div class="field"><label>Beda (b)</label><input type="text" data-lkpd="b" data-answer="4"></div>
+          <div class="field"><label>Banyak baris (n)</label><input type="text" data-lkpd="n" data-answer="15"></div>
+        </div>
+        <div class="lkpd-check-row"><button class="btn btn-ghost btn-sm lkpd-check">Cek Langkah Ini</button><span class="quiz-feedback"></span></div>
+      </div>
+
+      <div class="lkpd-step">
+        <h4>Langkah 2 — Kapasitas Baris Terakhir (Konsep Barisan)</h4>
+        <p style="margin-bottom:8px">Hitung kursi di baris ke-15 (U15) dengan Un = a + (n−1)b.</p>
+        <div class="lkpd-fields two">
+          <div class="field"><label>Cara / perhitungan</label><input type="text" data-lkpd="u15work" placeholder="30 + (14)(4) = ..."></div>
+          <div class="field"><label>Hasil U15</label><input type="text" data-lkpd="u15" data-answer="86"></div>
+        </div>
+        <div class="lkpd-check-row"><button class="btn btn-ghost btn-sm lkpd-check">Cek Langkah Ini</button><span class="quiz-feedback"></span></div>
+      </div>
+
+      <div class="lkpd-step">
+        <h4>Langkah 3 — Kapasitas Total Gedung (Konsep Deret)</h4>
+        <p style="margin-bottom:8px">Hitung total kursi baris 1–15 (S15) dengan Sn = n/2 (a + Un).</p>
+        <div class="lkpd-fields two">
+          <div class="field"><label>Cara / perhitungan</label><input type="text" data-lkpd="s15work" placeholder="15/2 (30 + 86) = ..."></div>
+          <div class="field"><label>Hasil S15</label><input type="text" data-lkpd="s15" data-answer="870"></div>
+        </div>
+        <div class="lkpd-check-row"><button class="btn btn-ghost btn-sm lkpd-check">Cek Langkah Ini</button><span class="quiz-feedback"></span></div>
+      </div>
+
+      <div class="lkpd-step">
+        <h4>Langkah 4 — Analisis &amp; Pengambilan Keputusan (HOTS)</h4>
+        <p style="margin-bottom:8px">Jika semua tiket sold out, apakah target dana Rp40.000.000 tercapai? Hitung estimasi pendapatan.</p>
+        <div class="lkpd-fields two">
+          <div class="field"><label>Estimasi pendapatan (Rp)</label><input type="text" data-lkpd="pendapatan" data-answer="43500000"></div>
+          <div class="field"><label>Tercapai / tidak?</label><input type="text" data-lkpd="tercapai" placeholder="Tercapai / Tidak tercapai"></div>
+        </div>
+        <div class="lkpd-check-row"><button class="btn btn-ghost btn-sm lkpd-check">Cek Langkah Ini</button><span class="quiz-feedback"></span></div>
+      </div>
+
+      <div class="lkpd-step" style="border-color:var(--amber)">
+        <h4>Kesimpulan Studi Kasus 1</h4>
+        <textarea class="lkpd-textarea" id="lk-conclusion" placeholder="Tuliskan kesimpulan kelompok kalian di sini..."></textarea>
+      </div>
+
+      <div class="lkpd-actions">
+        <button class="btn btn-primary" id="lk-save-1">Simpan Jawaban LKPD 1</button>
+        <button class="btn btn-ghost" id="lk-print-1">Cetak / Simpan sebagai PDF (LKPD 1)</button>
+      </div>
+      <div class="save-note" id="lk-save-note-1">Belum ada perubahan tersimpan.</div>
+    </div>
+
+    <div class="section-head" style="margin-top:40px">
+      <span class="section-kicker violet">Studi Kasus 2</span>
+      <h2 style="font-size:1.4rem">LKPD — Gerakan Menanam Berantai (Geometri)</h2>
+    </div>
+
+    <div class="lkpd-shell">
+      <div class="lkpd-top">
+        <div>
+          <strong>Materi:</strong> Barisan &amp; Deret Geometri — Studi Kasus 2<br>
+          <strong>Mapel:</strong> Matematika SMA Kelas XI · <strong>Waktu:</strong> 35 Menit
+        </div>
+        <div class="lkpd-meta">Gunakan nama kelompok yang sama seperti Studi Kasus 1</div>
+      </div>
+
+      <p><strong>Studi Kasus 2 — Gerakan Menanam Berantai:</strong> Untuk memperingati Hari Bumi, OSIS menggagas program "Satu Pohon, Banyak Pohon". Pada minggu pertama, 3 siswa menanam pohon. Setiap siswa yang sudah menanam kemudian mengajak 3 siswa baru untuk ikut menanam di minggu berikutnya, sehingga jumlah <em>penanam baru</em> selalu 3 kali lipat dari minggu sebelumnya. Program ini berjalan selama 6 minggu, dan setiap penanam wajib menanam tepat 1 pohon. Sekolah menargetkan minimal 1.000 pohon tertanam dari program ini.</p>
+
+      <div class="lkpd-step">
+        <h4>Langkah 1 — Identifikasi Masalah</h4>
+        <div class="lkpd-fields">
+          <div class="field"><label>Penanam baru minggu ke-1 (a)</label><input type="text" data-lkpd="g-a" data-answer="3"></div>
+          <div class="field"><label>Rasio (r)</label><input type="text" data-lkpd="g-r" data-answer="3"></div>
+          <div class="field"><label>Lama program / minggu (n)</label><input type="text" data-lkpd="g-n" data-answer="6"></div>
+        </div>
+        <div class="lkpd-check-row"><button class="btn btn-ghost btn-sm lkpd-check">Cek Langkah Ini</button><span class="quiz-feedback"></span></div>
+      </div>
+
+      <div class="lkpd-step">
+        <h4>Langkah 2 — Penanam Baru di Minggu Terakhir (Konsep Barisan)</h4>
+        <p style="margin-bottom:8px">Hitung banyak penanam baru pada minggu ke-6 (U6) dengan Un = a·r<sup>n−1</sup>.</p>
+        <div class="lkpd-fields two">
+          <div class="field"><label>Cara / perhitungan</label><input type="text" data-lkpd="g-u6work" placeholder="3 × 3⁵ = ..."></div>
+          <div class="field"><label>Hasil U6</label><input type="text" data-lkpd="g-u6" data-answer="729"></div>
+        </div>
+        <div class="lkpd-check-row"><button class="btn btn-ghost btn-sm lkpd-check">Cek Langkah Ini</button><span class="quiz-feedback"></span></div>
+      </div>
+
+      <div class="lkpd-step">
+        <h4>Langkah 3 — Total Pohon Tertanam (Konsep Deret)</h4>
+        <p style="margin-bottom:8px">Hitung total pohon yang tertanam selama 6 minggu (S6) dengan Sn = a(r<sup>n</sup>−1)/(r−1).</p>
+        <div class="lkpd-fields two">
+          <div class="field"><label>Cara / perhitungan</label><input type="text" data-lkpd="g-s6work" placeholder="3(3⁶ − 1)/(3 − 1) = ..."></div>
+          <div class="field"><label>Hasil S6</label><input type="text" data-lkpd="g-s6" data-answer="1092"></div>
+        </div>
+        <div class="lkpd-check-row"><button class="btn btn-ghost btn-sm lkpd-check">Cek Langkah Ini</button><span class="quiz-feedback"></span></div>
+      </div>
+
+      <div class="lkpd-step">
+        <h4>Langkah 4 — Analisis &amp; Pengambilan Keputusan (HOTS)</h4>
+        <p style="margin-bottom:8px">Apakah target 1.000 pohon tercapai dalam 6 minggu? Jika ya, berapa kelebihannya?</p>
+        <div class="lkpd-fields two">
+          <div class="field"><label>Selisih dari target (pohon)</label><input type="text" data-lkpd="g-selisih" data-answer="92"></div>
+          <div class="field"><label>Tercapai / tidak?</label><input type="text" data-lkpd="g-tercapai" placeholder="Tercapai / Tidak tercapai"></div>
+        </div>
+        <div class="lkpd-check-row"><button class="btn btn-ghost btn-sm lkpd-check">Cek Langkah Ini</button><span class="quiz-feedback"></span></div>
+      </div>
+
+      <div class="lkpd-step" style="border-color:var(--violet)">
+        <h4>Kesimpulan Studi Kasus 2</h4>
+        <textarea class="lkpd-textarea" data-lkpd="g-conclusion" placeholder="Tuliskan kesimpulan kelompok kalian di sini..."></textarea>
+      </div>
+
+      <div class="lkpd-actions">
+        <button class="btn btn-primary" id="lk-save-2">Simpan Jawaban LKPD 2</button>
+        <button class="btn btn-ghost" id="lk-print-2">Cetak / Simpan sebagai PDF (LKPD 2)</button>
+      </div>
+      <div class="save-note" id="lk-save-note-2">Belum ada perubahan tersimpan.</div>
+
+      <div class="lkpd-actions" style="margin-top:14px">
+        <button class="btn btn-ghost" id="lk-reset">Kosongkan Semua Jawaban (LKPD 1 &amp; 2)</button>
+      </div>
+    </div>
+
+    <div class="section-head" style="margin-top:48px">
+      <span class="section-kicker">Refleksi</span>
+      <h2 style="font-size:1.4rem">Refleksi Peserta Didik</h2>
+    </div>
+    <div class="lkpd-shell">
+      <div class="field" style="margin-bottom:18px">
+        <label>1. Bagian mana yang paling mudah dipahami?</label>
+        <textarea class="lkpd-textarea" id="lk-ref1" style="min-height:60px"></textarea>
+      </div>
+      <div class="field" style="margin-bottom:18px">
+        <label>2. Bagian mana yang masih terasa sulit?</label>
+        <textarea class="lkpd-textarea" id="lk-ref2" style="min-height:60px"></textarea>
+      </div>
+      <div class="field">
+        <label>3. Contoh lain penerapan barisan/deret aritmetika maupun geometri dalam kehidupanmu?</label>
+        <textarea class="lkpd-textarea" id="lk-ref3" style="min-height:60px"></textarea>
+      </div>
+      <div class="lkpd-actions">
+        <button class="btn btn-primary" id="lk-ref-save">Simpan Refleksi</button>
+      </div>
+      <div class="save-note" id="lk-ref-save-note">Belum ada perubahan tersimpan.</div>
+
+      <div class="next-section-nav">
+        <button type="button" class="btn btn-primary next-section-btn" data-unlock="guru">Lanjut ke Bagian VIII: Panduan Guru →</button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===================== GURU / RUBRIK ===================== -->
+<section class="section section-locked" id="guru">
+  <div class="container">
+    <div class="section-head">
+      <span class="section-kicker">Bagian VIII</span>
+      <h2>Panduan Guru</h2>
+      <p>Rubrik penilaian LKPD dan kunci jawaban seluruh latihan mandiri serta PR (Aritmetika &amp; Geometri). Bagian ini disembunyikan agar tidak terlihat langsung oleh peserta didik.</p>
+    </div>
+
+    <div class="guru-gate" id="guruGate">
+      <p style="margin-bottom:16px">Konten ini khusus untuk guru — berisi kunci jawaban dan rubrik penilaian. Masukkan kata sandi untuk membuka.</p>
+      <form id="guru-gate-form" class="guru-gate-form" autocomplete="off">
+        <input type="password" id="guru-gate-pass" class="guru-gate-input" placeholder="Masukkan kata sandi" inputmode="numeric" autocomplete="off">
+        <button type="submit" class="btn btn-primary" id="guru-gate-btn">Tampilkan Konten Guru</button>
+      </form>
+      <p id="guru-gate-error" class="guru-gate-error" style="display:none">Kata sandi salah. Silakan coba lagi.</p>
+    </div>
+
+    <div class="guru-content" id="guruContent">
+      <h3 style="font-size:1.1rem">A. Rubrik Penilaian LKPD</h3>
+      <table class="rubric-table">
+        <thead><tr><th>Aspek Penilaian</th><th>Skor 3 (Baik)</th><th>Skor 2 (Cukup)</th><th>Skor 1 (Kurang)</th></tr></thead>
+        <tbody>
+          <tr><td>Identifikasi data (a, b/r, n)</td><td>Tepat dan lengkap</td><td>Sebagian tepat</td><td>Banyak kesalahan</td></tr>
+          <tr><td>Penerapan rumus Un &amp; Sn</td><td>Rumus dan hitungan benar</td><td>Rumus benar, hitungan kurang tepat</td><td>Rumus tidak tepat</td></tr>
+          <tr><td>Analisis HOTS (keputusan/target)</td><td>Analisis logis dan tepat</td><td>Analisis kurang lengkap</td><td>Tidak ada analisis</td></tr>
+          <tr><td>Kerja sama kelompok</td><td>Semua anggota aktif berkontribusi</td><td>Sebagian anggota aktif</td><td>Didominasi 1 orang</td></tr>
+        </tbody>
+      </table>
+
+      <h3 style="font-size:1.1rem;margin-top:26px">Kunci Jawaban Studi Kasus 1 LKPD (Aritmetika — Pensi Sekolah)</h3>
+      <ul class="key-list">
+        <li>a = 30, b = 4, n = 15</li>
+        <li>U15 = 30 + (14)(4) = 86 kursi</li>
+        <li>S15 = 15/2 (30 + 86) = 870 kursi</li>
+        <li>Estimasi pendapatan = 870 × Rp50.000 = Rp43.500.000</li>
+        <li>Kesimpulan: target Rp40.000.000 TERCAPAI (Rp43.500.000 &gt; Rp40.000.000)</li>
+      </ul>
+
+      <h3 style="font-size:1.1rem;margin-top:26px">Kunci Jawaban Studi Kasus 2 LKPD (Geometri — Menanam Berantai)</h3>
+      <ul class="key-list">
+        <li>a = 3, r = 3, n = 6</li>
+        <li>U6 = 3 × 3⁵ = 3 × 243 = 729 penanam baru</li>
+        <li>S6 = 3(3⁶ − 1)/(3 − 1) = 3(728)/2 = 1.092 pohon</li>
+        <li>Selisih dari target = 1.092 − 1.000 = 92 pohon</li>
+        <li>Kesimpulan: target 1.000 pohon TERCAPAI, kelebihan 92 pohon</li>
+      </ul>
+
+      <h3 style="font-size:1.1rem;margin-top:26px">B. Kunci Jawaban Latihan Mandiri — Barisan</h3>
+      <ul class="key-list">
+        <li>1. U12 = 7 + (11)(5) = 62</li>
+        <li>2. U9 = 10 + (8)(−3) = −14</li>
+        <li>3. U11 = 150 + (10)(30) = 450 buku</li>
+        <li>4. U7 = 24.000.000 + (6)(2.000.000) = Rp36.000.000</li>
+      </ul>
+
+      <h3 style="font-size:1.1rem;margin-top:26px">C. Kunci Jawaban Latihan Mandiri — Deret Aritmetika</h3>
+      <ul class="key-list">
+        <li>1. S15 = 15/2(12 + 56) = 510</li>
+        <li>2. S10 = 5(16 + 45) = 305</li>
+        <li>3. S14 = 7(12 + 51) = 441 buku</li>
+        <li>4. S20 = 10(40 + 135) = 1.750 donat</li>
+      </ul>
+
+      <h3 style="font-size:1.1rem;margin-top:26px">D. Kunci Jawaban Latihan Mandiri — Barisan Geometri</h3>
+      <ul class="key-list">
+        <li>1. U5 = 4 × 2⁴ = 64</li>
+        <li>2. U8 = 3 × 2⁷ = 384</li>
+        <li>3. U5 = 2 × 3⁴ = 162 komputer</li>
+        <li>4. U5 = 80 × (1/2)⁴ = 5 cm</li>
+      </ul>
+
+      <h3 style="font-size:1.1rem;margin-top:26px">E. Kunci Jawaban Latihan Mandiri — Deret Geometri</h3>
+      <ul class="key-list">
+        <li>1. S5 = 3(2⁵−1)/(2−1) = 93</li>
+        <li>2. S4 = 4(3⁴−1)/(3−1) = 160</li>
+        <li>3. S5 = 50.000(2⁵−1) = Rp1.550.000</li>
+        <li>4. S3 = 10(1−(2/5)³)/(1−2/5) = 15,6 m</li>
+      </ul>
+
+      <h3 style="font-size:1.1rem;margin-top:26px">F. Kunci Jawaban Tugas — Barisan Aritmetika</h3>
+      <ul class="key-list">
+        <li>1. Ya, aritmetika, dengan b = 3</li>
+        <li>2. Bukan — selisih antar suku tidak tetap (3, 5, 7, ...), jadi bukan barisan aritmetika (ini pola barisan kuadrat)</li>
+        <li>3. Salah — rumus yang benar Un = a + (n−1)b, sehingga U8 = 6 + (7)(4) = 34, bukan 38 (kesalahan siswa: memakai faktor n = 8, seharusnya (n−1) = 7)</li>
+        <li>4. Contoh jawaban: 12, 7, 2, −3, −8</li>
+        <li>5. a = 2 km, b = 0,5 km → 7 = 2 + (n−1)(0,5) → n = 11 (minggu ke-11)</li>
+        <li>6. Ya, aritmetika dengan b = 7 → Un = 15 + (n−1)(7) = 7n + 8</li>
+        <li>7. Selisih gaji = (n−1)(50.000). Pada bulan ke-21 selisih tepat Rp1.000.000; bulan pertama yang selisihnya melebihi Rp1.000.000 adalah bulan ke-22</li>
+        <li>8. HOTS — Un = 4n+3 → beda U(n+1) − Un = 4 (tetap) → terbukti aritmetika; a = U1 = 7, b = 4</li>
+        <li>9. HOTS — a+3b = 2(a+b) → a+15 = 2a+10 → a = 5</li>
+        <li>10. HOTS — esai reflektif, jawaban bervariasi (nilai penuh untuk penalaran & contoh yang relevan, mis. gaji dengan kenaikan tetap, cicilan tetap, dsb.)</li>
+      </ul>
+
+      <h3 style="font-size:1.1rem;margin-top:26px">G. Kunci Jawaban Tugas — Deret Aritmetika</h3>
+      <ul class="key-list">
+        <li>1. Barisan mencari nilai satu suku; deret mencari jumlah beberapa suku. Contoh barisan: 2,4,6,8; deret: 2+4+6+8</li>
+        <li>2. Salah — Sn = n/2(a+Un) butuh Un, tapi Un bisa dicari lebih dulu dari Un = a+(n−1)b, atau langsung pakai Sn = n/2(2a+(n−1)b)</li>
+        <li>3. Salah — cara yang benar: a=3, b=4, n=6 → S6 = 6/2(2(3)+5(4)) = 3(6+20) = 78, bukan 90 (kesalahan: mengalikan n dengan U6, bukan memakai rumus Sn)</li>
+        <li>4. Contoh jawaban: 20,20,20,20,20 (b=0) atau 12,16,20,24,28 (a=12, b=4, S5=100)</li>
+        <li>5. a=3, b=3, n=8 → S8 = 8/2(6+7(3)) = 4(27) = 108 pipa</li>
+        <li>6. Tidak sama — jumlah suku ke-5 s.d. ke-8 = S8−S4 = 176−44 = 132 ≠ 44, karena deret aritmetika naik sehingga suku-suku belakangan lebih besar</li>
+        <li>7. Toko A: S10 = 380; Toko B: S10 = 420 → Toko B lebih banyak</li>
+        <li>8. HOTS — dengan a=1, b=1: Sn = n/2(2(1)+(n−1)(1)) = n/2(n+1) ✓ terbukti</li>
+        <li>9. HOTS — a=5, b=3, Sn≤200 → S10=185 (memenuhi), S11=220 (melebihi) → tingkat maksimum = 10</li>
+        <li>10. HOTS — esai reflektif, mis. saat butuh total/akumulasi (total tabungan, total produksi), bukan nilai pada satu titik waktu</li>
+      </ul>
+
+      <h3 style="font-size:1.1rem;margin-top:26px">H. Kunci Jawaban Tugas — Barisan Geometri</h3>
+      <ul class="key-list">
+        <li>1. Ya, geometri, dengan r = 2</li>
+        <li>2. Bukan — selisihnya tetap (+2) tapi rasionya tidak tetap (2; 1,5; 1,33; ...), berarti ini aritmetika, bukan geometri</li>
+        <li>3. Salah — rumus yang benar Un = a×r^(n−1), sehingga U5 = 3×2⁴ = 48, bukan 30 (kesalahan: mengalikan berulang secara linear, bukan memangkatkan rasio)</li>
+        <li>4. Contoh jawaban: 4, 2, 1, 0,5, 0,25</li>
+        <li>5. a=2.000.000, r=1,1 → nilai setelah 4 tahun = 2.000.000×1,1⁴ ≈ Rp2.928.200</li>
+        <li>6. Ya, geometri dengan r = 3 → Un = 7×3^(n−1)</li>
+        <li>7. Pada jam ke-6: A6=320, B6=303,75 → A pertama kali melebihi B di jam ke-6</li>
+        <li>8. HOTS — Un=5×3^(n−1) → rasio U(n+1)/Un = 3 (tetap) → terbukti geometri; a=5, r=3</li>
+        <li>9. HOTS — r² = 4 → r = 2 (dipilih positif karena semua suku positif)</li>
+        <li>10. HOTS — esai reflektif, mis. geometri lebih cocok untuk penduduk karena pertumbuhannya bersifat proporsional/persentase, bukan penambahan tetap</li>
+      </ul>
+
+      <h3 style="font-size:1.1rem;margin-top:26px">I. Kunci Jawaban Tugas — Deret Geometri</h3>
+      <ul class="key-list">
+        <li>1. Barisan geometri: nilai satu suku dengan rasio tetap; deret geometri: jumlah beberapa suku. Contoh barisan: 2,4,8,16; deret: 2+4+8+16</li>
+        <li>2. Benar — pembagian oleh (r−1) tidak terdefinisi jika r=1. Jika r=1, gunakan Sn = a×n</li>
+        <li>3. Salah — cara yang benar: a=2, r=3, n=4 → S4 = 2(3⁴−1)/(3−1) = 2(80)/2 = 80, bukan 24 (kesalahan: mengalikan linear, bukan memakai rumus Sn)</li>
+        <li>4. Jawaban bervariasi, contoh: a=2, r=3 → S4 = 80</li>
+        <li>5. a=1, r=3, n=5 → S5 = 1(3⁵−1)/(3−1) = 242/2 = 121 orang</li>
+        <li>6. U4 = S4−S3 = 80−26 = 54</li>
+        <li>7. Skema A: S5 ≈ Rp7.441.600; Skema B: S5 ≈ Rp9.157.650 → Skema B lebih besar</li>
+        <li>8. HOTS — Sn = a+ar+ar²+...+ar^(n−1); rSn = ar+ar²+...+ar^n; Sn−rSn = a−ar^n → Sn(1−r) = a(1−r^n) → Sn = a(1−r^n)/(1−r)</li>
+        <li>9. HOTS — S4−S2 = r²×S2 → 120−12 = 108 = r²(12) → r² = 9 → r = 3</li>
+        <li>10. HOTS — esai reflektif, mis. deret geometri mencerminkan pertumbuhan berlipat (multiplikatif) seperti bunga majemuk/viral, berbeda dari deret aritmetika yang bersifat penambahan tetap</li>
+      </ul>
+
+      <h3 style="font-size:1.1rem;margin-top:26px">J. Kunci Jawaban PR — Barisan Aritmetika</h3>
+      <ul class="key-list">
+        <li>1. U6 = 3+(5)(4) = 23</li>
+        <li>2. U10 = 5+(9)(4) = 41</li>
+        <li>3. U8 = 20+(7)(−3) = −1</li>
+        <li>4. U15 = 100+(14)(−8) = −12</li>
+        <li>5. b = (27−11)/4 = 4</li>
+        <li>6. a = 22−4(3) = 10</li>
+        <li>7. U10 = 18+(9)(4) = 54 kursi</li>
+        <li>8. n = 25 (dari 101 = 5+(n−1)(4))</li>
+        <li>9. HOTS — bilangan: 7, 11, 15 → terbesar = 15</li>
+        <li>10. HOTS — 3n+2 = 4n−2 → n = 4</li>
+      </ul>
+
+      <h3 style="font-size:1.1rem;margin-top:26px">K. Kunci Jawaban PR — Deret Aritmetika</h3>
+      <ul class="key-list">
+        <li>1. S8 = 4(8+35) = 172</li>
+        <li>2. S12 = 6(20+66) = 516</li>
+        <li>3. S10 = 5(100−45) = 275</li>
+        <li>4. S10 = 5(7+43) = 250</li>
+        <li>5. a = (250−180)/10 = 7</li>
+        <li>6. S12 = 6(100.000+110.000) = Rp1.260.000</li>
+        <li>7. n(n+2) = 168 → n = 12</li>
+        <li>8. S30 = 15(40+145) = 2.775 roti</li>
+        <li>9. HOTS — 2a+5b=24 dan 2a+9b=40 → b = 4</li>
+        <li>10. HOTS — 40.000.000+4b = 60.000.000 → b = Rp5.000.000</li>
+      </ul>
+
+      <h3 style="font-size:1.1rem;margin-top:26px">L. Kunci Jawaban PR — Barisan Geometri</h3>
+      <ul class="key-list">
+        <li>1. U6 = 2×3⁵ = 486</li>
+        <li>2. U7 = 5×2⁶ = 320</li>
+        <li>3. U7 = 64×(1/2)⁶ = 1</li>
+        <li>4. U6 = 3×(−2)⁵ = −96</li>
+        <li>5. r³ = 48/6 = 8 → r = 2</li>
+        <li>6. a = 135/27 = 5</li>
+        <li>7. U6 = 5×2⁵ = 160 bakteri</li>
+        <li>8. n = 10 (dari 1536 = 3×2⁽ⁿ⁻¹⁾)</li>
+        <li>9. HOTS — bilangan: 2, 6, 18 → terbesar = 18</li>
+        <li>10. HOTS — pantulan ke-5 &lt; 10 cm</li>
+      </ul>
+
+      <h3 style="font-size:1.1rem;margin-top:26px">M. Kunci Jawaban PR — Deret Geometri</h3>
+      <ul class="key-list">
+        <li>1. S5 = 2(3⁵−1)/2 = 242</li>
+        <li>2. S6 = 4(2⁶−1) = 252</li>
+        <li>3. S7 = 5(2⁷−1) = 635</li>
+        <li>4. S4 = 81(1−(1/3)⁴)/(2/3) = 120</li>
+        <li>5. a = 45/15 = 3</li>
+        <li>6. r²+r−12 = 0 → r = 3</li>
+        <li>7. S4 = 1000(1,5⁴−1)/0,5 = 8.125 orang</li>
+        <li>8. S5 = 3(2⁵−1) = 93 karyawan</li>
+        <li>9. HOTS — S6/S3 = 1+r³ = 28 → r = 3</li>
+        <li>10. HOTS — 3ⁿ = 729 → n = 6</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<footer class="footer">
+  <div class="container">
+    <p>Materi Ajar &amp; LKPD Interaktif — Barisan dan Deret Aritmetika &amp; Geometri<br>
+    Disusun oleh <strong>Wahyu Wijayanti, S.Pd., M.Pd.</strong> — SMA Negeri Karangpandan</p>
+  </div>
+</footer>
+
+<div id="print-sheet" aria-hidden="true"></div>
+
+<script src="main.js"></script>
+</body>
+</html>
