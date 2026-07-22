@@ -681,27 +681,71 @@
     return "LKPD " + caseNum + " - " + kelas + " - " + absen + " - " + nama;
   }
 
+  // Self-contained CSS for the dedicated print window/tab. Kept inline (not in
+  // style.css) so the print window is a fully standalone document — this is
+  // what makes printing reliable on mobile browsers, since there's no other
+  // page content around it that could accidentally show up.
+  var PRINT_SHEET_CSS =
+    "*{box-sizing:border-box}" +
+    "body{margin:0;padding:24px;font-family:Arial,'Segoe UI',Roboto,Helvetica,sans-serif;color:#111;font-size:14px;line-height:1.5}" +
+    ".print-page{max-width:720px;margin:0 auto}" +
+    ".print-page h1{font-size:1.2rem;margin:0 0 2px}" +
+    ".print-page h2{font-size:1.05rem;margin:0 0 18px;font-weight:700}" +
+    ".print-identity{margin-bottom:18px}" +
+    ".print-identity div{font-size:.95rem;margin-bottom:6px;display:flex;gap:6px}" +
+    ".print-identity strong{min-width:110px;display:inline-block}" +
+    ".print-blank-line{flex:1;border-bottom:1px dotted #000;min-width:160px}" +
+    ".print-jawaban-label{font-weight:800;text-decoration:underline;margin:6px 0 14px;font-size:1rem}" +
+    ".print-step{margin-bottom:14px;page-break-inside:avoid}" +
+    ".print-step h4{font-size:.95rem;margin:0 0 6px;font-weight:700}" +
+    ".print-row{display:flex;align-items:baseline;gap:8px;padding-left:22px;margin-bottom:6px;font-size:.92rem}" +
+    ".print-item-label{min-width:230px}" +
+    ".print-sep{flex:none}" +
+    ".print-item-value{flex:1}" +
+    ".print-blank{display:inline-block;width:100%;border-bottom:1px dotted #000;min-height:1.1em}" +
+    ".print-conclusion{margin-top:18px;page-break-inside:avoid}" +
+    ".print-conclusion h4{font-size:.95rem;margin:0 0 8px;font-weight:700}" +
+    ".print-conclusion-text{font-size:.92rem;white-space:pre-wrap}" +
+    ".print-conclusion-line{border-bottom:1px dotted #000;height:1.4em;margin-bottom:4px}" +
+    ".print-footer-note{margin-top:26px;font-size:.78rem;color:#555}" +
+    "@media print{body{padding:0}@page{margin:14mm 12mm}}";
+
   function printLkpd(caseNum) {
-    var sheet = document.getElementById("print-sheet");
-    if (!sheet) return;
-    sheet.innerHTML = buildPrintSheetHtml(caseNum);
-    document.body.classList.add("printing-lkpd");
+    var bodyHtml = buildPrintSheetHtml(caseNum);
+    var fileTitle = buildPrintFileName(caseNum);
 
-    // Most browsers suggest the current document title as the default
-    // filename when saving the print dialog as PDF, so set it to something
-    // like "LKPD 1 - X-2 - 1 - Agus Santosa" for the duration of the print.
-    var originalTitle = document.title;
-    document.title = buildPrintFileName(caseNum);
+    // Print in a dedicated, self-contained tab/window instead of the current
+    // page. This is far more reliable on mobile browsers (Android Chrome /
+    // iOS Safari), which can otherwise snapshot the current page for
+    // printing before our DOM changes have actually been painted, resulting
+    // in the full page being printed instead of just the LKPD answer sheet.
+    var printWin = window.open("", "_blank");
+    if (!printWin) {
+      alert("Popup diblokir oleh browser. Mohon izinkan pop-up/tab baru di pengaturan browser, lalu coba tekan tombol cetak lagi.");
+      return;
+    }
 
-    var cleanup = function () {
-      document.body.classList.remove("printing-lkpd");
-      document.title = originalTitle;
-      window.removeEventListener("afterprint", cleanup);
-    };
-    window.addEventListener("afterprint", cleanup);
-    window.print();
-    // Fallback in case afterprint doesn't fire on some mobile browsers.
-    setTimeout(cleanup, 60000);
+    var doc =
+      "<!DOCTYPE html><html lang=\"id\"><head><meta charset=\"UTF-8\">" +
+      "<meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\">" +
+      "<title>" + escapeHtml(fileTitle) + "</title>" +
+      "<style>" + PRINT_SHEET_CSS + "</style>" +
+      "</head><body>" +
+      bodyHtml +
+      "<script>" +
+      "window.addEventListener('load', function () {" +
+      "  setTimeout(function () {" +
+      "    window.focus();" +
+      "    window.print();" +
+      "  }, 150);" +
+      "});" +
+      "window.addEventListener('afterprint', function () { window.close(); });" +
+      "</" + "script>" +
+      "</body></html>";
+
+    printWin.document.open();
+    printWin.document.write(doc);
+    printWin.document.close();
   }
 
   var printBtn1 = document.getElementById("lk-print-1");
