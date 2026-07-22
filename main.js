@@ -427,6 +427,9 @@
     data.group = (document.getElementById("lk-group") || {}).value || "";
     data.members = (document.getElementById("lk-members") || {}).value || "";
     data.conclusion = (document.getElementById("lk-conclusion") || {}).value || "";
+    data.nama = (document.getElementById("lk-nama") || {}).value || "";
+    data.kelas = (document.getElementById("lk-kelas") || {}).value || "";
+    data.absen = (document.getElementById("lk-absen") || {}).value || "";
     return data;
   }
 
@@ -439,6 +442,9 @@
     if (document.getElementById("lk-group")) document.getElementById("lk-group").value = data.group || "";
     if (document.getElementById("lk-members")) document.getElementById("lk-members").value = data.members || "";
     if (document.getElementById("lk-conclusion")) document.getElementById("lk-conclusion").value = data.conclusion || "";
+    if (document.getElementById("lk-nama")) document.getElementById("lk-nama").value = data.nama || "";
+    if (document.getElementById("lk-kelas")) document.getElementById("lk-kelas").value = data.kelas || "";
+    if (document.getElementById("lk-absen")) document.getElementById("lk-absen").value = data.absen || "";
   }
 
   function safeLocalStorage() {
@@ -453,40 +459,255 @@
   }
   var ls = safeLocalStorage();
 
-  var saveBtn = document.getElementById("lk-save");
-  var saveNote = document.getElementById("lk-save-note");
-  if (saveBtn && ls) {
-    saveBtn.addEventListener("click", function () {
-      ls.setItem(LKPD_KEY, JSON.stringify(collectLkpdFields()));
-      saveNote.textContent = "Tersimpan di perangkat ini pada " + new Date().toLocaleTimeString("id-ID");
-      saveNote.classList.add("show-saved");
-    });
+  var saveButtons = [
+    { btn: document.getElementById("lk-save-1"), note: document.getElementById("lk-save-note-1") },
+    { btn: document.getElementById("lk-save-2"), note: document.getElementById("lk-save-note-2") }
+  ];
+  saveButtons.forEach(function (pair) {
+    if (!pair.btn) return;
+    if (ls) {
+      pair.btn.addEventListener("click", function () {
+        ls.setItem(LKPD_KEY, JSON.stringify(collectLkpdFields()));
+        if (pair.note) {
+          pair.note.textContent = "Tersimpan di perangkat ini pada " + new Date().toLocaleTimeString("id-ID");
+          pair.note.classList.add("show-saved");
+        }
+      });
+    } else {
+      pair.btn.addEventListener("click", function () {
+        if (pair.note) pair.note.textContent = "Penyimpanan browser tidak tersedia di perangkat ini.";
+      });
+    }
+  });
+  if (ls) {
     var saved = ls.getItem(LKPD_KEY);
     if (saved) {
-      try { applyLkpdFields(JSON.parse(saved)); saveNote.textContent = "Memuat jawaban tersimpan sebelumnya."; } catch (e) {}
+      try {
+        applyLkpdFields(JSON.parse(saved));
+        saveButtons.forEach(function (pair) {
+          if (pair.note) pair.note.textContent = "Memuat jawaban tersimpan sebelumnya.";
+        });
+      } catch (e) {}
     }
-  } else if (saveBtn) {
-    saveBtn.addEventListener("click", function () {
-      saveNote.textContent = "Penyimpanan browser tidak tersedia di perangkat ini.";
-    });
   }
 
   var resetBtn = document.getElementById("lk-reset");
   if (resetBtn) {
     resetBtn.addEventListener("click", function () {
-      if (!confirm("Kosongkan semua jawaban LKPD di perangkat ini?")) return;
+      if (!confirm("Kosongkan semua jawaban LKPD di perangkat ini? (Nama, kelas, dan nomor absen tidak akan dihapus)")) return;
+      var identity = {
+        nama: (document.getElementById("lk-nama") || {}).value || "",
+        kelas: (document.getElementById("lk-kelas") || {}).value || "",
+        absen: (document.getElementById("lk-absen") || {}).value || ""
+      };
       applyLkpdFields({});
+      if (document.getElementById("lk-nama")) document.getElementById("lk-nama").value = identity.nama;
+      if (document.getElementById("lk-kelas")) document.getElementById("lk-kelas").value = identity.kelas;
+      if (document.getElementById("lk-absen")) document.getElementById("lk-absen").value = identity.absen;
       document.querySelectorAll("[data-lkpd]").forEach(function (el) { el.style.borderColor = ""; });
-      if (ls) ls.removeItem(LKPD_KEY);
-      saveNote.textContent = "Jawaban telah dikosongkan.";
-      saveNote.classList.remove("show-saved");
+      if (ls) {
+        var data = collectLkpdFields();
+        ls.setItem(LKPD_KEY, JSON.stringify(data));
+      }
+      saveButtons.forEach(function (pair) {
+        if (!pair.note) return;
+        pair.note.textContent = "Jawaban telah dikosongkan.";
+        pair.note.classList.remove("show-saved");
+      });
     });
   }
 
-  var printBtn = document.getElementById("lk-print");
-  if (printBtn) {
-    printBtn.addEventListener("click", function () { window.print(); });
+  /* ---------------- LKPD print sheet (identity + jawaban, tanpa input) ---------------- */
+  function escapeHtml(str) {
+    return String(str == null ? "" : str)
+      .replace(/&/g, "&amp;")
+      .replace(/</g, "&lt;")
+      .replace(/>/g, "&gt;")
+      .replace(/"/g, "&quot;");
   }
+
+  function getLkpdValue(key) {
+    var el = document.querySelector('[data-lkpd="' + key + '"]');
+    if (!el) el = document.getElementById(key);
+    return el ? el.value.trim() : "";
+  }
+
+  function printRowHtml(letter, label, key) {
+    var value = getLkpdValue(key);
+    var valueHtml = value
+      ? escapeHtml(value)
+      : '<span class="print-blank">&nbsp;</span>';
+    return (
+      '<div class="print-row">' +
+      '<span class="print-item-label">' + letter + ". " + escapeHtml(label) + "</span>" +
+      '<span class="print-sep">:</span>' +
+      '<span class="print-item-value">' + valueHtml + "</span>" +
+      "</div>"
+    );
+  }
+
+  function conclusionHtml(label, key) {
+    var value = getLkpdValue(key);
+    var body;
+    if (value) {
+      body = '<div class="print-conclusion-text">' + escapeHtml(value).replace(/\n/g, "<br>") + "</div>";
+    } else {
+      body =
+        '<div class="print-conclusion-line"></div>' +
+        '<div class="print-conclusion-line"></div>' +
+        '<div class="print-conclusion-line"></div>';
+    }
+    return '<div class="print-conclusion"><h4>' + escapeHtml(label) + "</h4>" + body + "</div>";
+  }
+
+  var LKPD_CASES = {
+    1: {
+      heading: "LKPD Interaktif — Studi Kasus Aritmetika &amp; Geometri",
+      subheading: "Studi Kasus 1 — Proyek Konser Amal Pensi Sekolah",
+      steps: [
+        {
+          title: "Langkah 1 — Identifikasi Masalah",
+          items: [
+            { label: "Suku pertama (a)", key: "a" },
+            { label: "Beda (b)", key: "b" },
+            { label: "Banyak baris (n)", key: "n" }
+          ]
+        },
+        {
+          title: "Langkah 2 — Kapasitas Baris Terakhir (Konsep Barisan)",
+          items: [
+            { label: "Cara / perhitungan", key: "u15work" },
+            { label: "Hasil U15", key: "u15" }
+          ]
+        },
+        {
+          title: "Langkah 3 — Kapasitas Total Gedung (Konsep Deret)",
+          items: [
+            { label: "Cara / perhitungan", key: "s15work" },
+            { label: "Hasil S15", key: "s15" }
+          ]
+        },
+        {
+          title: "Langkah 4 — Analisis &amp; Pengambilan Keputusan (HOTS)",
+          items: [
+            { label: "Estimasi pendapatan (Rp)", key: "pendapatan" },
+            { label: "Tercapai / tidak?", key: "tercapai" }
+          ]
+        }
+      ],
+      conclusion: { label: "Kesimpulan Studi Kasus 1", key: "lk-conclusion" }
+    },
+    2: {
+      heading: "LKPD Interaktif — Studi Kasus Aritmetika &amp; Geometri",
+      subheading: "Studi Kasus 2 — Gerakan Menanam Berantai (Geometri)",
+      steps: [
+        {
+          title: "Langkah 1 — Identifikasi Masalah",
+          items: [
+            { label: "Penanam baru minggu ke-1 (a)", key: "g-a" },
+            { label: "Rasio (r)", key: "g-r" },
+            { label: "Lama program / minggu (n)", key: "g-n" }
+          ]
+        },
+        {
+          title: "Langkah 2 — Penanam Baru di Minggu Terakhir (Konsep Barisan)",
+          items: [
+            { label: "Cara / perhitungan", key: "g-u6work" },
+            { label: "Hasil U6", key: "g-u6" }
+          ]
+        },
+        {
+          title: "Langkah 3 — Total Pohon Tertanam (Konsep Deret)",
+          items: [
+            { label: "Cara / perhitungan", key: "g-s6work" },
+            { label: "Hasil S6", key: "g-s6" }
+          ]
+        },
+        {
+          title: "Langkah 4 — Analisis &amp; Pengambilan Keputusan (HOTS)",
+          items: [
+            { label: "Selisih dari target (pohon)", key: "g-selisih" },
+            { label: "Tercapai / tidak?", key: "g-tercapai" }
+          ]
+        }
+      ],
+      conclusion: { label: "Kesimpulan Studi Kasus 2", key: "g-conclusion" }
+    }
+  };
+
+  function buildPrintSheetHtml(caseNum) {
+    var data = LKPD_CASES[caseNum];
+    if (!data) return "";
+    var nama = getLkpdValue("lk-nama");
+    var kelas = getLkpdValue("lk-kelas");
+    var absen = getLkpdValue("lk-absen");
+    var blank = '<span class="print-blank-line">&nbsp;</span>';
+
+    var html = '<div class="print-page">';
+    html += "<h1>" + data.heading + "</h1>";
+    html += "<h2>" + escapeHtml(data.subheading) + "</h2>";
+    html += '<div class="print-identity">';
+    html += "<div><strong>Nama</strong> : " + (nama ? escapeHtml(nama) : blank) + "</div>";
+    html += "<div><strong>Kelas</strong> : " + (kelas ? escapeHtml(kelas) : blank) + "</div>";
+    html += "<div><strong>Nomor Absen</strong> : " + (absen ? escapeHtml(absen) : blank) + "</div>";
+    html += "</div>";
+    html += '<div class="print-jawaban-label">Jawaban :</div>';
+
+    data.steps.forEach(function (step) {
+      html += '<div class="print-step"><h4>' + step.title + "</h4>";
+      step.items.forEach(function (item, i) {
+        html += printRowHtml(String.fromCharCode(97 + i), item.label, item.key);
+      });
+      html += "</div>";
+    });
+
+    html += conclusionHtml(data.conclusion.label, data.conclusion.key);
+    html += '<div class="print-footer-note">Dicetak dari LKPD Interaktif Barisan &amp; Deret pada ' + new Date().toLocaleDateString("id-ID") + "</div>";
+    html += "</div>";
+    return html;
+  }
+
+  function sanitizeFileNamePart(str) {
+    return String(str || "")
+      .replace(/[\\/:*?"<>|]/g, "-") // characters not allowed in filenames
+      .replace(/\s+/g, " ")
+      .trim();
+  }
+
+  function buildPrintFileName(caseNum) {
+    var kelas = sanitizeFileNamePart(getLkpdValue("lk-kelas")) || "Kelas";
+    var absen = sanitizeFileNamePart(getLkpdValue("lk-absen")) || "Absen";
+    var nama = sanitizeFileNamePart(getLkpdValue("lk-nama")) || "Nama";
+    return "LKPD " + caseNum + " - " + kelas + " - " + absen + " - " + nama;
+  }
+
+  function printLkpd(caseNum) {
+    var sheet = document.getElementById("print-sheet");
+    if (!sheet) return;
+    sheet.innerHTML = buildPrintSheetHtml(caseNum);
+    document.body.classList.add("printing-lkpd");
+
+    // Most browsers suggest the current document title as the default
+    // filename when saving the print dialog as PDF, so set it to something
+    // like "LKPD 1 - X-2 - 1 - Agus Santosa" for the duration of the print.
+    var originalTitle = document.title;
+    document.title = buildPrintFileName(caseNum);
+
+    var cleanup = function () {
+      document.body.classList.remove("printing-lkpd");
+      document.title = originalTitle;
+      window.removeEventListener("afterprint", cleanup);
+    };
+    window.addEventListener("afterprint", cleanup);
+    window.print();
+    // Fallback in case afterprint doesn't fire on some mobile browsers.
+    setTimeout(cleanup, 60000);
+  }
+
+  var printBtn1 = document.getElementById("lk-print-1");
+  if (printBtn1) printBtn1.addEventListener("click", function () { printLkpd(1); });
+  var printBtn2 = document.getElementById("lk-print-2");
+  if (printBtn2) printBtn2.addEventListener("click", function () { printLkpd(2); });
 
   var refSaveBtn = document.getElementById("lk-ref-save");
   var refSaveNote = document.getElementById("lk-ref-save-note");
