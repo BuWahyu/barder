@@ -1257,6 +1257,21 @@
     <div class="lkpd-shell">
       <div class="lkpd-top">
         <div>
+          <strong>Identitas Peserta Didik</strong><br>
+          Isi bagian ini terlebih dahulu sebelum mengerjakan LKPD 1 maupun LKPD 2.
+        </div>
+        <div class="lkpd-meta">Otomatis muncul di lembar cetak / PDF kedua LKPD</div>
+      </div>
+      <div class="group-grid lkpd-identity">
+        <div class="field"><label for="lk-nama">Nama</label><input type="text" id="lk-nama" placeholder="Nama lengkap"></div>
+        <div class="field"><label for="lk-kelas">Kelas</label><input type="text" id="lk-kelas" placeholder="Contoh: XI-2"></div>
+        <div class="field"><label for="lk-absen">Nomor Absen</label><input type="text" id="lk-absen" placeholder="Contoh: 15"></div>
+      </div>
+    </div>
+
+    <div class="lkpd-shell">
+      <div class="lkpd-top">
+        <div>
           <strong>Materi:</strong> Barisan &amp; Deret Aritmetika — Studi Kasus 1<br>
           <strong>Mapel:</strong> Matematika SMA Kelas XI · <strong>Waktu:</strong> 35 Menit
         </div>
@@ -1314,6 +1329,12 @@
         <h4>Kesimpulan Studi Kasus 1</h4>
         <textarea class="lkpd-textarea" id="lk-conclusion" placeholder="Tuliskan kesimpulan kelompok kalian di sini..."></textarea>
       </div>
+
+      <div class="lkpd-actions">
+        <button class="btn btn-primary" id="lk-save-1">Simpan Jawaban LKPD 1</button>
+        <button class="btn btn-ghost" id="lk-print-1">Cetak / Simpan sebagai PDF (LKPD 1)</button>
+      </div>
+      <div class="save-note" id="lk-save-note-1">Belum ada perubahan tersimpan.</div>
     </div>
 
     <div class="section-head" style="margin-top:40px">
@@ -1378,11 +1399,14 @@
       </div>
 
       <div class="lkpd-actions">
-        <button class="btn btn-primary" id="lk-save">Simpan Kedua Jawaban</button>
-        <button class="btn btn-ghost" id="lk-print">Cetak / Simpan sebagai PDF</button>
-        <button class="btn btn-ghost" id="lk-reset">Kosongkan Semua</button>
+        <button class="btn btn-primary" id="lk-save-2">Simpan Jawaban LKPD 2</button>
+        <button class="btn btn-ghost" id="lk-print-2">Cetak / Simpan sebagai PDF (LKPD 2)</button>
       </div>
-      <div class="save-note" id="lk-save-note">Belum ada perubahan tersimpan.</div>
+      <div class="save-note" id="lk-save-note-2">Belum ada perubahan tersimpan.</div>
+
+      <div class="lkpd-actions" style="margin-top:14px">
+        <button class="btn btn-ghost" id="lk-reset">Kosongkan Semua Jawaban (LKPD 1 &amp; 2)</button>
+      </div>
     </div>
 
     <div class="section-head" style="margin-top:48px">
@@ -1615,6 +1639,8 @@
     Disusun oleh <strong>Wahyu Wijayanti, S.Pd., M.Pd.</strong> — SMA Negeri Karangpandan</p>
   </div>
 </footer>
+
+<div id="print-sheet" aria-hidden="true"></div>
 
 <script src="main.js"></script>
 </body>
