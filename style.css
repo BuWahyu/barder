@@ -394,6 +394,7 @@ img, svg { display: block; max-width: 100%; }
 .lkpd-top { display: flex; justify-content: space-between; align-items: flex-start; gap: 20px; flex-wrap: wrap; margin-bottom: 22px; padding-bottom: 20px; border-bottom: 1px dashed var(--line-strong); }
 .lkpd-meta { font-size: .84rem; color: var(--ink-faint); }
 .group-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; margin-bottom: 24px; }
+.group-grid.lkpd-identity { grid-template-columns: 1.4fr 1fr 1fr; margin-bottom: 0; }
 .group-grid input {
   width: 100%; padding: 10px 12px; border-radius: 10px; border: 1.5px solid var(--line-strong);
   font-family: var(--font-body); font-size: .92rem; background: var(--paper);
@@ -438,6 +439,7 @@ textarea.lkpd-textarea {
   .calc-grid { grid-template-columns: repeat(2, 1fr); }
   .lkpd-fields { grid-template-columns: 1fr 1fr; }
   .group-grid { grid-template-columns: 1fr; }
+  .group-grid.lkpd-identity { grid-template-columns: 1fr; }
 }
 @media (max-width: 560px) {
   .container { padding: 0 16px; }
@@ -449,10 +451,67 @@ textarea.lkpd-textarea {
   .rubric-table th, .rubric-table td { padding: 7px 8px; }
 }
 
+/* ---------- Print sheet (LKPD answer sheet, screen: hidden) ---------- */
+#print-sheet { display: none; }
+
 /* ---------- Print ---------- */
 @media print {
   .nav, .progress-bar, .mobile-panel, .hero-actions, #guru-gate-btn { display: none !important; }
   body { background: #fff; }
   .section { padding: 10px 0; }
   a[href]::after { content: ""; }
+
+  /* When printing a single LKPD answer sheet, hide every other element on the
+     page (materi, kalkulator, latihan soal, navigasi, dst.) and show only the
+     generated #print-sheet content. */
+  body.printing-lkpd > *:not(#print-sheet) { display: none !important; }
+  body.printing-lkpd #print-sheet {
+    display: block !important;
+    font-family: "Manrope", Arial, sans-serif;
+    color: #111;
+    padding: 0;
+    margin: 0;
+  }
+
+  .print-page { max-width: 100%; }
+  .print-page h1 {
+    font-family: "Fraunces", Georgia, serif;
+    font-size: 1.25rem;
+    margin: 0 0 2px;
+  }
+  .print-page h2 {
+    font-size: 1.05rem;
+    margin: 0 0 16px;
+    font-weight: 700;
+  }
+  .print-identity { margin-bottom: 18px; }
+  .print-identity div { font-size: .95rem; margin-bottom: 6px; display: flex; gap: 6px; }
+  .print-identity strong { min-width: 110px; display: inline-block; }
+  .print-identity .print-blank-line { flex: 1; border-bottom: 1px dotted #000; min-width: 160px; }
+
+  .print-jawaban-label {
+    font-weight: 800;
+    text-decoration: underline;
+    margin: 6px 0 12px;
+    font-size: 1rem;
+  }
+  .print-step { margin-bottom: 14px; page-break-inside: avoid; }
+  .print-step h4 { font-size: .95rem; margin: 0 0 6px; font-weight: 700; }
+  .print-row {
+    display: flex;
+    align-items: baseline;
+    gap: 8px;
+    padding-left: 22px;
+    margin-bottom: 6px;
+    font-size: .92rem;
+  }
+  .print-item-label { min-width: 230px; }
+  .print-sep { flex: none; }
+  .print-item-value { flex: 1; }
+  .print-blank { display: inline-block; width: 100%; border-bottom: 1px dotted #000; min-height: 1.1em; }
+  .print-conclusion { margin-top: 18px; page-break-inside: avoid; }
+  .print-conclusion h4 { font-size: .95rem; margin: 0 0 8px; font-weight: 700; }
+  .print-conclusion-text { font-size: .92rem; white-space: pre-wrap; }
+  .print-conclusion-line { border-bottom: 1px dotted #000; height: 1.4em; margin-bottom: 4px; }
+  .print-footer-note { margin-top: 26px; font-size: .78rem; color: #555; }
 }
